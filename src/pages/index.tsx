@@ -1,6 +1,6 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
-import Welcome from '../components/Welcome/Welcome'
+import Welcome from '../components/Welcome/Welcome';
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
       </Head>
       <Welcome />
     </>
-  )
+  );
 }

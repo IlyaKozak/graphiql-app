@@ -1,12 +1,12 @@
 const en = {
   home: {
-    title: "GraphiQL Clone - NextFireTeam",
+    title: 'GraphiQL Clone - NextFireTeam',
   },
   main: {
-    title: "GraphiQL Clone - Main Page",
+    title: 'GraphiQL Clone - Main Page',
   },
   auth: {
-    title: "GraphiQL Clone - Auth Page",
+    title: 'GraphiQL Clone - Auth Page',
   },
 };
 

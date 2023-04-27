@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import SignIn from '../../components/SignIn/SignIn'
-import SignUp from '../../components/SignUp/SignUp'
+import Head from 'next/head';
+import SignIn from '../../components/SignIn/SignIn';
+import SignUp from '../../components/SignUp/SignUp';
 
 export default function Auth() {
   return (
@@ -15,5 +15,5 @@ export default function Auth() {
       <SignIn />
       <SignUp />
     </>
-  )
+  );
 }

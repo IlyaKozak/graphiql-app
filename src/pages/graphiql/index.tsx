@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function Main() {
   return (
@@ -11,5 +11,5 @@ export default function Main() {
       </Head>
       <h1>Main / GraphiQL Page</h1>
     </>
-  )
+  );
 }

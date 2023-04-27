@@ -1,12 +1,12 @@
 const ru = {
   home: {
-    title: "GraphiQL Клон - NextFireTeam",
+    title: 'GraphiQL Клон - NextFireTeam',
   },
   main: {
-    title: "GraphiQL Клон - Основная Страница",
+    title: 'GraphiQL Клон - Основная Страница',
   },
   auth: {
-    title: "GraphiQL Клон - Авторизация",
+    title: 'GraphiQL Клон - Авторизация',
   },
 };
 
