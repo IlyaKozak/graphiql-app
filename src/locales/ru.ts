@@ -8,6 +8,7 @@ const ru: LocaleDictionary = {
   },
   main: {
     title: 'GraphiQL Клон - Основная Страница',
+    endpointButton: 'Сменить адрес',
   },
   auth: {
     title: 'GraphiQL Клон - Авторизация',
