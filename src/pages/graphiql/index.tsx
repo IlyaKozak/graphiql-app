@@ -14,7 +14,7 @@ export default function Main() {
 
   useEffect(() => {
     graphiQLService(endpoint).then((data) => setSchemaData(data));
-  }, [endpoint, schemaData]);
+  }, [endpoint]);
 
   return (
     <>
