@@ -24,7 +24,7 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeader onSubmit={handleSubmit} />
+      <MainHeader onSubmit={handleSubmit} endpoint={endpoint} />
       <h1>Main / GraphiQL Page</h1>
       <p>{JSON.stringify(schemaData?.mutationType)}</p>
     </>
