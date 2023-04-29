@@ -9,6 +9,7 @@ const en: LocaleDictionary = {
   main: {
     title: 'GraphiQL Clone - Main Page',
     endpointButton: 'Change endpoint',
+    endpointText: 'Endpoint:',
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
