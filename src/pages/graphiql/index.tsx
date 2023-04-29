@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 import { __Schema as Schema } from '@/types/schema';
 import ResponseSection from '@/components/ResponseSection/ResponseSection';
 import EditorSection from '@/components/EditorSection/EditorSection';
+import Docs from '@/components/Docs/Docs';
+import { DEFAULT_GRAPHQL_ENDPOINT } from '@/constants/defaultGraphQLEndpoint';
 
 export default function Main() {
-  const [endpoint, setEndpoint] = useState('https://rickandmortyapi.com/graphql');
+  const [endpoint, setEndpoint] = useState(DEFAULT_GRAPHQL_ENDPOINT);
   const [schemaData, setSchemaData] = useState<Schema | null>(null);
   const [response, setResponse] = useState<string | null>(null);
 
@@ -37,6 +39,7 @@ export default function Main() {
       <div className="container-main">
         <EditorSection setResponse={setResponse} endpoint={endpoint} />
         <ResponseSection response={response} />
+        <Docs schema={schemaData} />
       </div>
     </>
   );
