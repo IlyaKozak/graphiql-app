@@ -1,32 +1,43 @@
 import { useRef } from 'react';
 import { useLocaleContext } from '../../context/locale.context';
+import classes from './MainHeader.module.css';
 
 interface IMainHeaderProps {
-  onSubmit: (endpoint: string) => void;
+  onEndpointSubmit: (endpoint: string) => void;
+  endpoint: string;
 }
 
-function MainHeader({ onSubmit }: IMainHeaderProps) {
+function MainHeader({ onEndpointSubmit, endpoint }: IMainHeaderProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [locale] = useLocaleContext();
   const {
-    main: { endpointButton },
+    main: { endpointButton, endpointText },
   } = locale;
 
-  const handleSubmit = (
+  const handleEndpointSubmit = (
     event: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     if (inputRef.current) {
-      onSubmit(inputRef.current.value);
+      onEndpointSubmit(inputRef.current.value);
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <button onClick={handleSubmit}>{endpointButton}</button>
-        <input ref={inputRef} type="url" />
-      </form>
+      <div className={classes.wrapper}>
+        <div className={classes.container}>
+          <form onSubmit={handleEndpointSubmit}>
+            <button onClick={handleEndpointSubmit} title={endpointButton}>
+              {endpointButton}
+            </button>
+            <input ref={inputRef} type="url" placeholder={endpoint} />
+          </form>
+          <span>
+            {endpointText} <strong>{endpoint}</strong>
+          </span>
+        </div>
+      </div>
     </>
   );
 }

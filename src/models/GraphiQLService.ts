@@ -1,9 +1,7 @@
-import { dataType, __Schema as Schema } from '../types/schema';
-import { QUERY } from '@/constants/queryToGetGraphQLSchema';
-
-export default async function graphiQLService(endpoint: string): Promise<Schema> {
-  const query = QUERY;
-
+export default async function graphiQLService(
+  endpoint: string,
+  query: string | null
+): Promise<string> {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -13,7 +11,6 @@ export default async function graphiQLService(endpoint: string): Promise<Schema>
     body: JSON.stringify({ query }),
   });
 
-  const responseJSON: dataType = await response.json();
-
-  return responseJSON.data.__schema;
+  const responseJSON = await response.json();
+  return responseJSON;
 }
