@@ -1,0 +1,8 @@
+.click {
+	color: rgb(246, 191, 39);
+	cursor: pointer;
+}
+
+.click:hover {
+	text-decoration: underline;
+}

@@ -3,6 +3,7 @@ import MainHeader from '@/components/MainHeader/MainHeader';
 import graphiQLService from '@/models/GraphiQLService';
 import { useEffect, useState } from 'react';
 import { __Schema as Schema } from '@/types/schema';
+import Docs from '@/components/Docs/Docs';
 
 export default function Main() {
   const [endpoint, setEndpoint] = useState('https://rickandmortyapi.com/graphql');
@@ -26,7 +27,8 @@ export default function Main() {
       </Head>
       <MainHeader onSubmit={handleSubmit} />
       <h1>Main / GraphiQL Page</h1>
-      <p>{JSON.stringify(schemaData?.mutationType)}</p>
+      <p>{JSON.stringify(schemaData?.directives)}</p>
+      <Docs schema={schemaData} />
     </>
   );
 }
