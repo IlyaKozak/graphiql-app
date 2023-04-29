@@ -1,9 +1,9 @@
 import { __Schema as Schema } from './schema';
 
 export type DocsType = {
-	schema: Schema | null;
-}
+  schema: Schema | null;
+};
 
 export type HeaderDocsType = {
-	header: string
-}
+  header: string;
+};
