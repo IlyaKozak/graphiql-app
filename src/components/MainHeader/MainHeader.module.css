@@ -7,15 +7,6 @@
   border-bottom: 1px solid #d0d0d0;
 }
 
-.wrapper img {
-  transition: all .3s ease-in-out;
-}
-
-.wrapper img:hover {
-  cursor: pointer;
-  transform: scale(0.95);
-}
-
 .container {
   width: 100%;
   min-height: fit-content;

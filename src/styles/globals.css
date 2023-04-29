@@ -17,3 +17,17 @@ h5,
 h6 {
   font-family: 'Lato', sans-serif;
 }
+
+.container-main {
+  display: flex;
+  gap: 10px;
+  height: calc(100vh - 61px)
+}
+
+@media screen and (max-width: 800px) {
+  .container-main {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,14 @@
+.wrapper {
+  width: 50vw;
+  height: calc(100% - 28px);
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+  }
+}

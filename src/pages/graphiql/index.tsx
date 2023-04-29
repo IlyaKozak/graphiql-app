@@ -1,19 +1,28 @@
 import Head from 'next/head';
 import MainHeader from '@/components/MainHeader/MainHeader';
-import graphiQLService from '@/models/GraphiQLService';
+import GraphiQLInitialService from '@/models/GraphiQLInitialService';
 import { useEffect, useState } from 'react';
 import { __Schema as Schema } from '@/types/schema';
+import ResponseSection from '@/components/ResponseSection/ResponseSection';
+import EditorSection from '@/components/EditorSection/EditorSection';
 
 export default function Main() {
   const [endpoint, setEndpoint] = useState('https://rickandmortyapi.com/graphql');
   const [schemaData, setSchemaData] = useState<Schema | null>(null);
+  const [response, setResponse] = useState<string | null>(null);
 
-  const handleSubmit = (endpoint: string) => {
+  const handleEndpointSubmit = (endpoint: string) => {
     setEndpoint(endpoint);
   };
 
   useEffect(() => {
-    graphiQLService(endpoint).then((data) => setSchemaData(data));
+    GraphiQLInitialService(endpoint).then((data) => {
+      if (typeof data !== 'string') {
+        setSchemaData(data);
+      } else {
+        setSchemaData(null);
+      }
+    });
   }, [endpoint]);
 
   return (
@@ -24,9 +33,11 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeader onSubmit={handleSubmit} endpoint={endpoint} />
-      <h1>Main / GraphiQL Page</h1>
-      <p>{JSON.stringify(schemaData?.mutationType)}</p>
+      <MainHeader onEndpointSubmit={handleEndpointSubmit} endpoint={endpoint} />
+      <div className="container-main">
+        <EditorSection setResponse={setResponse} endpoint={endpoint} />
+        <ResponseSection response={response} />
+      </div>
     </>
   );
 }
