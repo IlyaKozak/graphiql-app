@@ -1,6 +1,17 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+import { useAuthContext } from '../../context/auth.context';
+import { useEffect } from 'react';
 
 export default function Main() {
+  const { authUser } = useAuthContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!authUser) router.push('/');
+  }, [authUser, router]);
+
   return (
     <>
       <Head>
@@ -9,7 +20,7 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Main / GraphiQL Page</h1>
+      {authUser ? <h1>Main / GraphiQL Page</h1> : ''}
     </>
   );
 }
