@@ -6,3 +6,7 @@
 .click:hover {
   text-decoration: underline;
 }
+
+.wrapper {
+  display: none
+}
