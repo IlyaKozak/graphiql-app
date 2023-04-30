@@ -1,0 +1,69 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px 6px;
+  background: linear-gradient(#f7f7f7, #e2e2e2);
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.container {
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  gap: 3px;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container button {
+  background: linear-gradient(#f9f9f9, #ececec);
+  border-radius: 3px;
+  border: 1px solid gray;
+  color: #555;
+  cursor: pointer;
+  padding: 3px 11px 5px;
+  max-width: 150px;
+  transition: all .3s ease-in-out;
+}
+
+.container button:hover {
+  transform: scale(0.95);
+  border: 0.5px solid rgb(163, 163, 163);
+}
+
+.container form input {
+  width: 250px;
+  overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container span {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 400px) {
+  .container span strong {
+    width : 180px;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .container span {
+    justify-self: left;
+    font-size: 14px;
+    align-content: baseline;
+  }
+}

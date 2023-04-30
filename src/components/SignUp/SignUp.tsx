@@ -3,27 +3,28 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useAuthContext } from '../../context/auth.context';
 
 const defaultFormFields = {
-  displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
 };
 
 function SignUp() {
-  const { authUser, createUser, signInUser, signOutUser } = useAuthContext();
+  const { createUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { email, password, confirmPassword } = formFields;
 
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       setLoading(true);
-      const response = await signInUser(email, password);
+      const response = await createUser(email, password);
+
       setLoading(false);
       setError(null);
+
       if (!response) return;
       resetFormFields();
     } catch (error) {
@@ -49,28 +50,11 @@ function SignUp() {
 
   return (
     <>
-      <h2>Sign up with your email and password:</h2>
+      <h2>Sign Up with your email and password:</h2>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {authUser && (
-        <>
-          <p>AuthUser: {authUser?.email}</p>
-          <button type="button" onClick={() => signOutUser()}>
-            Sign Out
-          </button>
-        </>
-      )}
+
       <form onSubmit={formSubmitHandler}>
-        <label htmlFor="displayName">
-          Display Name:
-          <input
-            id="displayName"
-            name="displayName"
-            type="text"
-            value={displayName}
-            onChange={changeHandler}
-          />
-        </label>
         <label htmlFor="email">
           Email:
           <input

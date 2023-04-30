@@ -4,7 +4,7 @@ import { useLocaleContext } from '../../context/locale.context';
 import { useAuthContext } from '../../context/auth.context';
 
 function Welcome() {
-  const { authUser, signOutUser } = useAuthContext();
+  const { authUser } = useAuthContext();
   const [locale] = useLocaleContext();
   const {
     home: { h1, authLink, mainLink },
@@ -16,9 +16,6 @@ function Welcome() {
       {authUser ? (
         <>
           <Link href="/graphiql">{mainLink}</Link>
-          <button type="button" onClick={() => signOutUser()}>
-            Sign Out
-          </button>
         </>
       ) : (
         <Link href="/auth">{authLink}</Link>

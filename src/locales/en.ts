@@ -5,15 +5,21 @@ const en: LocaleDictionary = {
   home: {
     title: 'GraphiQL Clone - NextFireTeam',
     h1: 'Welcome to GraphiQL Clone!',
-    authLink: 'SignIn / SignUp Page',
-    mainLink: 'GraphiQL Playground',
+    authLink: 'Please Authorize',
+    mainLink: 'Go To GraphiQL Playground',
+    signIn: 'Sign In',
+    signUp: 'Sign Up',
+    signOut: 'Sign Out',
+    graphiQL: 'Go To GraphiQL',
   },
   main: {
     title: 'GraphiQL Clone - Main Page',
-    h1: 'Welcome to GraphiQL Clone!',
+    endpointButton: 'Change endpoint',
+    endpointText: 'Endpoint:',
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
+    h1: 'Authorization Page',
   },
 };
 
