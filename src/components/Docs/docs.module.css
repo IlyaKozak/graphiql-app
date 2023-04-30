@@ -35,6 +35,7 @@
   color: white;
   padding: 2px 4px;
   transform: rotate(-90deg);
+  cursor: pointer;
 }
 
 .click {
