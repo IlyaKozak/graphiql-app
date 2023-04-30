@@ -1,10 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { useAuthContext } from '../../context/auth.context';
 import { useLocaleContext } from '../../context/locale.context';
+import Loader from '../Loader/Loader';
 import classes from './Auth.module.css';
-import Link from 'next/link';
 
 const defaultFormFields = {
   email: '',
@@ -43,17 +44,16 @@ function Auth() {
       setError(null);
 
       const response = await (isSignUp ? createUser(email, password) : signInUser(email, password));
-      setLoading(false);
 
       if (!response) return;
-      router.push('/graphiql');
+
       resetFormFields();
     } catch (error) {
-      setLoading(false);
       if (error instanceof Error) {
         setError(error.message);
       }
     }
+    setLoading(false);
   };
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +83,7 @@ function Auth() {
           <Link href="/auth?page=signup">{goToSignUp}</Link>
         </>
       )}
-      {loading && <p>Loading...</p>}
+      {loading && <Loader />}
       {error && <p className={classes.errorText}>{error}</p>}
 
       <form onSubmit={formSubmitHandler} className={classes.authForm}>

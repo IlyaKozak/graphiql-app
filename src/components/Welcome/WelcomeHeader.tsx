@@ -7,7 +7,7 @@ import SingOut from '../Auth/SignOut';
 import classes from './WelcomeHeader.module.css';
 
 function WelcomeHeader() {
-  const { authUser } = useAuthContext();
+  const { authUser, isLoading } = useAuthContext();
   const [locale] = useLocaleContext();
   const {
     home: { signIn, signUp, graphiQL },
@@ -16,17 +16,18 @@ function WelcomeHeader() {
   return (
     <div className={classes.welcomeHeader}>
       <SwitchLocale />
-      {authUser ? (
-        <>
-          <Link href="/graphiql">{graphiQL}</Link>
-          <SingOut />
-        </>
-      ) : (
-        <>
-          <Link href="/auth?page=signin">{signIn}</Link>
-          <Link href="/auth?page=signup">{signUp}</Link>
-        </>
-      )}
+      {!isLoading &&
+        (authUser ? (
+          <>
+            <Link href="/graphiql">{graphiQL}</Link>
+            <SingOut />
+          </>
+        ) : (
+          <>
+            <Link href="/auth?page=signin">{signIn}</Link>
+            <Link href="/auth?page=signup">{signUp}</Link>
+          </>
+        ))}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { useLocaleContext } from '../../context/locale.context';
 import { useAuthContext } from '../../context/auth.context';
 
 function Welcome() {
-  const { authUser } = useAuthContext();
+  const { authUser, isLoading } = useAuthContext();
   const [locale] = useLocaleContext();
   const {
     home: { h1, authLink, mainLink },
@@ -13,13 +13,14 @@ function Welcome() {
   return (
     <>
       <h1>{h1}</h1>
-      {authUser ? (
-        <>
-          <Link href="/graphiql">{mainLink}</Link>
-        </>
-      ) : (
-        <Link href="/auth">{authLink}</Link>
-      )}
+      {!isLoading &&
+        (authUser ? (
+          <>
+            <Link href="/graphiql">{mainLink}</Link>
+          </>
+        ) : (
+          <Link href="/auth">{authLink}</Link>
+        ))}
     </>
   );
 }
