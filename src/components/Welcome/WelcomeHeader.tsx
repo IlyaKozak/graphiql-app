@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 import { useAuthContext } from '../../context/auth.context';
-import SwitchLocale from '../SwitchLocale/SwitchLocale';
-import SingOut from '../SignOut/SignOut';
-import classes from './WelcomeHeader.module.css';
 import { useLocaleContext } from '../../context/locale.context';
+import SwitchLocale from '../SwitchLocale/SwitchLocale';
+import SingOut from '../Auth/SignOut';
+import classes from './WelcomeHeader.module.css';
 
 function WelcomeHeader() {
   const { authUser } = useAuthContext();
@@ -23,8 +23,8 @@ function WelcomeHeader() {
         </>
       ) : (
         <>
-          <Link href="/auth#signin">{signIn}</Link>
-          <Link href="/auth#signup">{signUp}</Link>
+          <Link href="/auth?page=signin">{signIn}</Link>
+          <Link href="/auth?page=signup">{signUp}</Link>
         </>
       )}
     </div>

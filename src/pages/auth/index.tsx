@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
-import SignIn from '../../components/SignIn/SignIn';
-import SignUp from '../../components/SignUp/SignUp';
+import AuthComponent from '../../components/Auth/Auth';
 import { useLocaleContext } from '../../context/locale.context';
 
 export default function Auth() {
@@ -19,8 +18,7 @@ export default function Auth() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>{h1}</h1>
-      <SignIn />
-      <SignUp />
+      <AuthComponent />
     </>
   );
 }

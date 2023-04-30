@@ -20,6 +20,14 @@ const ru: LocaleDictionary = {
   auth: {
     title: 'GraphiQL Клон - Авторизация',
     h1: 'Страница Авторизации',
+    passwordText: 'Пароль',
+    confirmPasswordText: 'Подтвердите пароль',
+    signUpText: 'Зарегистируйтесь с помощью email и пароля',
+    signInText: 'Войдите с помощью email и пароля',
+    isRegistered: 'Уже зарегистрированы? ',
+    isNotRegistered: 'Не зарегистированы? ',
+    goToSignIn: 'Войдите',
+    goToSignUp: 'Зарегистрируйтесь',
   },
 };
 

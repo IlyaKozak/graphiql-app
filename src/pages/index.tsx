@@ -1,9 +1,8 @@
 import Head from 'next/head';
 
-import Welcome from '../components/Welcome/Welcome';
 import { useLocaleContext } from '../context/locale.context';
-import { useAuthContext } from '../context/auth.context';
-import WelcomeHeader from '../components/WelcomeHeader/WelcomeHeader';
+import Welcome from '../components/Welcome/Welcome';
+import WelcomeHeader from '../components/Welcome/WelcomeHeader';
 
 export default function Home() {
   const [locale] = useLocaleContext();
