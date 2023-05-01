@@ -1,3 +1,43 @@
+.docsInvisible {
+  width: 295px;
+  position:absolute;
+  right: -295px;
+  z-index: 1;
+  height: calc(100vh - 80px);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+}
+
+.docsVisible {
+  width: 295px;
+  position:absolute;
+  right: 0;
+  z-index: 1;
+  height: calc(100vh - 80px);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+}
+
+.lable {
+  position: absolute;
+  top: 100px;
+  left: -43px;
+  width: 60px;
+  text-align: center;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: rgb(61, 88, 102);
+  color: white;
+  padding: 2px 4px;
+  transform: rotate(-90deg);
+  cursor: pointer;
+}
+
 .click {
   color: rgb(246, 191, 39);
   cursor: pointer;
@@ -5,4 +45,36 @@
 
 .click:hover {
   text-decoration: underline;
+}
+
+.headerDocs {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.backShow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.backHidden{
+  display: none;
+}
+
+.backArrow {
+  width: 18px;
+  height: 18px;
+}
+
+@media screen and (max-width: 405px) {
+  .docsInvisible {
+    height: calc(100vh - 110px);
+  }
+  
+  .docsVisible {
+    height: calc(100vh - 110px);
+  }
 }

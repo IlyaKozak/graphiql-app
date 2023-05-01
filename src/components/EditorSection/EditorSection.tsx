@@ -10,12 +10,13 @@ interface IEditorSectionProps {
 }
 
 function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const queryAreaRef = useRef<HTMLTextAreaElement>(null);
+  const variablesAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleQuerySubmit = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     event.preventDefault();
-    if (textAreaRef.current?.value) {
-      graphiQLService(endpoint, textAreaRef.current?.value)
+    if (queryAreaRef.current?.value) {
+      graphiQLService(endpoint, queryAreaRef.current?.value)
         .then((data) => {
           setResponse(JSON.stringify(data, null, 4));
         })
@@ -28,8 +29,8 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   };
 
   useEffect(() => {
-    if (textAreaRef.current) {
-      textAreaRef.current.value = '';
+    if (queryAreaRef.current) {
+      queryAreaRef.current.value = '';
     }
   }, [endpoint]);
 
@@ -37,7 +38,16 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
     <>
       <div className={classes.wrapper}>
         <Image onClick={handleQuerySubmit} src={searchIcon} alt="search schema" />
-        <textarea rows={30} ref={textAreaRef} className={classes.textarea}></textarea>
+        <div className={classes.textareas}>
+          <textarea className={classes.queryArea} ref={queryAreaRef} placeholder="Query"></textarea>
+          <div className={classes.variablesWrapper}>
+            <textarea
+              className={classes.variablesArea}
+              ref={variablesAreaRef}
+              placeholder="Variables"
+            ></textarea>
+          </div>
+        </div>
       </div>
     </>
   );
