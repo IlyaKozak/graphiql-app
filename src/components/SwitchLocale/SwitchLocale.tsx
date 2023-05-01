@@ -4,11 +4,7 @@ function SwitchLocale() {
   const [locale, switchLocale] = useLocaleContext();
   const { lang } = locale;
 
-  return (
-    <div>
-      <button onClick={() => switchLocale()}>{lang}</button>
-    </div>
-  );
+  return <button onClick={() => switchLocale()}>{lang}</button>;
 }
 
 export default SwitchLocale;

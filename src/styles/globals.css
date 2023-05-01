@@ -24,6 +24,10 @@ h6 {
   height: calc(100vh - 61px)
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
   .container-main {
     display: flex;

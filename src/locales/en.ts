@@ -5,6 +5,12 @@ const en: LocaleDictionary = {
   home: {
     title: 'GraphiQL Clone - NextFireTeam',
     h1: 'Welcome to GraphiQL Clone!',
+    authLink: 'Please Authorize',
+    mainLink: 'Go To GraphiQL Playground',
+    signIn: 'Sign In',
+    signUp: 'Sign Up',
+    signOut: 'Sign Out',
+    graphiQL: 'Go To GraphiQL',
   },
   main: {
     title: 'GraphiQL Clone - Main Page',
@@ -13,6 +19,15 @@ const en: LocaleDictionary = {
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
+    h1: 'Authorization Page',
+    passwordText: 'Password',
+    confirmPasswordText: 'Confirm Password',
+    signUpText: 'Sign Up with your email and password',
+    signInText: 'Sign In with your email and password',
+    isRegistered: 'Already registered? ',
+    isNotRegistered: 'Not registered? ',
+    goToSignIn: 'Go To SignIn',
+    goToSignUp: 'Go To SignUp',
   },
 };
 
