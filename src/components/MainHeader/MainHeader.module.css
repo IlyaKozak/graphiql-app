@@ -5,6 +5,9 @@
   padding: 7px 10px 6px;
   background: linear-gradient(#f7f7f7, #e2e2e2);
   border-bottom: 1px solid #d0d0d0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .wrapper img {
