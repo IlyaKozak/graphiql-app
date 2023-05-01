@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import classes from './EditorSection.module.css';
 import searchIcon from '../../../public/search-icon.svg';
 import Image from 'next/image';
-import graphiQLService from '@/models/GraphiQLService';
+import graphiQLService from '@/services/GraphiQLService';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
