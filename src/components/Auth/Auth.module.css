@@ -1,0 +1,16 @@
+.authForm {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  max-width: 15em;
+}
+
+.authForm input {
+  width: 100%;
+}
+
+.errorText {
+  color: crimson;
+}

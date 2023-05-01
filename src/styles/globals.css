@@ -28,6 +28,10 @@ h6 {
   overflow-x: hidden;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
   .container-main {
     height: unset;
