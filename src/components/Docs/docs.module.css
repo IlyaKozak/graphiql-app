@@ -1,3 +1,7 @@
+.docs {
+  width: 60%;
+}
+
 .click {
   color: rgb(246, 191, 39);
   cursor: pointer;
@@ -5,4 +9,26 @@
 
 .click:hover {
   text-decoration: underline;
+}
+
+.headerDocs {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.backShow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.backHidden{
+  display: none;
+}
+
+.backArrow {
+  width: 18px;
+  height: 18px;
 }
