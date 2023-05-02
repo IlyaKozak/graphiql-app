@@ -19,6 +19,11 @@
   transform: scale(0.85);
 }
 
+.wrapper textarea::-webkit-input-placeholder {
+  font-size: 14px;
+  font-family: 'Open Sans', 'Lato', sans-serif;
+}
+
 .textareas {
   height: calc(100vh - 121px)
 }
@@ -96,7 +101,6 @@
 .lableHeaders {
   left: 125px;
 }
-
 
 .lableVariablesActive {
   position: relative;
