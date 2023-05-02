@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
 import Image from 'next/image';
 import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from '@/types/schema';
-import { findNameType } from '../../models/findNameType';
+import { findNameType } from '../../services/findNameType';
 import { ValueRoot } from '../../types/docs';
 
 export default function Docs({ schema }: DocsType) {
@@ -13,8 +13,17 @@ export default function Docs({ schema }: DocsType) {
   const [showBtnBack, setSchowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<String>('');
   const [stack, setStack] = useState<Array<__Type>>([]);
+  const [active, setActive] = useState(false);
 
   console.log(schema);
+
+  const handleLableClick = () => {
+    if (!active) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  };
 
   useEffect(() => {
     if (schema) {
@@ -72,7 +81,10 @@ export default function Docs({ schema }: DocsType) {
   }
 
   return (
-    <div className={styles.docs}>
+    <div className={active ? styles.docsVisible : styles.docsInvisible}>
+      <div onClick={handleLableClick} className={styles.lable}>
+        DOCS
+      </div>
       <div className={styles.headerDocs}>
         <div onClick={hadleClickBack} className={showBtnBack ? styles.backShow : styles.backHidden}>
           <Image className={styles.backArrow} src={arrow} alt="back stack" />

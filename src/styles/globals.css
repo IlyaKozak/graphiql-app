@@ -19,15 +19,24 @@ h6 {
 }
 
 .container-main {
+  position: relative;
   display: flex;
   gap: 10px;
-  height: calc(100vh - 61px)
+  height: calc(100vh - 120px);
+  background: rgb(245, 245, 245);
+  padding: 0 30px 0 10px;
+  overflow: hidden;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
   .container-main {
-    display: flex;
-    gap: 10px;
+    height: unset;
     flex-direction: column;
+    gap: 10px;
+    padding-bottom: 19px;
   }
 }
