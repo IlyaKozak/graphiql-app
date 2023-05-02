@@ -3,6 +3,7 @@ import SingOut from '../Auth/SignOut';
 import logo from '../../../public/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import SwitchLocale from '../SwitchLocale/SwitchLocale';
 
 function MainHeader() {
   return (
@@ -11,7 +12,10 @@ function MainHeader() {
         <Link href="/">
           <Image src={logo} alt="logo" />
         </Link>
-        <SingOut />
+        <div className={classes.headerButtons}>
+          <SwitchLocale />
+          <SingOut />
+        </div>
       </div>
     </>
   );
