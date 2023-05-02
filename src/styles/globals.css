@@ -22,10 +22,10 @@ h6 {
   position: relative;
   display: flex;
   gap: 10px;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 120px);
   background: rgb(245, 245, 245);
   padding: 0 30px 0 10px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 button:hover {

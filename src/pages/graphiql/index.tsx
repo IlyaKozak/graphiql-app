@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { useAuthContext } from '@/context/auth.context';
+import EndpointSection from '@/components/EndpointSection/EndpointSection';
 import MainHeader from '@/components/MainHeader/MainHeader';
-import GraphiQLInitialService from '@/models/GraphiQLInitialService';
+import GraphiQLInitialService from '@/services/GraphiQLInitialService';
 import { __Schema as Schema } from '@/types/schema';
 import ResponseSection from '@/components/ResponseSection/ResponseSection';
 import EditorSection from '@/components/EditorSection/EditorSection';
@@ -47,7 +48,8 @@ export default function Main() {
 
       {authUser ? (
         <>
-          <MainHeader onEndpointSubmit={handleEndpointSubmit} endpoint={endpoint} />
+          <MainHeader />
+          <EndpointSection onEndpointSubmit={handleEndpointSubmit} endpoint={endpoint} />
           <div className="container-main">
             <EditorSection setResponse={setResponse} endpoint={endpoint} />
             <ResponseSection response={response} />

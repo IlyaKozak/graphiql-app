@@ -3,7 +3,8 @@
   position:absolute;
   right: -295px;
   z-index: 1;
-  height: calc(100vh - 80px);
+  top: 13px;
+  height: calc(100vh - 152px);
   background-color: rgb(255, 255, 255);
   border: 1px solid black;
   border-radius: 4px;
@@ -14,8 +15,9 @@
   width: 295px;
   position:absolute;
   right: 0;
+  top: 13px;
   z-index: 1;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 80px - 72px);
   background-color: rgb(255, 255, 255);
   border: 1px solid black;
   border-radius: 4px;
@@ -71,10 +73,10 @@
 
 @media screen and (max-width: 405px) {
   .docsInvisible {
-    height: calc(100vh - 110px);
+    height: calc(100vh - 182px);
   }
   
   .docsVisible {
-    height: calc(100vh - 110px);
+    height: calc(100vh - 182px);
   }
 }
