@@ -1,5 +1,5 @@
 import { DocsType } from '../../types/docs';
-import styles from './docs.module.css';
+import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ import { ValueRoot } from '../../types/docs';
 export default function Docs({ schema }: DocsType) {
   const [nameHeader, setNameHeader] = useState<String>('');
   const [description, setDescription] = useState<String>('');
-  const [showBtnBack, setSchowBtnBack] = useState(false);
+  const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<String>('');
   const [stack, setStack] = useState<Array<__Type>>([]);
   const [active, setActive] = useState(false);
@@ -35,7 +35,7 @@ export default function Docs({ schema }: DocsType) {
 
   useEffect(() => {
     console.log(stack);
-    stack.length > 1 ? setSchowBtnBack(true) : setSchowBtnBack(false);
+    stack.length > 1 ? setShowBtnBack(true) : setShowBtnBack(false);
     if (stack.length === 1) {
       setDescription('A GraphQL schema provides a root type for each kind of operation.');
       setNameHeader('Documentation Explorer');
@@ -81,13 +81,13 @@ export default function Docs({ schema }: DocsType) {
   }
 
   return (
-    <div className={active ? styles.docsVisible : styles.docsInvisible}>
-      <div onClick={handleLableClick} className={styles.lable}>
+    <div className={active ? classes.docsVisible : classes.docsInvisible}>
+      <div onClick={handleLableClick} className={classes.lable}>
         DOCS
       </div>
-      <div className={styles.headerDocs}>
-        <div onClick={hadleClickBack} className={showBtnBack ? styles.backShow : styles.backHidden}>
-          <Image className={styles.backArrow} src={arrow} alt="back stack" />
+      <div className={classes.headerDocs}>
+        <div onClick={hadleClickBack} className={showBtnBack ? classes.backShow : classes.backHidden}>
+          <Image className={classes.backArrow} src={arrow} alt="back stack" />
           <span>{valueBtnBack}</span>
         </div>
         <h3>{nameHeader}</h3>
@@ -99,7 +99,7 @@ export default function Docs({ schema }: DocsType) {
             return (
               <div key={key}>
                 <span>{`query: `}</span>
-                <span onClick={() => handleClickRoot(value)} className={styles.click}>
+                <span onClick={() => handleClickRoot(value)} className={classes.click}>
                   {JSON.stringify(value)}
                 </span>
               </div>
@@ -113,7 +113,7 @@ export default function Docs({ schema }: DocsType) {
                 <span>{`${item.name}: `}</span>
                 <span
                   onClick={() => handleClickField(findNameType(item.type))}
-                  className={styles.click}
+                  className={classes.click}
                 >
                   {findNameType(item.type)}
                 </span>
