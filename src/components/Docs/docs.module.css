@@ -39,6 +39,11 @@
   padding: 2px 4px;
   transform: rotate(-90deg);
   cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.lable:hover {
+  background: rgb(122, 168, 187);
 }
 
 .click {

@@ -96,10 +96,17 @@
 
 .lableVariables {
   left: 10px;
+  transition: all .3s ease-in-out;
 }
 
 .lableHeaders {
   left: 125px;
+  transition: all .3s ease-in-out;
+}
+
+.lableVariables:hover,
+.lableHeaders:hover {
+  background: rgb(122, 168, 187);
 }
 
 .lableVariablesActive {
