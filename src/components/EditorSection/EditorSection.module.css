@@ -94,7 +94,7 @@
 }
 
 .lableHeaders {
-  left: 110px;
+  left: 125px;
 }
 
 
@@ -117,7 +117,7 @@
 .lableHeadersActive {
   position: relative;
   z-index: 3;
-  left: 110px;
+  left: 125px;
   width: fit-content;
   text-align: center;
   height: 25px;

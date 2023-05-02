@@ -16,6 +16,12 @@ const ru: LocaleDictionary = {
     title: 'GraphiQL Клон - Основная Страница',
     endpointButton: 'Сменить адрес',
     endpointText: 'Адрес:',
+    variablesPlaceholder: 'Переменные',
+    variablesLable: 'ПЕРМЕННЫЕ',
+    headersPlaceholder: 'Заголовки',
+    headersLable: 'ЗАГОЛОВКИ',
+    docsLable: 'ДОКА',
+    queryPlaceholder: 'Запрос',
   },
   auth: {
     title: 'GraphiQL Клон - Авторизация',

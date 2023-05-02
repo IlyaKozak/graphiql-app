@@ -3,6 +3,7 @@ import classes from './EditorSection.module.css';
 import searchIcon from '../../../public/search-icon.svg';
 import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
+import { useLocaleContext } from '../../context/locale.context';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
@@ -11,6 +12,16 @@ interface IEditorSectionProps {
 
 function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const [variablesLableActive, setVariablesLableActive] = useState(true);
+  const [locale] = useLocaleContext();
+  const {
+    main: {
+      variablesPlaceholder,
+      variablesLable,
+      headersPlaceholder,
+      headersLable,
+      queryPlaceholder,
+    },
+  } = locale;
 
   const queryAreaRef = useRef<HTMLTextAreaElement>(null);
   const variablesAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -64,7 +75,11 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
       <div className={classes.wrapper}>
         <Image onClick={handleQuerySubmit} src={searchIcon} alt="search schema" />
         <div className={classes.textareas}>
-          <textarea className={classes.queryArea} ref={queryAreaRef} placeholder="Query"></textarea>
+          <textarea
+            className={classes.queryArea}
+            ref={queryAreaRef}
+            placeholder={queryPlaceholder}
+          ></textarea>
           <div className={classes.variablesHedersWrapper}>
             <div className={classes.variablesWrapper}>
               <div
@@ -73,7 +88,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
                   variablesLableActive ? classes.lableVariablesActive : classes.lableVariables
                 }
               >
-                VARIABLES
+                {variablesLable}
               </div>
               <textarea
                 className={
@@ -82,7 +97,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
                     : classes.variablesAreaInvisible
                 }
                 ref={variablesAreaRef}
-                placeholder="Variables"
+                placeholder={variablesPlaceholder}
               ></textarea>
             </div>
             <div className={classes.headersWrapper}>
@@ -90,14 +105,14 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
                 onClick={handleHeadersLableClick}
                 className={variablesLableActive ? classes.lableHeaders : classes.lableHeadersActive}
               >
-                HEADERS
+                {headersLable}
               </div>
               <textarea
                 className={
                   variablesLableActive ? classes.headersAreaInvisible : classes.headersAreaVisible
                 }
                 ref={variablesAreaRef}
-                placeholder="Headers"
+                placeholder={headersPlaceholder}
               ></textarea>
             </div>
           </div>
