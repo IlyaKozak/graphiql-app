@@ -4,20 +4,19 @@
   width: 50vw;
   max-width: 75vw;
   width: 100%;
-  height: calc(100% - 32px);
-  border: 1px solid gray;
+  height: calc(100% - 10px);
   border-radius: 5px;
   background: rgb(255, 255, 255);
   padding: 0 0 0 15px;
   overflow: auto;
-  margin: 13px 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 800px) {
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 40vh - 167px);
+    height: calc(100vh - 30vh - 280px);
     padding: 15px 0 0 0;
   }
 }
@@ -26,6 +25,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 40vh - 198px);
+    height: calc(100vh - 30vh - 311px);
+    padding: 15px 0 0 0;
   }
 }

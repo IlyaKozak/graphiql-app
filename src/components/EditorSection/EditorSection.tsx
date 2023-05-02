@@ -10,8 +10,11 @@ interface IEditorSectionProps {
 }
 
 function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
+  const [variablesLableActive, setVariablesLableActive] = useState(true);
+
   const queryAreaRef = useRef<HTMLTextAreaElement>(null);
   const variablesAreaRef = useRef<HTMLTextAreaElement>(null);
+  const headersAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleQuerySubmit = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     event.preventDefault();
@@ -32,7 +35,29 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
     if (queryAreaRef.current) {
       queryAreaRef.current.value = '';
     }
+    if (variablesAreaRef.current) {
+      variablesAreaRef.current.value = '';
+    }
+    if (headersAreaRef.current) {
+      headersAreaRef.current.value = '';
+    }
   }, [endpoint]);
+
+  const handleVariablesLableClick = () => {
+    if (variablesLableActive) {
+      return;
+    } else {
+      setVariablesLableActive(true);
+    }
+  };
+
+  const handleHeadersLableClick = () => {
+    if (!variablesLableActive) {
+      return;
+    } else {
+      setVariablesLableActive(false);
+    }
+  };
 
   return (
     <>
@@ -40,12 +65,41 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         <Image onClick={handleQuerySubmit} src={searchIcon} alt="search schema" />
         <div className={classes.textareas}>
           <textarea className={classes.queryArea} ref={queryAreaRef} placeholder="Query"></textarea>
-          <div className={classes.variablesWrapper}>
-            <textarea
-              className={classes.variablesArea}
-              ref={variablesAreaRef}
-              placeholder="Variables"
-            ></textarea>
+          <div className={classes.variablesHedersWrapper}>
+            <div className={classes.variablesWrapper}>
+              <div
+                onClick={handleVariablesLableClick}
+                className={
+                  variablesLableActive ? classes.lableVariablesActive : classes.lableVariables
+                }
+              >
+                VARIABLES
+              </div>
+              <textarea
+                className={
+                  variablesLableActive
+                    ? classes.variablesAreaVisible
+                    : classes.variablesAreaInvisible
+                }
+                ref={variablesAreaRef}
+                placeholder="Variables"
+              ></textarea>
+            </div>
+            <div className={classes.headersWrapper}>
+              <div
+                onClick={handleHeadersLableClick}
+                className={variablesLableActive ? classes.lableHeaders : classes.lableHeadersActive}
+              >
+                HEADERS
+              </div>
+              <textarea
+                className={
+                  variablesLableActive ? classes.headersAreaInvisible : classes.headersAreaVisible
+                }
+                ref={variablesAreaRef}
+                placeholder="Headers"
+              ></textarea>
+            </div>
           </div>
         </div>
       </div>

@@ -2,11 +2,11 @@
   width: 295px;
   position:absolute;
   right: -295px;
-  z-index: 1;
-  top: 13px;
-  height: calc(100vh - 152px);
+  z-index: 4;
+  top: 0;
+  height: calc(100vh - 130px);
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  border: 1px solid #9a9a9a;
   border-radius: 4px;
   transition: all .3s ease-in-out;
 }
@@ -15,11 +15,11 @@
   width: 295px;
   position:absolute;
   right: 0;
-  top: 13px;
-  z-index: 1;
-  height: calc(100vh - 80px - 72px);
+  top: 0;
+  z-index: 4;
+  height: calc(100vh - 130px);
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  border: 1px solid #9a9a9a;
   border-radius: 4px;
   transition: all .3s ease-in-out;
 }
@@ -27,12 +27,13 @@
 .lable {
   position: absolute;
   top: 100px;
-  left: -43px;
-  width: 60px;
+  left: -40px;
+  width: fit-content;
   text-align: center;
   height: 25px;
   border: 1px solid black;
-  border-radius: 2px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   background: rgb(61, 88, 102);
   color: white;
   padding: 2px 4px;
@@ -73,10 +74,10 @@
 
 @media screen and (max-width: 405px) {
   .docsInvisible {
-    height: calc(100vh - 182px);
+    height: calc(100vh - 161px);
   }
   
   .docsVisible {
-    height: calc(100vh - 182px);
+    height: calc(100vh - 161px);
   }
 }
