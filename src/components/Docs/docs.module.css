@@ -49,6 +49,11 @@
   text-decoration: underline;
 }
 
+.p_Docs{
+  display: inline-block;
+  margin: 0;
+}
+
 .headerDocs {
   padding: 0 10px;
   display: flex;

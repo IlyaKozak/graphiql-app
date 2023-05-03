@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from '@/types/schema';
 import { findNameType } from '../../services/findNameType';
 import { ValueRoot } from '../../types/docs';
+import { DocsArguments } from './DocsArguments';
 
 export default function Docs({ schema }: DocsType) {
   const [nameHeader, setNameHeader] = useState<String>('');
@@ -34,7 +35,6 @@ export default function Docs({ schema }: DocsType) {
   }, [schema]);
 
   useEffect(() => {
-    console.log(stack);
     stack.length > 1 ? setShowBtnBack(true) : setShowBtnBack(false);
     if (stack.length === 1) {
       setDescription('A GraphQL schema provides a root type for each kind of operation.');
@@ -113,7 +113,11 @@ export default function Docs({ schema }: DocsType) {
           stack[stack.length - 1].fields?.map((item, index) => {
             return (
               <div key={index}>
-                <span>{`${item.name}: `}</span>
+                <div className={classes.p_Docs}>
+                  <span>{item.name}</span>
+                  <DocsArguments item={item} />
+                </div>
+                <span>: </span>
                 <span
                   onClick={() => handleClickField(findNameType('key', item.type))}
                   className={classes.click}

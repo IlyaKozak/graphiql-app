@@ -1,4 +1,4 @@
-import { __Type } from '@/types/schema';
+import { __Type, __InputValue } from '@/types/schema';
 
 export function findNameType(key: string, obj: __Type, arr: String[] = []): string | null {
   if (obj.name !== null && obj.ofType === null) {
@@ -22,3 +22,12 @@ export function findNameType(key: string, obj: __Type, arr: String[] = []): stri
   }
   return null;
 }
+
+
+/* export function findArguments(args: __InputValue[] ){ 
+  
+  args.forEach((arg) => {
+
+  })
+
+} */

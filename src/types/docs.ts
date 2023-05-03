@@ -10,6 +10,10 @@ export type DocsType = {
   setSchowBtnBack: (value: boolean) => void;
 };
 
+export type DocsArgumentsType = {
+  item: __Field;
+};
+
 export type HeaderDocsType = {
   header: String;
   btnName: String;
