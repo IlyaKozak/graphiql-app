@@ -30,7 +30,12 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const handleQuerySubmit = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     event.preventDefault();
     if (queryAreaRef.current?.value) {
-      graphiQLService(endpoint, queryAreaRef.current?.value)
+      graphiQLService(
+        endpoint,
+        queryAreaRef.current?.value,
+        variablesAreaRef.current?.value,
+        headersAreaRef.current?.value
+      )
         .then((data) => {
           setResponse(JSON.stringify(data, null, 4));
         })
@@ -111,7 +116,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
                 className={
                   variablesLableActive ? classes.headersAreaInvisible : classes.headersAreaVisible
                 }
-                ref={variablesAreaRef}
+                ref={headersAreaRef}
                 placeholder={headersPlaceholder}
               ></textarea>
             </div>
