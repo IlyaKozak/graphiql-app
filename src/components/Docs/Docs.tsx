@@ -3,16 +3,16 @@ import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
 import Image from 'next/image';
-import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from '@/types/schema';
+import { __Type } from '@/types/schema';
 import { findNameType } from '../../services/findNameType';
 import { ValueRoot } from '../../types/docs';
 import { useLocaleContext } from '../../context/locale.context';
 
 export default function Docs({ schema }: DocsType) {
-  const [nameHeader, setNameHeader] = useState<String>('');
-  const [description, setDescription] = useState<String>('');
+  const [nameHeader, setNameHeader] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
-  const [valueBtnBack, setValueBtnBack] = useState<String>('');
+  const [valueBtnBack, setValueBtnBack] = useState<string>('');
   const [stack, setStack] = useState<Array<__Type>>([]);
   const [active, setActive] = useState(false);
 

@@ -7,14 +7,14 @@ export type DocsType = {
 };
 
 export type HeaderDocsType = {
-  header: String;
-  btnName: String;
+  header: string;
+  btnName: string;
   showBtnBack: boolean;
   setClick: Dispatch<SetStateAction<boolean>>;
 };
 
 export type DescriptionType = {
-  description: String;
+  description: string;
 };
 
 export type FieldsType = {
@@ -23,7 +23,6 @@ export type FieldsType = {
 
 export type ValueRoot =
   | string
-  | String
   | __Type
   | __TypeKind
   | [__Type]
