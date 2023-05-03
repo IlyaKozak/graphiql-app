@@ -39,8 +39,8 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         .then((data) => {
           setResponse(JSON.stringify(data, null, 4));
         })
-        .catch(() => {
-          setResponse('Failed to fetch data');
+        .catch((error: Error) => {
+          setResponse(error.message);
         });
     } else {
       return;
