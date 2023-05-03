@@ -10,6 +10,11 @@
   z-index: 2;
 }
 
+.headerButtons {
+  display: flex;
+  gap: 10px;
+}
+
 .wrapper img {
   cursor: pointer;
   transition: all .3s ease-in-out;
