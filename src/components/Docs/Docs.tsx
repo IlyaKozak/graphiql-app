@@ -112,10 +112,10 @@ export default function Docs({ schema }: DocsType) {
               <div key={index}>
                 <span>{`${item.name}: `}</span>
                 <span
-                  onClick={() => handleClickField(findNameType(item.type))}
+                  onClick={() => handleClickField(findNameType('key', item.type))}
                   className={classes.click}
                 >
-                  {findNameType(item.type)}
+                  {findNameType('value', item.type)}
                 </span>
               </div>
             );
