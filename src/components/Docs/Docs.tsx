@@ -86,7 +86,10 @@ export default function Docs({ schema }: DocsType) {
         DOCS
       </div>
       <div className={classes.headerDocs}>
-        <div onClick={hadleClickBack} className={showBtnBack ? classes.backShow : classes.backHidden}>
+        <div
+          onClick={hadleClickBack}
+          className={showBtnBack ? classes.backShow : classes.backHidden}
+        >
           <Image className={classes.backArrow} src={arrow} alt="back stack" />
           <span>{valueBtnBack}</span>
         </div>
@@ -112,10 +115,10 @@ export default function Docs({ schema }: DocsType) {
               <div key={index}>
                 <span>{`${item.name}: `}</span>
                 <span
-                  onClick={() => handleClickField(findNameType(item.type))}
+                  onClick={() => handleClickField(findNameType('key', item.type))}
                   className={classes.click}
                 >
-                  {findNameType(item.type)}
+                  {findNameType('value', item.type)}
                 </span>
               </div>
             );
