@@ -4,10 +4,6 @@ import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from './schema
 
 export type DocsType = {
   schema: Schema | null;
-  onHeader: (value: String) => void;
-  onDescription: (value: String) => void;
-  setValueBtnBack: (value: String) => void;
-  setSchowBtnBack: (value: boolean) => void;
 };
 
 export type HeaderDocsType = {
