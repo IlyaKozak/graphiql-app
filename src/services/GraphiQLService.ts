@@ -9,12 +9,19 @@ export default async function graphiQLService(
     variablesObject = JSON.parse(variables);
   }
 
+  let headersObject;
+  if (headers) {
+    headersObject = JSON.parse(headers);
+  }
+
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
+    headers: headersObject
+      ? headersObject
+      : {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
     body: JSON.stringify({ query: query, variables: variablesObject ? variablesObject : {} }),
   });
 
