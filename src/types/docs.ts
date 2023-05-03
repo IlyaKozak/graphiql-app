@@ -6,6 +6,10 @@ export type DocsType = {
   schema: Schema | null;
 };
 
+export type DocsArgumentsType = {
+  item: __Field;
+};
+
 export type HeaderDocsType = {
   header: string;
   btnName: string;
