@@ -17,8 +17,8 @@ export type __Schema = {
 
 export type __Type = {
   kind: __TypeKind;
-  name: String | null;
-  description: String | null;
+  name: string | null;
+  description: string | null;
   fields: [__Field] | null;
   interfaces: [__Type] | null;
   possibleTypes: [__Type] | null;
