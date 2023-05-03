@@ -22,39 +22,3 @@ export function findNameType(key: string,obj: __Type, arr: String[] = []): strin
   } 
   return null;
 }
-
-
-
-/* export function findNameType(obj: __Type): string | null {
-  let arr: string[] = [];
-  if (obj.name !== null && obj.ofType === null) {
-    console.log(arr)
-    return obj.name;
-  } else if (obj.ofType && obj.name === null) {
-    arr.push(String(obj.kind))
-    return findNameType(obj.ofType);
-  } else {
-    return null;
-  }
-} */
-
-
-/* function findNameType(obj, arr = []) {
-  let name = "";
-  if (obj.name !== null && obj.ofType === null) {
-    name = obj.name;
-    arr.reverse().forEach((item) => {
-      if (item === "NON_NULL") {
-        name += '!'
-      } else if( item === 'LIST'){
-        name = '[' + name + ']'
-      }
-    })
-    return name;
-  } else if (obj.ofType && obj.name === null) {
-    arr.push(String(obj.kind))
-    return findNameType(obj.ofType, arr);
-  } else {
-    return null;
-  }
-} */
