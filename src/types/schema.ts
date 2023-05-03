@@ -7,7 +7,7 @@ export type dataSchema = {
 };
 
 export type __Schema = {
-  description: String | null;
+  description: string | null;
   types: [__Type];
   queryType: __Type;
   mutationType: __Type | null;
@@ -25,7 +25,7 @@ export type __Type = {
   enumValues: [__EnumValue] | null;
   inputFields: [__InputValue] | null;
   ofType: __Type | null;
-  specifiedByURL: String | null;
+  specifiedByURL: string | null;
 };
 
 export enum __TypeKind {
@@ -40,34 +40,34 @@ export enum __TypeKind {
 }
 
 export type __Field = {
-  name: String;
-  description: String | null;
+  name: string;
+  description: string | null;
   args: [__InputValue];
   type: __Type;
-  isDeprecated: Boolean;
-  deprecationReason: String;
+  isDeprecated: boolean;
+  deprecationReason: string;
 };
 
 export type __InputValue = {
-  name: String;
-  description: String | null;
+  name: string;
+  description: string | null;
   type: __Type;
-  defaultValue: String | null;
+  defaultValue: string | null;
 };
 
 export type __EnumValue = {
-  name: String;
-  description: String | null;
-  isDeprecated: Boolean;
-  deprecationReason: String;
+  name: string;
+  description: string | null;
+  isDeprecated: boolean;
+  deprecationReason: string;
 };
 
 export type __Directive = {
-  name: String;
-  description: String | null;
+  name: string;
+  description: string | null;
   locations: [__DirectiveLocation];
   args: [__InputValue];
-  isRepeatable: Boolean;
+  isRepeatable: boolean;
 };
 
 export enum __DirectiveLocation {

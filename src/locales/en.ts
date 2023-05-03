@@ -16,6 +16,12 @@ const en: LocaleDictionary = {
     title: 'GraphiQL Clone - Main Page',
     endpointButton: 'Change endpoint',
     endpointText: 'Endpoint:',
+    variablesPlaceholder: 'Variables',
+    variablesLable: 'VARIABLES',
+    headersPlaceholder: 'Headers',
+    headersLable: 'HEADERS',
+    docsLable: 'DOCS',
+    queryPlaceholder: 'Query',
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',

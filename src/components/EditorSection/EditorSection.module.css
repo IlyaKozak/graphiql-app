@@ -3,11 +3,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background: rgb(245, 245, 245);
+  background: rgb(239 239 239);
 }
 
 .wrapper img {
+  z-index: 3;
   position: absolute;
   right: -28px;
   top: 30px;
@@ -19,8 +19,13 @@
   transform: scale(0.85);
 }
 
+.wrapper textarea::-webkit-input-placeholder {
+  font-size: 14px;
+  font-family: 'Open Sans', 'Lato', sans-serif;
+}
+
 .textareas {
-  height: calc(100vh - 61px)
+  height: calc(100vh - 121px)
 }
 
 .queryArea {
@@ -29,27 +34,119 @@
   width: 50vw;
   max-width: calc(75vw - 50px);
   border-radius: 5px;
-  min-height: 75%;
-  height: 75%;
-  max-height: 75%;
-  margin: 13px 0 8px 0;
+  border: none;
+  height: calc(75% - 19px);
+  margin: 0;
 }
 
-.variablesWrapper {
-  min-height: 20%;
-  height: 20%;
-  max-height: 75%;
+.variablesHedersWrapper {
+  height: 25%;
+  padding-bottom: 10px;
 }
 
-.variablesArea {
+.variablesWrapper,
+.headersWrapper {
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+.headersWrapper {
+  position: relative;
+  bottom: 100%;
+}
+
+.variablesAreaInvisible,
+.headersAreaInvisible {
+  z-index: 0;
   resize: none;
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  margin: 0 0 13px 0;
+  border: none;
+  margin: 0;
 }
 
+.variablesAreaVisible,
+.headersAreaVisible {
+  position: relative;
+  z-index: 1;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+}
+
+.lableVariables,
+.lableHeaders {
+  position: relative;
+  z-index: 3;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: rgb(61, 88, 102);
+  color: white;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.lableVariables {
+  left: 10px;
+  transition: all .3s ease-in-out;
+}
+
+.lableHeaders {
+  left: 125px;
+  transition: all .3s ease-in-out;
+}
+
+.lableVariables:hover,
+.lableHeaders:hover {
+  background: rgb(122, 168, 187);
+}
+
+.lableVariablesActive {
+  position: relative;
+  z-index: 3;
+  left: 10px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: rgb(122, 168, 187);
+  color: white;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.lableHeadersActive {
+  position: relative;
+  z-index: 3;
+  left: 125px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: rgb(112, 162, 186);
+  color: white;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+
 @media screen and (max-width: 800px) {
+  .wrapper {
+    min-height: calc(30vh + 135px);
+  }
+
   .wrapper img {
     right: unset;
     top: unset;
@@ -67,23 +164,34 @@
   }
   
   .queryArea {
-    min-height: unset;
     max-height: unset;
     resize: vertical;
     width: 100%;
-    min-height: 25vh;
-    height: 25vh;
-    margin: 13px 0 8px 0;
+    min-height: 30vh;
+    height: unset;
+    margin: 0;
   }
 
-  .variablesWrapper {
-    height: 15vh;
+  .variablesHedersWrapper {
+    position: relative;
+    padding-bottom: 0;
+    height: 135px;
   }
-  
-  .variablesArea {
-    resize: none;
+
+  .variablesWrapper,
+  .headersWrapper {
     width: 100%;
-    border-radius: 5px;
-    margin: 0 0 13px 0;
+    padding-bottom: 0;
+  }
+
+  .headersWrapper {
+    position: inherit;
+  }
+
+  .variablesAreaVisible,
+  .headersAreaVisible,
+  .variablesAreaInvisible,
+  .headersAreaInvisible {
+    height: calc(100% - 25px);
   }
 }
