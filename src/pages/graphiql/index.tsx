@@ -22,6 +22,7 @@ export default function Main() {
 
   const handleEndpointSubmit = (endpoint: string) => {
     setEndpoint(endpoint);
+    setResponse(null);
   };
 
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function Main() {
         setSchemaData(data);
       } else {
         setSchemaData(null);
+        setResponse(data);
       }
     });
   }, [endpoint]);
