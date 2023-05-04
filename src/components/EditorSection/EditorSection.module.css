@@ -85,23 +85,37 @@
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(61, 88, 102);
   color: white;
-  padding: 2px 4px;
   cursor: pointer;
+  padding: 0 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableVariables {
-  left: 10px;
+  left: 20px;
   transition: all .3s ease-in-out;
+  padding: 0 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableHeaders {
-  left: 125px;
+  left: 170px;
   transition: all .3s ease-in-out;
+  padding: 0 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableVariables:hover,
@@ -111,34 +125,38 @@
 
 .lableVariablesActive {
   position: relative;
-  z-index: 3;
-  left: 10px;
+  z-index: 4;
+  left: 20px;
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(122, 168, 187);
   color: white;
-  padding: 2px 4px;
-  cursor: pointer;
+  cursor: default;
+  padding: 0 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableHeadersActive {
   position: relative;
   z-index: 3;
-  left: 125px;
+  left: 170px;
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(112, 162, 186);
   color: white;
-  padding: 2px 4px;
-  cursor: pointer;
+  cursor: default;
+  padding: 0 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 
