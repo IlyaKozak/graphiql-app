@@ -76,6 +76,17 @@ export default function Docs({ schema }: DocsType) {
     }
   }
 
+  function handleClickArgument(value: string | null) {
+    console.log('click arg');
+    console.log(value);
+    if (value !== null) {
+      const typesRoot = schema?.types.find((item) => item.name === value);
+      if (typesRoot) {
+        setStack((prevStack) => prevStack.concat(typesRoot));
+      }
+    }
+  }
+
   function hadleClickBack() {
     console.log('back');
     setStack((prevStack) => prevStack.slice(0, -1));
@@ -87,14 +98,15 @@ export default function Docs({ schema }: DocsType) {
         {docsLable}
       </div>
       <div className={classes.headerDocs}>
-        <div
-          onClick={hadleClickBack}
-          className={showBtnBack ? classes.backShow : classes.backHidden}
-        >
-          <Image className={classes.backArrow} src={arrow} alt="back stack" />
-          <span>{valueBtnBack}</span>
+        <div className={classes.backBtn}>
+          <div
+            onClick={hadleClickBack}
+            className={showBtnBack ? classes.backShow : classes.backHidden}
+          >
+            <Image className={classes.backArrow} src={arrow} alt="back stack" />
+            <span className={classes.span_backBtn}>{valueBtnBack}</span>
+          </div>
         </div>
-        <h3 className={classes.h3_Docs}>{nameHeader}</h3>
         <Image
           onClick={handleLableClick}
           className={classes.cross}
@@ -102,40 +114,74 @@ export default function Docs({ schema }: DocsType) {
           alt="image for close docs"
         />
       </div>
+      <h3 className={classes.h3_Docs}>{nameHeader}</h3>
       {schema ? (
         <>
           <p>{description}</p>
           <div>
-            {stack.length === 1 &&
-              Object.entries(stack[stack.length - 1]).map(([key, value]) => {
-                return (
-                  <div key={key}>
-                    <span className={classes.keyQuery}>{`query: `}</span>
-                    <span onClick={() => handleClickRoot(value)} className={classes.click}>
-                      {JSON.stringify(value)}
-                    </span>
-                  </div>
-                );
-              })}
+            {stack.length === 1 && (
+              <>
+                <p className={classes.docs_mainDocs_header}>root types</p>
+                <div>
+                  <span className={classes.keyQuery}>{`query: `}</span>
+                  <span
+                    onClick={() => handleClickRoot(stack[stack.length - 1].name)}
+                    className={classes.click}
+                  >
+                    {stack[stack.length - 1].name}
+                  </span>
+                </div>
+              </>
+            )}
 
-            {stack.length > 1 &&
-              stack[stack.length - 1].fields?.map((item, index) => {
-                return (
-                  <div className={classes.div_afterQuery} key={index}>
-                    <div className={classes.p_Docs}>
-                      <span className={classes.keyClick}>{item.name}</span>
-                      <DocsArguments item={item} />
+            {stack.length > 1 && (
+              <>
+                {stack[stack.length - 1].fields && (
+                  <p className={classes.docs_mainDocs_header}>fields</p>
+                )}
+                {stack[stack.length - 1].fields?.map((item, index) => {
+                  return (
+                    <div className={classes.div_afterQuery} key={index}>
+                      <div className={classes.p_Docs}>
+                        <span className={classes.keyClick}>{item.name}</span>
+                        <DocsArguments item={item} handleClickArgument={handleClickArgument} />
+                      </div>
+                      <span className={classes.key}>: </span>
+                      <span
+                        onClick={() => handleClickField(findNameType('key', item.type))}
+                        className={classes.click}
+                      >
+                        {findNameType('value', item.type)}
+                      </span>
                     </div>
-                    <span className={classes.key}>: </span>
-                    <span
-                      onClick={() => handleClickField(findNameType('key', item.type))}
-                      className={classes.click}
-                    >
-                      {findNameType('value', item.type)}
-                    </span>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </>
+            )}
+
+            {stack.length > 1 && String(stack[stack.length - 1].kind) === 'INPUT_OBJECT' && (
+              <>
+                {stack[stack.length - 1].inputFields && (
+                  <p className={classes.docs_mainDocs_header}>fields</p>
+                )}
+                {stack[stack.length - 1].inputFields?.map((item, index) => {
+                  return (
+                    <div className={classes.div_afterQuery} key={index}>
+                      <div className={classes.p_Docs}>
+                        <span className={classes.keyClick}>{item.name}</span>
+                      </div>
+                      <span className={classes.key}>: </span>
+                      <span
+                        onClick={() => handleClickField(findNameType('key', item.type))}
+                        className={classes.click}
+                      >
+                        {findNameType('value', item.type)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </>
+            )}
           </div>
         </>
       ) : (
