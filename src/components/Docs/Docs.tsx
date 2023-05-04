@@ -2,6 +2,7 @@ import { DocsType } from '../../types/docs';
 import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
+import cross from '../../../public/cross-small.svg';
 import Image from 'next/image';
 import { __Type } from '@/types/schema';
 import { findNameType } from '../../services/findNameType';
@@ -24,17 +25,16 @@ export default function Docs({ schema }: DocsType) {
   } = locale;
 
   const handleLableClick = () => {
-    if (!active) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+    setActive(!active);
   };
 
   useEffect(() => {
     if (schema) {
       setStack([schema.queryType]);
       setDescription('A GraphQL schema provides a root type for each kind of operation.');
+      setNameHeader('Documentation Explorer');
+    } else {
+      setStack([]);
       setNameHeader('Documentation Explorer');
     }
   }, [schema]);
@@ -55,10 +55,6 @@ export default function Docs({ schema }: DocsType) {
         : setValueBtnBack(String(stack[stack.length - 2].name));
     }
   }, [stack]);
-
-  if (!schema) {
-    return <h3>NO SCHEMA AVAILABLE</h3>;
-  }
 
   function handleClickRoot(value: ValueRoot) {
     if (value === schema?.queryType.name) {
@@ -98,41 +94,53 @@ export default function Docs({ schema }: DocsType) {
           <Image className={classes.backArrow} src={arrow} alt="back stack" />
           <span>{valueBtnBack}</span>
         </div>
-        <h3>{nameHeader}</h3>
+        <h3 className={classes.h3_Docs}>{nameHeader}</h3>
+        <Image
+          onClick={handleLableClick}
+          className={classes.cross}
+          src={cross}
+          alt="image for close docs"
+        />
       </div>
-      <p>{description}</p>
-      <div>
-        {stack.length === 1 &&
-          Object.entries(stack[stack.length - 1]).map(([key, value]) => {
-            return (
-              <div key={key}>
-                <span>{`query: `}</span>
-                <span onClick={() => handleClickRoot(value)} className={classes.click}>
-                  {JSON.stringify(value)}
-                </span>
-              </div>
-            );
-          })}
+      {schema ? (
+        <>
+          <p>{description}</p>
+          <div>
+            {stack.length === 1 &&
+              Object.entries(stack[stack.length - 1]).map(([key, value]) => {
+                return (
+                  <div key={key}>
+                    <span className={classes.keyQuery}>{`query: `}</span>
+                    <span onClick={() => handleClickRoot(value)} className={classes.click}>
+                      {JSON.stringify(value)}
+                    </span>
+                  </div>
+                );
+              })}
 
-        {stack.length > 1 &&
-          stack[stack.length - 1].fields?.map((item, index) => {
-            return (
-              <div key={index}>
-                <div className={classes.p_Docs}>
-                  <span>{item.name}</span>
-                  <DocsArguments item={item} />
-                </div>
-                <span>: </span>
-                <span
-                  onClick={() => handleClickField(findNameType('key', item.type))}
-                  className={classes.click}
-                >
-                  {findNameType('value', item.type)}
-                </span>
-              </div>
-            );
-          })}
-      </div>
+            {stack.length > 1 &&
+              stack[stack.length - 1].fields?.map((item, index) => {
+                return (
+                  <div className={classes.div_afterQuery} key={index}>
+                    <div className={classes.p_Docs}>
+                      <span className={classes.keyClick}>{item.name}</span>
+                      <DocsArguments item={item} />
+                    </div>
+                    <span className={classes.key}>: </span>
+                    <span
+                      onClick={() => handleClickField(findNameType('key', item.type))}
+                      className={classes.click}
+                    >
+                      {findNameType('value', item.type)}
+                    </span>
+                  </div>
+                );
+              })}
+          </div>
+        </>
+      ) : (
+        <h3 className={classes.h3_noSchema}>NO SCHEMA AVAILABLE</h3>
+      )}
     </div>
   );
 }

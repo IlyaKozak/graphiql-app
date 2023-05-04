@@ -1,5 +1,6 @@
 import { DocsArgumentsType } from '@/types/docs';
 import classes from './docs.module.css';
+import { findArguments } from '@/services/findNameType';
 
 export function DocsArguments({ item }: DocsArgumentsType) {
   return (
@@ -8,8 +9,14 @@ export function DocsArguments({ item }: DocsArgumentsType) {
         item.args.map((arg, indexArg) => {
           return (
             <div className={classes.p_Docs} key={indexArg}>
-              <span>{indexArg === 0 ? `(${arg.name}: ` : `${arg.name}: `}</span>
-              <span>{indexArg !== item.args.length - 1 ? 'some, ' : 'some) '}</span>
+              {/* <span>{indexArg === 0 ? `(` : '&nbsp;'}</span> */}
+              <span
+                className={classes.key}
+                dangerouslySetInnerHTML={{ __html: indexArg === 0 ? '(' : '&nbsp;' }}
+              ></span>
+              <span className={classes.key}>{`${arg.name}: `}</span>
+              <span className={classes.click}>{findArguments(arg.type)}</span>
+              <span className={classes.key}>{indexArg !== item.args.length - 1 ? ', ' : ')'}</span>
             </div>
           );
         })}
