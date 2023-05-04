@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -52,6 +52,11 @@ function Auth() {
       notValidConfirmPassword,
     },
   } = locale;
+
+  useEffect(() => {
+    setFirebaseError(null);
+    setValidationFields(defaultValidationFields);
+  }, [isSignUp]);
 
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
