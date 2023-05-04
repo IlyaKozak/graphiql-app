@@ -162,7 +162,11 @@ function Auth() {
             />
           </label>
         )}
-        {loading && <Loader />}
+        {loading && (
+          <div className={classes.alignCenter}>
+            <Loader />
+          </div>
+        )}
         {firebaseError && <p className={classes.errorText}>{firebaseError}</p>}
         <button type="submit">{isSignUp ? <>{signUp}</> : <>{signIn}</>}</button>
       </form>
