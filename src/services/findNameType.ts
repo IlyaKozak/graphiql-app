@@ -1,4 +1,4 @@
-import { __Type /* , __InputValue */ } from '@/types/schema';
+import { __Type } from '@/types/schema';
 
 export function findNameType(key: string, obj: __Type, arr: string[] = []): string | null {
   if (obj.name !== null && obj.ofType === null) {
@@ -23,10 +23,21 @@ export function findNameType(key: string, obj: __Type, arr: string[] = []): stri
   return null;
 }
 
-/* export function findArguments(args: __InputValue[] ){ 
-  
-  args.forEach((arg) => {
-
-  })
-
-} */
+export function findArguments(obj: __Type, arr: string[] = []): string | null {
+  console.log(obj);
+  if (obj.name !== null && obj.ofType === null) {
+    let valueName = obj.name;
+    arr.reverse().forEach((item) => {
+      if (item === 'NON_NULL') {
+        valueName += '!';
+      } else if (item === 'LIST') {
+        valueName = '[' + valueName + ']';
+      }
+    });
+    return valueName;
+  } else if (obj.ofType && obj.name === null) {
+    arr.push(String(obj.kind));
+    return findArguments(obj.ofType, arr);
+  }
+  return null;
+}
