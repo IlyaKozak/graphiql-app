@@ -55,8 +55,6 @@ function Auth() {
 
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFirebaseError(null);
-    setValidationFields(defaultValidationFields);
 
     const isValidEmail = validateEmail(email);
     const isValidPassword = validatePassword(password);
@@ -71,6 +69,8 @@ function Auth() {
       return;
     }
 
+    setFirebaseError(null);
+    setValidationFields(defaultValidationFields);
     setLoading(true);
     try {
       const response = await (isSignUp ? createUser(email, password) : signInUser(email, password));
