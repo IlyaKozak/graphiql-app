@@ -11,9 +11,10 @@ import ResponseSection from '@/components/ResponseSection/ResponseSection';
 import EditorSection from '@/components/EditorSection/EditorSection';
 import Docs from '@/components/Docs/Docs';
 import { DEFAULT_GRAPHQL_ENDPOINT } from '@/constants/defaultGraphQLEndpoint';
+import Loader from '@/components/Loader/Loader';
 
 export default function Main() {
-  const { authUser } = useAuthContext();
+  const { authUser, isLoading } = useAuthContext();
   const router = useRouter();
   const [endpoint, setEndpoint] = useState(DEFAULT_GRAPHQL_ENDPOINT);
   const [schemaData, setSchemaData] = useState<Schema | null>(null);
@@ -24,7 +25,7 @@ export default function Main() {
   };
 
   useEffect(() => {
-    if (!authUser) router.push('/');
+    if (!isLoading && !authUser) router.push('/');
   }, [authUser, router]);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function Main() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {isLoading && <Loader />}
       {authUser ? (
         <>
           <MainHeader />
