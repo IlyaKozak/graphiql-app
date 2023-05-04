@@ -1,16 +1,22 @@
 .authForm {
-  margin: 0 auto;
+  margin: 1em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1em;
-  max-width: 15em;
+  max-width: 20em;
 }
 
 .authForm input {
   width: 100%;
 }
 
+.alignCenter {
+  margin: -2em auto;
+}
+
 .errorText {
   color: crimson;
+  font-size: 14px;
+  margin: 0;
 }
