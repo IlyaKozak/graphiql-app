@@ -83,8 +83,8 @@ function Auth() {
           <Link href="/auth?page=signup">{goToSignUp}</Link>
         </>
       )}
-      {loading && <Loader />}
       {error && <p className={classes.errorText}>{error}</p>}
+      {loading && <Loader />}
 
       <form onSubmit={formSubmitHandler} className={classes.authForm}>
         <label htmlFor="email">

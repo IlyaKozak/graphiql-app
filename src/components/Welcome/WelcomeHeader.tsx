@@ -2,8 +2,6 @@ import Link from 'next/link';
 
 import { useAuthContext } from '../../context/auth.context';
 import { useLocaleContext } from '../../context/locale.context';
-import SwitchLocale from '../SwitchLocale/SwitchLocale';
-import SingOut from '../Auth/SignOut';
 import classes from './WelcomeHeader.module.css';
 
 function WelcomeHeader() {
@@ -15,12 +13,10 @@ function WelcomeHeader() {
 
   return (
     <div className={classes.welcomeHeader}>
-      <SwitchLocale />
       {!isLoading &&
         (authUser ? (
           <>
             <Link href="/graphiql">{graphiQL}</Link>
-            <SingOut />
           </>
         ) : (
           <>

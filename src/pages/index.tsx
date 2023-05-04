@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { useLocaleContext } from '../context/locale.context';
 import Welcome from '../components/Welcome/Welcome';
-import WelcomeHeader from '../components/Welcome/WelcomeHeader';
+import MainHeader from '../components/MainHeader/MainHeader';
 
 export default function Home() {
   const [locale] = useLocaleContext();
@@ -18,7 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <WelcomeHeader />
+      <MainHeader />
       <Welcome />
     </>
   );
