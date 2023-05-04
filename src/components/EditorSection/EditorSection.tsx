@@ -37,10 +37,10 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         headersAreaRef.current?.value
       )
         .then((data) => {
-          setResponse(JSON.stringify(data, null, 4));
+          setResponse(JSON.stringify(data, null, 2));
         })
-        .catch(() => {
-          setResponse('Failed to fetch data');
+        .catch((error: Error) => {
+          setResponse(error.message);
         });
     } else {
       return;
