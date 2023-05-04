@@ -79,7 +79,9 @@
 }
 
 .lableVariables,
-.lableHeaders {
+.lableHeaders,
+.lableHeadersEn {
+  font-size: 14px;
   position: relative;
   z-index: 3;
   width: fit-content;
@@ -88,7 +90,7 @@
   background: rgb(61, 88, 102);
   color: white;
   cursor: pointer;
-  padding: 0 40px;
+  padding: 0 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -97,9 +99,10 @@
 }
 
 .lableVariables {
+  font-size: 14px;
   left: 20px;
   transition: all .3s ease-in-out;
-  padding: 0 40px;
+  padding: 0 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -108,9 +111,22 @@
 }
 
 .lableHeaders {
-  left: 170px;
+  font-size: 14px;
+  left: 140px;
   transition: all .3s ease-in-out;
-  padding: 0 40px;
+  padding: 0 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersEn {
+  font-size: 14px;
+  left: 120px;
+  transition: all .3s ease-in-out;
+  padding: 0 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -124,6 +140,7 @@
 }
 
 .lableVariablesActive {
+  font-size: 14px;
   position: relative;
   z-index: 4;
   left: 20px;
@@ -133,7 +150,7 @@
   background: rgb(122, 168, 187);
   color: white;
   cursor: default;
-  padding: 0 40px;
+  padding: 0 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -142,16 +159,36 @@
 }
 
 .lableHeadersActive {
+  font-size: 14px;
   position: relative;
   z-index: 3;
-  left: 170px;
+  left: 140px;
   width: fit-content;
   text-align: center;
   height: 25px;
   background: rgb(112, 162, 186);
   color: white;
   cursor: default;
-  padding: 0 40px;
+  padding: 0 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersActiveEn {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+  left: 120px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(112, 162, 186);
+  color: white;
+  cursor: default;
+  padding: 0 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
