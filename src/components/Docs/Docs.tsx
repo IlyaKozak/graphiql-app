@@ -56,10 +56,6 @@ export default function Docs({ schema }: DocsType) {
     }
   }, [stack]);
 
-  /*  if (!schema) {
-    return <h3>NO SCHEMA AVAILABLE</h3>;
-  } */
-
   function handleClickRoot(value: ValueRoot) {
     if (value === schema?.queryType.name) {
       const arrTypes = schema?.types.filter((item) => item.name == value);
