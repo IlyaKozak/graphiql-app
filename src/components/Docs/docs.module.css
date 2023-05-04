@@ -6,10 +6,11 @@
   top: 0;
   height: calc(100vh - 130px);
   background-color: rgb(255, 255, 255);
-  border: 1px solid #9a9a9a;
+  border: 10px solid rgb(239 239 239);
   border-radius: 4px;
   padding: 0 5px 5px;
   transition: all .3s ease-in-out;
+  padding: 15px 15px;
 }
 
 .docsVisible {
@@ -20,16 +21,19 @@
   z-index: 4;
   height: calc(100vh - 130px);
   background-color: rgb(255, 255, 255);
-  border: 1px solid #9a9a9a;
+  border: 10px solid rgb(239 239 239);
+  box-shadow: -15px 0 15px rgba(239, 239, 239, 0.318);
+  box-sizing: border-box;
   border-radius: 4px;
   padding: 0 5px 5px;
   transition: all .3s ease-in-out;
+  padding: 15px 15px;
 }
 
 .lable {
   position: absolute;
   top: 100px;
-  left: -40px;
+  left: -49px;
   width: fit-content;
   text-align: center;
   height: 25px;
@@ -48,12 +52,39 @@
   background: rgb(122, 168, 187);
 }
 
+.h3_noSchema{
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(193, 172, 172);
+}
+
 .click {
   color: rgb(246, 191, 39);
   cursor: pointer;
+  font-size: 15px;
 }
 
 .click:hover {
+  text-decoration: underline;
+}
+
+.key {
+  color: #007df2;
+  font-size: 15px;
+}
+
+.keyQuery {
+  color: #B11A04;
+  font-size: 15px;
+}
+
+.keyClick {
+  color: #6d00a0;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.keyClick:hover {
   text-decoration: underline;
 }
 
@@ -63,10 +94,14 @@
 }
 
 .headerDocs {
-  padding: 0 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.h3_Docs {
+  margin: 0;
 }
 
 .backShow{
@@ -82,6 +117,22 @@
 .backArrow {
   width: 18px;
   height: 18px;
+}
+
+.cross {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.cross:hover {
+  transform: rotate(180deg);
+}
+
+.div_afterQuery {
+  margin-bottom: 5px;
+  line-height: 110%;
 }
 
 @media screen and (max-width: 405px) {
