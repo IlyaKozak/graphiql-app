@@ -26,7 +26,7 @@ export default function Main() {
 
   useEffect(() => {
     if (!isLoading && !authUser) router.push('/');
-  }, [authUser, router]);
+  }, [authUser, isLoading, router]);
 
   useEffect(() => {
     GraphiQLInitialService(endpoint).then((data) => {

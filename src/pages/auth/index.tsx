@@ -6,6 +6,7 @@ import { useLocaleContext } from '../../context/locale.context';
 import { useAuthContext } from '../../context/auth.context';
 import AuthComponent from '../../components/Auth/Auth';
 import Loader from '../../components/Loader/Loader';
+import MainHeader from '../../components/MainHeader/MainHeader';
 
 export default function Auth() {
   const { authUser, isLoading } = useAuthContext();
@@ -27,6 +28,7 @@ export default function Auth() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <MainHeader />
       {isLoading && <Loader />}
       {!isLoading && !authUser && (
         <>
