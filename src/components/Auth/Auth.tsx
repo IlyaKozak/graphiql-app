@@ -1,10 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useAuthContext } from '../../context/auth.context';
 import { useLocaleContext } from '../../context/locale.context';
 import Loader from '../Loader/Loader';
+import { validateEmail, validatePassword } from '../../utils/validation';
 import classes from './Auth.module.css';
 
 const defaultFormFields = {
@@ -13,12 +14,25 @@ const defaultFormFields = {
   confirmPassword: '',
 };
 
+type ValidationFields = {
+  isValidEmail: boolean;
+  isValidPassword: boolean;
+  isValidConfirmPassword: boolean;
+};
+
+const defaultValidationFields: ValidationFields = {
+  isValidEmail: true,
+  isValidPassword: true,
+  isValidConfirmPassword: true,
+};
+
 function Auth() {
   const router = useRouter();
   const isSignUp = router.query.page === 'signup';
   const { createUser, signInUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [firebaseError, setFirebaseError] = useState<string | null>(null);
+  const [validationFields, setValidationFields] = useState(defaultValidationFields);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password, confirmPassword } = formFields;
   const [locale] = useLocaleContext();
@@ -33,16 +47,37 @@ function Auth() {
       goToSignIn,
       isRegistered,
       isNotRegistered,
+      notValidEmail,
+      notValidPassword,
+      notValidConfirmPassword,
     },
   } = locale;
+
+  useEffect(() => {
+    setFirebaseError(null);
+    setValidationFields(defaultValidationFields);
+  }, [isSignUp]);
 
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      setLoading(true);
-      setError(null);
+    const isValidEmail = validateEmail(email);
+    const isValidPassword = validatePassword(password);
+    const isValidConfirmPassword = !isSignUp || password === confirmPassword;
 
+    if (!isValidEmail || !isValidPassword || !isValidConfirmPassword) {
+      setValidationFields({
+        isValidEmail,
+        isValidPassword,
+        isValidConfirmPassword,
+      });
+      return;
+    }
+
+    setFirebaseError(null);
+    setValidationFields(defaultValidationFields);
+    setLoading(true);
+    try {
       const response = await (isSignUp ? createUser(email, password) : signInUser(email, password));
 
       if (!response) return;
@@ -50,7 +85,7 @@ function Auth() {
       resetFormFields();
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
+        setFirebaseError(error.message);
       }
     }
     setLoading(false);
@@ -83,12 +118,11 @@ function Auth() {
           <Link href="/auth?page=signup">{goToSignUp}</Link>
         </>
       )}
-      {loading && <Loader />}
-      {error && <p className={classes.errorText}>{error}</p>}
 
-      <form onSubmit={formSubmitHandler} className={classes.authForm}>
+      <form onSubmit={formSubmitHandler} className={classes.authForm} noValidate>
         <label htmlFor="email">
           Email:
+          {!validationFields.isValidEmail && <p className={classes.errorText}>{notValidEmail}</p>}
           <input
             id="email"
             name="email"
@@ -100,6 +134,9 @@ function Auth() {
         </label>
         <label htmlFor="password">
           {passwordText}:
+          {!validationFields.isValidPassword && (
+            <p className={classes.errorText}>{notValidPassword}</p>
+          )}
           <input
             id="password"
             name="password"
@@ -112,6 +149,9 @@ function Auth() {
         {isSignUp && (
           <label htmlFor="confirmPassword">
             {confirmPasswordText}:
+            {!validationFields.isValidConfirmPassword && (
+              <p className={classes.errorText}>{notValidConfirmPassword}</p>
+            )}
             <input
               id="confirmPassword"
               name="confirmPassword"
@@ -122,6 +162,12 @@ function Auth() {
             />
           </label>
         )}
+        {loading && (
+          <div className={classes.alignCenter}>
+            <Loader />
+          </div>
+        )}
+        {firebaseError && <p className={classes.errorText}>{firebaseError}</p>}
         <button type="submit">{isSignUp ? <>{signUp}</> : <>{signIn}</>}</button>
       </form>
     </>

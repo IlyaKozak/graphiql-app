@@ -34,6 +34,10 @@ const en: LocaleDictionary = {
     isNotRegistered: 'Not registered? ',
     goToSignIn: 'Go To SignIn',
     goToSignUp: 'Go To SignUp',
+    notValidEmail: 'Not valid Email',
+    notValidPassword:
+      'Not valid Password. It should be minimum 8 symbols, at least one letter, one digit, one special character',
+    notValidConfirmPassword: 'Not valid Confirm Password. It should be equal to Password',
   },
 };
 

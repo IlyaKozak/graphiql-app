@@ -17,7 +17,7 @@ const ru: LocaleDictionary = {
     endpointButton: 'Сменить адрес',
     endpointText: 'Адрес:',
     variablesPlaceholder: 'Переменные',
-    variablesLable: 'ПЕРМЕННЫЕ',
+    variablesLable: 'ПЕРЕМЕННЫЕ',
     headersPlaceholder: 'Заголовки',
     headersLable: 'ЗАГОЛОВКИ',
     docsLable: 'ДОКА',
@@ -34,6 +34,10 @@ const ru: LocaleDictionary = {
     isNotRegistered: 'Не зарегистированы? ',
     goToSignIn: 'Войдите',
     goToSignUp: 'Зарегистрируйтесь',
+    notValidEmail: 'Недопустимый адрес электронной почты',
+    notValidPassword:
+      'Недопустимый пароль. Пароль должен быть не менее 8 символов и содержать не менее одной буквы, одной цифры, одного специального символа',
+    notValidConfirmPassword: 'Недопустимый пароль подтверждения. Должен быть равен паролю',
   },
 };
 
