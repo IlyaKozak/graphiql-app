@@ -17,7 +17,7 @@ const ru: LocaleDictionary = {
     endpointButton: 'Сменить адрес',
     endpointText: 'Адрес:',
     variablesPlaceholder: 'Переменные',
-    variablesLable: 'ПЕРМЕННЫЕ',
+    variablesLable: 'ПЕРЕМЕННЫЕ',
     headersPlaceholder: 'Заголовки',
     headersLable: 'ЗАГОЛОВКИ',
     docsLable: 'ДОКА',
