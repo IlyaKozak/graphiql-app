@@ -10,6 +10,7 @@
   border-radius: 4px;
   transition: all .3s ease-in-out;
   padding: 15px 15px;
+  overflow-y: auto;
 }
 
 .docsVisible {
@@ -26,6 +27,7 @@ box-sizing: border-box;
 border-radius: 4px;
 transition: all .3s ease-in-out;
 padding: 15px 15px;
+overflow-y: auto;
 }
 
 .lable {
