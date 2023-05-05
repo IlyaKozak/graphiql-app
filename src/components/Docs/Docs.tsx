@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
 import cross from '../../../public/cross-small.svg';
 import Image from 'next/image';
-import { __Field, __Type } from '@/types/schema';
+import { __Field, __Type, __InputValue } from '@/types/schema';
 import { findNameType, findArguments } from '../../services/findNameType';
 import { ValueRoot } from '../../types/docs';
 import { DocsArguments } from './DocsArguments';
@@ -15,7 +15,7 @@ export default function Docs({ schema }: DocsType) {
   const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
-  const [stack, setStack] = useState<Array<__Type | __Field>>([]);
+  const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
   const [active, setActive] = useState(false);
 
   console.log(schema);
@@ -45,9 +45,9 @@ export default function Docs({ schema }: DocsType) {
       setDescription('A GraphQL schema provides a root type for each kind of operation.');
       setNameHeader('Documentation Explorer');
     } else if (stack.length > 1) {
-      stack[stack.length - 1].description
+      /* stack[stack.length - 1].description
         ? setDescription(String(stack[stack.length - 1].description))
-        : setDescription('No Description');
+        : setDescription('No Description'); */
       setNameHeader(String(stack[stack.length - 1].name));
       setValueBtnBack(String(stack[stack.length - 1].name));
       stack.length === 2
@@ -63,6 +63,9 @@ export default function Docs({ schema }: DocsType) {
 
       if (typesRoot) {
         setStack((prevStack) => prevStack.concat(typesRoot));
+        typesRoot.description
+          ? setDescription(String(typesRoot.description))
+          : setDescription('No Description');
       }
     }
   }
@@ -72,30 +75,39 @@ export default function Docs({ schema }: DocsType) {
       const typesRoot = schema?.types.find((item) => item.name === value);
       if (typesRoot) {
         setStack((prevStack) => prevStack.concat(typesRoot));
+        typesRoot.description
+          ? setDescription(String(typesRoot.description))
+          : setDescription('No Description');
       }
     }
   }
 
   function handleClickArgument(value: string | null) {
-    console.log('click arg');
-    console.log(value);
     if (value !== null) {
       const typesRoot = schema?.types.find((item) => item.name === value);
       if (typesRoot) {
         setStack((prevStack) => prevStack.concat(typesRoot));
+        typesRoot.description
+          ? setDescription(String(typesRoot.description))
+          : setDescription('No Description');
       }
     }
   }
 
-  function handleClickKey(item: __Field) {
+  function handleClickKey(item: __Field | __InputValue) {
     if (item) {
       setStack((prevStack) => prevStack.concat(item));
+      item.description
+        ? setDescription(String(item.description))
+        : setDescription('No Description');
     }
   }
 
   function hadleClickBack() {
-    console.log('back');
     setStack((prevStack) => prevStack.slice(0, -1));
+    stack[stack.length - 2].description
+      ? setDescription(String(stack[stack.length - 2].description))
+      : setDescription('No Description');
   }
 
   return (
@@ -177,7 +189,9 @@ export default function Docs({ schema }: DocsType) {
                     return (
                       <div className={classes.div_afterQuery} key={index}>
                         <div className={classes.p_Docs}>
-                          <span className={classes.keyClick}>{item.name}</span>
+                          <span onClick={() => handleClickKey(item)} className={classes.keyClick}>
+                            {item.name}
+                          </span>
                         </div>
                         <span className={classes.key}>: </span>
                         <span
@@ -194,7 +208,8 @@ export default function Docs({ schema }: DocsType) {
 
             {stack.length > 1 &&
               !('kind' in stack[stack.length - 1]) &&
-              (stack[stack.length - 1] as __Field) && (
+              (stack[stack.length - 1] as __Field) &&
+              (stack[stack.length - 1] as __Field).args && (
                 <>
                   <p className={classes.docs_mainDocs_header}>type</p>
                   <span
@@ -207,22 +222,44 @@ export default function Docs({ schema }: DocsType) {
                   >
                     {findNameType('value', (stack[stack.length - 1] as __Field).type)}
                   </span>
-                  <p className={classes.docs_mainDocs_header}>arguments</p>
-                  <span>
-                    {(stack[stack.length - 1] as __Field).args &&
-                      (stack[stack.length - 1] as __Field).args.map((arg, indexArg) => {
-                        return (
-                          <div key={indexArg}>
-                            <span className={classes.key}>{`${arg.name}: `}</span>
-                            <span
-                              onClick={() => handleClickArgument(findArguments('key', arg.type))}
-                              className={classes.click}
-                            >
-                              {findArguments('value', arg.type)}
-                            </span>
-                          </div>
-                        );
-                      })}
+                  <div>
+                    {(stack[stack.length - 1] as __Field).args.length > 0 && (
+                      <>
+                        <p className={classes.docs_mainDocs_header}>arguments</p>
+                        {(stack[stack.length - 1] as __Field).args.map((arg, indexArg) => {
+                          return (
+                            <div key={indexArg}>
+                              <span className={classes.key}>{`${arg.name}: `}</span>
+                              <span
+                                onClick={() => handleClickArgument(findArguments('key', arg.type))}
+                                className={classes.click}
+                              >
+                                {findArguments('value', arg.type)}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+
+            {stack.length > 1 &&
+              !('kind' in stack[stack.length - 1]) &&
+              (stack[stack.length - 1] as __Field) &&
+              !('args' in (stack[stack.length - 1] as __InputValue)) && (
+                <>
+                  <p className={classes.docs_mainDocs_header}>type</p>
+                  <span
+                    onClick={() =>
+                      handleClickField(
+                        findNameType('key', (stack[stack.length - 1] as __Field).type)
+                      )
+                    }
+                    className={classes.click}
+                  >
+                    {findNameType('value', (stack[stack.length - 1] as __Field).type)}
                   </span>
                 </>
               )}
