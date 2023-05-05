@@ -23,9 +23,9 @@ export function findNameType(key: string, obj: __Type, arr: string[] = []): stri
   return null;
 }
 
-export function findArguments(obj: __Type, arr: string[] = []): string | null {
-  console.log(obj);
+export function findArguments(key: string, obj: __Type, arr: string[] = []): string | null {
   if (obj.name !== null && obj.ofType === null) {
+    const keyName = obj.name;
     let valueName = obj.name;
     arr.reverse().forEach((item) => {
       if (item === 'NON_NULL') {
@@ -34,10 +34,14 @@ export function findArguments(obj: __Type, arr: string[] = []): string | null {
         valueName = '[' + valueName + ']';
       }
     });
-    return valueName;
+    if (key === 'key') {
+      return keyName;
+    } else if (key === 'value') {
+      return valueName;
+    }
   } else if (obj.ofType && obj.name === null) {
     arr.push(String(obj.kind));
-    return findArguments(obj.ofType, arr);
+    return findArguments(key, obj.ofType, arr);
   }
   return null;
 }

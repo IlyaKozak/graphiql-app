@@ -8,6 +8,7 @@ export type DocsType = {
 
 export type DocsArgumentsType = {
   item: __Field;
+  handleClickArgument: (value: string | null) => void;
 };
 
 export type HeaderDocsType = {

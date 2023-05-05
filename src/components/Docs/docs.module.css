@@ -98,18 +98,38 @@ padding: 15px 15px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .h3_Docs {
   margin: 0;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+}
+
+.backBtn {
+  width: 85%;
+}
+
+.span_backBtn{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  width: calc(100% - 18px - 5px);
 }
 
 .backShow{
   display: flex;
+  gap: 5px;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
 }
+
 .backHidden{
   display: none;
 }
@@ -133,6 +153,15 @@ padding: 15px 15px;
 .div_afterQuery {
   margin-bottom: 5px;
   line-height: 110%;
+}
+
+.docs_mainDocs_header{
+  border-bottom: 2px solid #e0e0e0;
+  color: #777;
+  font-size: 15px;
+  font-variant: small-caps;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 405px) {
