@@ -1,51 +1,51 @@
 .docsInvisible {
-  width: 295px;
+  width: 320px;
   position:absolute;
-  right: -295px;
-  z-index: 4;
+  right: -320px;
+  z-index: 5;
   top: 0;
   height: calc(100vh - 130px);
   background-color: rgb(255, 255, 255);
-  border: 10px solid rgb(239 239 239);
+  border-left: 10px solid rgb(239 239 239);
   border-radius: 4px;
-  padding: 0 5px 5px;
   transition: all .3s ease-in-out;
   padding: 15px 15px;
 }
 
 .docsVisible {
-  width: 295px;
-  position:absolute;
-  right: 0;
-  top: 0;
-  z-index: 4;
-  height: calc(100vh - 130px);
-  background-color: rgb(255, 255, 255);
-  border: 10px solid rgb(239 239 239);
-  box-shadow: -15px 0 15px rgba(239, 239, 239, 0.318);
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 0 5px 5px;
-  transition: all .3s ease-in-out;
-  padding: 15px 15px;
+width: 320px;
+position: absolute;
+right: 0;
+top: 0;
+z-index: 5;
+height: calc(100vh - 130px);
+background-color: rgb(255, 255, 255);
+border-left: 10px solid rgb(239 239 239);
+box-shadow: -15px 0 15px rgba(224, 224, 224, 0.318);
+box-sizing: border-box;
+border-radius: 4px;
+transition: all .3s ease-in-out;
+padding: 15px 15px;
 }
 
 .lable {
   position: absolute;
   top: 100px;
-  left: -49px;
+  left: -62px;
   width: fit-content;
   text-align: center;
+  font-size: 14px;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(61, 88, 102);
   color: white;
-  padding: 2px 4px;
-  transform: rotate(-90deg);
   cursor: pointer;
   transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotate(-90deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lable:hover {

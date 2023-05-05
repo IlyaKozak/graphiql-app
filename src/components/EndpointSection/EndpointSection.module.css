@@ -1,5 +1,4 @@
 .wrapper {
-  font-family: 'Open Sans', 'Lato', sans-serif;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -23,6 +22,7 @@
 }
 
 .container button {
+  font-size: 14px;
   background: linear-gradient(#f9f9f9, #ececec);
   border-radius: 3px;
   border: 1px solid gray;

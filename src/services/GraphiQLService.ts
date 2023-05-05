@@ -24,7 +24,11 @@ export default async function graphiQLService(
         },
     body: JSON.stringify({ query: query, variables: variablesObject ? variablesObject : {} }),
   });
-
   const responseJSON = await response.json();
-  return responseJSON;
+
+  if (response.status === 400 || response.status === 404) {
+    throw new Error(`${JSON.stringify(responseJSON, null, 2)}`);
+  } else {
+    return responseJSON;
+  }
 }
