@@ -23,6 +23,11 @@ code {
   font-family: 'Lato', sans-serif;
 }
 
+button,
+a {
+  font-weight: 600;
+}
+
 .container-main {
   position: relative;
   display: flex;

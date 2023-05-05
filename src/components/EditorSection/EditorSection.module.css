@@ -139,7 +139,8 @@
 }
 
 .lableVariables:hover,
-.lableHeaders:hover {
+.lableHeaders:hover,
+.lableHeadersEn:hover {
   background: rgb(122, 168, 187);
 }
 
