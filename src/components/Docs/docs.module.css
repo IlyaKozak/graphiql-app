@@ -40,7 +40,7 @@ padding: 15px 15px;
   color: white;
   cursor: pointer;
   transition: all .3s ease-in-out;
-  padding: 0px 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotate(-90deg);

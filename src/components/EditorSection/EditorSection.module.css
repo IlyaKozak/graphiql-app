@@ -99,7 +99,7 @@
   background: rgb(61, 88, 102);
   color: white;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -111,7 +111,7 @@
   font-size: 14px;
   left: 20px;
   transition: all .3s ease-in-out;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -123,7 +123,7 @@
   font-size: 14px;
   left: 140px;
   transition: all .3s ease-in-out;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -135,7 +135,7 @@
   font-size: 14px;
   left: 120px;
   transition: all .3s ease-in-out;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -159,7 +159,7 @@
   background: rgb(122, 168, 187);
   color: white;
   cursor: default;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -178,7 +178,7 @@
   background: rgb(112, 162, 186);
   color: white;
   cursor: default;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
@@ -197,7 +197,7 @@
   background: rgb(112, 162, 186);
   color: white;
   cursor: default;
-  padding: 0 20px;
+  padding: 3px 20px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   transform: perspective(4px) rotateX(1deg);
