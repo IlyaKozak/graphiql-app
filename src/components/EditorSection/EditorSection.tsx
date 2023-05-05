@@ -12,8 +12,13 @@ interface IEditorSectionProps {
 
 function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const [variablesLableActive, setVariablesLableActive] = useState(true);
+  const [lableHeadersClass, setLableHeadersClass] = useState(classes.lableHeadersEn);
+  const [lableHeadersActiveClass, setLableHeadersActiveClass] = useState(
+    classes.lableHeadersActiveEn
+  );
   const [locale] = useLocaleContext();
   const {
+    lang,
     main: {
       variablesPlaceholder,
       variablesLable,
@@ -26,6 +31,16 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const queryAreaRef = useRef<HTMLTextAreaElement>(null);
   const variablesAreaRef = useRef<HTMLTextAreaElement>(null);
   const headersAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (lang === 'ru') {
+      setLableHeadersClass(classes.lableHeaders);
+      setLableHeadersActiveClass(classes.lableHeadersActive);
+    } else {
+      setLableHeadersClass(classes.lableHeadersEn);
+      setLableHeadersActiveClass(classes.lableHeadersActiveEn);
+    }
+  }, [lang]);
 
   const handleQuerySubmit = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     event.preventDefault();
@@ -108,7 +123,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
             <div className={classes.headersWrapper}>
               <div
                 onClick={handleHeadersLableClick}
-                className={variablesLableActive ? classes.lableHeaders : classes.lableHeadersActive}
+                className={variablesLableActive ? lableHeadersClass : lableHeadersActiveClass}
               >
                 {headersLable}
               </div>

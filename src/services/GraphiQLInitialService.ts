@@ -15,8 +15,13 @@ export default async function GraphiQLInitialService(endpoint: string): Promise<
     });
 
     const responseJSON: dataType = await response.json();
-    return responseJSON.data.__schema;
+
+    if (response.status === 400 || response.status === 404) {
+      throw new Error(`Error: ${response.status} (${response.statusText})`);
+    } else {
+      return responseJSON.data.__schema;
+    }
   } catch (error) {
-    return 'NO SCHEMA AVAILABLE';
+    return 'Invalid Endpoint - No Schema Available';
   }
 }

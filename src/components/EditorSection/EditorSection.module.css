@@ -1,5 +1,4 @@
 .wrapper {
-  font-family: 'Open Sans', 'Lato', sans-serif;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,7 +20,6 @@
 
 .wrapper textarea::-webkit-input-placeholder {
   font-size: 14px;
-  font-family: 'Open Sans', 'Lato', sans-serif;
 }
 
 .textareas {
@@ -29,6 +27,7 @@
 }
 
 .queryArea {
+  font-size: 16px;
   resize: horizontal;
   min-width: 25vw;
   width: 50vw;
@@ -37,6 +36,7 @@
   border: none;
   height: calc(75% - 19px);
   margin: 0;
+  padding: 5px 15px 5px 5px;
 }
 
 .variablesHedersWrapper {
@@ -57,6 +57,7 @@
 
 .variablesAreaInvisible,
 .headersAreaInvisible {
+  font-size: 16px;
   z-index: 0;
   resize: none;
   width: 100%;
@@ -64,10 +65,12 @@
   border-radius: 5px;
   border: none;
   margin: 0;
+  padding: 5px;
 }
 
 .variablesAreaVisible,
 .headersAreaVisible {
+  font-size: 16px;
   position: relative;
   z-index: 1;
   resize: none;
@@ -76,32 +79,63 @@
   border-radius: 5px;
   border: none;
   margin: 0;
+  padding: 5px;
 }
 
 .lableVariables,
-.lableHeaders {
+.lableHeaders,
+.lableHeadersEn {
+  font-size: 14px;
   position: relative;
   z-index: 3;
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(61, 88, 102);
   color: white;
-  padding: 2px 4px;
   cursor: pointer;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableVariables {
-  left: 10px;
+  font-size: 14px;
+  left: 20px;
   transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableHeaders {
-  left: 125px;
+  font-size: 14px;
+  left: 140px;
   transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersEn {
+  font-size: 14px;
+  left: 120px;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableVariables:hover,
@@ -110,35 +144,60 @@
 }
 
 .lableVariablesActive {
+  font-size: 14px;
   position: relative;
-  z-index: 3;
-  left: 10px;
+  z-index: 4;
+  left: 20px;
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(122, 168, 187);
   color: white;
-  padding: 2px 4px;
-  cursor: pointer;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 .lableHeadersActive {
+  font-size: 14px;
   position: relative;
   z-index: 3;
-  left: 125px;
+  left: 140px;
   width: fit-content;
   text-align: center;
   height: 25px;
-  border: 1px solid black;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   background: rgb(112, 162, 186);
   color: white;
-  padding: 2px 4px;
-  cursor: pointer;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersActiveEn {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+  left: 120px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(112, 162, 186);
+  color: white;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
 }
 
 
