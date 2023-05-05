@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import arrow from '../../../public/left-arrow.svg';
 import cross from '../../../public/cross-small.svg';
 import Image from 'next/image';
-import { __Type } from '@/types/schema';
-import { findNameType } from '../../services/findNameType';
+import { __Field, __Type } from '@/types/schema';
+import { findNameType, findArguments } from '../../services/findNameType';
 import { ValueRoot } from '../../types/docs';
 import { DocsArguments } from './DocsArguments';
 import { useLocaleContext } from '../../context/locale.context';
@@ -15,7 +15,7 @@ export default function Docs({ schema }: DocsType) {
   const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
-  const [stack, setStack] = useState<Array<__Type>>([]);
+  const [stack, setStack] = useState<Array<__Type | __Field>>([]);
   const [active, setActive] = useState(false);
 
   console.log(schema);
@@ -87,6 +87,12 @@ export default function Docs({ schema }: DocsType) {
     }
   }
 
+  function handleClickKey(item: __Field) {
+    if (item) {
+      setStack((prevStack) => prevStack.concat(item));
+    }
+  }
+
   function hadleClickBack() {
     console.log('back');
     setStack((prevStack) => prevStack.slice(0, -1));
@@ -136,14 +142,16 @@ export default function Docs({ schema }: DocsType) {
 
             {stack.length > 1 && (
               <>
-                {stack[stack.length - 1].fields && (
+                {(stack[stack.length - 1] as __Type).fields && (
                   <p className={classes.docs_mainDocs_header}>fields</p>
                 )}
-                {stack[stack.length - 1].fields?.map((item, index) => {
+                {(stack[stack.length - 1] as __Type).fields?.map((item, index) => {
                   return (
                     <div className={classes.div_afterQuery} key={index}>
                       <div className={classes.p_Docs}>
-                        <span className={classes.keyClick}>{item.name}</span>
+                        <span onClick={() => handleClickKey(item)} className={classes.keyClick}>
+                          {item.name}
+                        </span>
                         <DocsArguments item={item} handleClickArgument={handleClickArgument} />
                       </div>
                       <span className={classes.key}>: </span>
@@ -159,29 +167,65 @@ export default function Docs({ schema }: DocsType) {
               </>
             )}
 
-            {stack.length > 1 && String(stack[stack.length - 1].kind) === 'INPUT_OBJECT' && (
-              <>
-                {stack[stack.length - 1].inputFields && (
-                  <p className={classes.docs_mainDocs_header}>fields</p>
-                )}
-                {stack[stack.length - 1].inputFields?.map((item, index) => {
-                  return (
-                    <div className={classes.div_afterQuery} key={index}>
-                      <div className={classes.p_Docs}>
-                        <span className={classes.keyClick}>{item.name}</span>
+            {stack.length > 1 &&
+              String((stack[stack.length - 1] as __Type).kind) === 'INPUT_OBJECT' && (
+                <>
+                  {(stack[stack.length - 1] as __Type).inputFields && (
+                    <p className={classes.docs_mainDocs_header}>fields</p>
+                  )}
+                  {(stack[stack.length - 1] as __Type).inputFields?.map((item, index) => {
+                    return (
+                      <div className={classes.div_afterQuery} key={index}>
+                        <div className={classes.p_Docs}>
+                          <span className={classes.keyClick}>{item.name}</span>
+                        </div>
+                        <span className={classes.key}>: </span>
+                        <span
+                          onClick={() => handleClickField(findNameType('key', item.type))}
+                          className={classes.click}
+                        >
+                          {findNameType('value', item.type)}
+                        </span>
                       </div>
-                      <span className={classes.key}>: </span>
-                      <span
-                        onClick={() => handleClickField(findNameType('key', item.type))}
-                        className={classes.click}
-                      >
-                        {findNameType('value', item.type)}
-                      </span>
-                    </div>
-                  );
-                })}
-              </>
-            )}
+                    );
+                  })}
+                </>
+              )}
+
+            {stack.length > 1 &&
+              !('kind' in stack[stack.length - 1]) &&
+              (stack[stack.length - 1] as __Field) && (
+                <>
+                  <p className={classes.docs_mainDocs_header}>type</p>
+                  <span
+                    onClick={() =>
+                      handleClickField(
+                        findNameType('key', (stack[stack.length - 1] as __Field).type)
+                      )
+                    }
+                    className={classes.click}
+                  >
+                    {findNameType('value', (stack[stack.length - 1] as __Field).type)}
+                  </span>
+                  <p className={classes.docs_mainDocs_header}>arguments</p>
+                  <span>
+                    {(stack[stack.length - 1] as __Field).args &&
+                      (stack[stack.length - 1] as __Field).args.map((arg, indexArg) => {
+                        return (
+                          <div key={indexArg}>
+                            <span className={classes.key}>{`${arg.name}: `}</span>
+                            <span
+                              onClick={() => handleClickArgument(findArguments('key', arg.type))}
+                              className={classes.click}
+                            >
+                              {findArguments('value', arg.type)}
+                            </span>
+                          </div>
+                        );
+                      })}
+                  </span>
+                </>
+              )}
           </div>
         </>
       ) : (
