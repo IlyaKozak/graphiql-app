@@ -27,7 +27,7 @@ function MainHeader() {
     <>
       <div className={wrapperClass}>
         <Link href="/">
-          <Image src={logo} alt="logo" />
+          <Image src={logo} alt="logo" priority={true} />
         </Link>
         <div className={classes.headerButtons}>
           <SwitchLocale />
