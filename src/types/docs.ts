@@ -1,5 +1,4 @@
 import { __Schema as Schema } from './schema';
-import { Dispatch, SetStateAction } from 'react';
 import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from './schema';
 
 export type DocsType = {
@@ -7,15 +6,8 @@ export type DocsType = {
 };
 
 export type DocsArgumentsType = {
-  item: __Field;
+  field: __Field | __InputValue;
   handleClickArgument: (value: string | null) => void;
-};
-
-export type HeaderDocsType = {
-  header: string;
-  btnName: string;
-  showBtnBack: boolean;
-  setClick: Dispatch<SetStateAction<boolean>>;
 };
 
 export type DescriptionType = {
@@ -35,3 +27,37 @@ export type ValueRoot =
   | [__EnumValue]
   | [__InputValue]
   | null;
+
+export type HeaderDocsType = {
+  handleLableClick: () => void;
+  hadleClickBack: () => void;
+  valueBtnBack: string;
+  showBtnBack: boolean;
+};
+
+export type RootType = {
+  handleClickRoot: (value: ValueRoot) => void;
+  stack: (__Field | __Type | __InputValue)[];
+};
+
+export type FieldsDocsType = {
+  stack: (__Field | __Type | __InputValue)[];
+  handleSearchTypes: (value: string | null) => void;
+  handleClickKey: (item: __Field | __InputValue) => void;
+};
+
+export type InputFieldsDocsType = {
+  stack: (__Field | __Type | __InputValue)[];
+  handleSearchTypes: (value: string | null) => void;
+  handleClickKey: (item: __Field | __InputValue) => void;
+};
+
+export type FieldDocsType = {
+  stack: (__Field | __Type | __InputValue)[];
+  handleSearchTypes: (value: string | null) => void;
+};
+
+export type InputFieldDocsType = {
+  stack: (__Field | __Type | __InputValue)[];
+  handleSearchTypes: (value: string | null) => void;
+};
