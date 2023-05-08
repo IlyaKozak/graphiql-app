@@ -15,26 +15,20 @@
   font-size: 16px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 411px) and (max-width: 800px) {
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 288px);
+    height: calc(100vh - 30vh - 289px);
     padding: 25px 5px 5px 5px;
   }
 }
 
-@media screen and (width: 419px) {
-  .wrapper {
-    height: calc(100vh - 30vh - 288px);
-  }
-}
-
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 410px) {
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 319px);
+    height: calc(100vh - 30vh - 321px);
     padding: 25px 5px 5px 5px;
   }
 }
