@@ -5,6 +5,7 @@ import arrowIcon from '../../../public/vertical-arrow.svg';
 import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
+import { MyTextarea } from '../MyTextarea/MyTextarea';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
@@ -143,11 +144,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
           alt="search schema"
         />
         <div className={classes.textareas}>
-          <textarea
-            className={showTextareas ? classes.queryArea : classes.queryAreaExtended}
+          <MyTextarea
+            condition={showTextareas}
+            placeholderValue={queryPlaceholder}
+            textareaFirstClass={classes.queryArea}
+            textreaSecondClass={classes.queryAreaExtended}
             ref={queryAreaRef}
-            placeholder={queryPlaceholder}
-          ></textarea>
+          />
           <Image
             className={showTextareas ? classes.arrowUp : classes.arrowDown}
             onClick={handleArrowClick}
@@ -168,13 +171,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
               >
                 {variablesLable}
               </div>
-              <textarea
-                className={
-                  variablesLableActive ? variablesAreaVisibleClass : variablesAreaInvisibleClass
-                }
+              <MyTextarea
+                condition={variablesLableActive}
+                placeholderValue={variablesPlaceholder}
+                textareaFirstClass={variablesAreaVisibleClass}
+                textreaSecondClass={variablesAreaInvisibleClass}
                 ref={variablesAreaRef}
-                placeholder={variablesPlaceholder}
-              ></textarea>
+              />
             </div>
             <div className={classes.headersWrapper}>
               <div
@@ -183,13 +186,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
               >
                 {headersLable}
               </div>
-              <textarea
-                className={
-                  variablesLableActive ? headersAreaInvisibleClass : headersAreaVisibleClass
-                }
+              <MyTextarea
+                condition={variablesLableActive}
+                placeholderValue={headersPlaceholder}
+                textareaFirstClass={headersAreaInvisibleClass}
+                textreaSecondClass={headersAreaVisibleClass}
                 ref={headersAreaRef}
-                placeholder={headersPlaceholder}
-              ></textarea>
+              />
             </div>
           </div>
         </div>
