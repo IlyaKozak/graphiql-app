@@ -89,6 +89,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   }, [endpoint]);
 
   const handleVariablesLableClick = () => {
+    if (!showTextareas) {
+      setVariablesAreaVisibleClass(classes.variablesAreaVisible);
+      setVariablesAreaInvisibleClass(classes.variablesAreaInisible);
+      setHeadersAreaVisibleClass(classes.headersAreaVisible);
+      setHeadersAreaInvisibleClass(classes.headersAreaInisible);
+      setShowTextareas(true);
+    }
     if (variablesLableActive) {
       return;
     } else {
@@ -97,6 +104,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   };
 
   const handleHeadersLableClick = () => {
+    if (!showTextareas) {
+      setVariablesAreaVisibleClass(classes.variablesAreaVisible);
+      setVariablesAreaInvisibleClass(classes.variablesAreaInisible);
+      setHeadersAreaVisibleClass(classes.headersAreaVisible);
+      setHeadersAreaInvisibleClass(classes.headersAreaInisible);
+      setShowTextareas(true);
+    }
     if (!variablesLableActive) {
       return;
     } else {
