@@ -1,12 +1,13 @@
 import { DocsArgumentsType } from '@/types/docs';
 import classes from './docs.module.css';
-import { findArguments } from '@/services/findNameType';
+import { findNameType } from '@/services/findNameType';
+import { __Field } from '@/types/schema';
 
-export function DocsArguments({ item, handleClickArgument }: DocsArgumentsType) {
+export function DocsArguments({ field, handleClickArgument }: DocsArgumentsType) {
   return (
     <div className={classes.p_Docs}>
-      {item.args &&
-        item.args.map((arg, indexArg) => {
+      {(field as __Field).args &&
+        (field as __Field).args.map((arg, indexArg) => {
           return (
             <div className={classes.p_Docs} key={indexArg}>
               {/* <span>{indexArg === 0 ? `(` : '&nbsp;'}</span> */}
@@ -16,12 +17,14 @@ export function DocsArguments({ item, handleClickArgument }: DocsArgumentsType) 
               ></span>
               <span className={classes.key}>{`${arg.name}: `}</span>
               <span
-                onClick={() => handleClickArgument(findArguments('key', arg.type))}
+                onClick={() => handleClickArgument(findNameType('key', arg.type))}
                 className={classes.click}
               >
-                {findArguments('value', arg.type)}
+                {findNameType('value', arg.type)}
               </span>
-              <span className={classes.key}>{indexArg !== item.args.length - 1 ? ', ' : ')'}</span>
+              <span className={classes.key}>
+                {indexArg !== (field as __Field).args.length - 1 ? ', ' : ')'}
+              </span>
             </div>
           );
         })}

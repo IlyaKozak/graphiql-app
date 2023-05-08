@@ -1,24 +1,24 @@
 import { DocsType } from '../../types/docs';
 import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
-import arrow from '../../../public/left-arrow.svg';
-import cross from '../../../public/cross-small.svg';
-import Image from 'next/image';
-import { __Field, __Type } from '@/types/schema';
-import { findNameType, findArguments } from '../../services/findNameType';
+import { __Field, __Type, __InputValue } from '@/types/schema';
 import { ValueRoot } from '../../types/docs';
-import { DocsArguments } from './DocsArguments';
 import { useLocaleContext } from '../../context/locale.context';
+import { Root } from './Root';
+import { Fields } from './Fields';
+import { InputFields } from './InputFields';
+import { Field } from './Field';
+import { InputField } from './InputField';
+import { HeaderDocs } from './HeaderDocs';
 
 export default function Docs({ schema }: DocsType) {
   const [nameHeader, setNameHeader] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
-  const [stack, setStack] = useState<Array<__Type | __Field>>([]);
+  const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
   const [active, setActive] = useState(false);
 
-  console.log(schema);
   const [locale] = useLocaleContext();
   const {
     main: { docsLable },
@@ -45,9 +45,6 @@ export default function Docs({ schema }: DocsType) {
       setDescription('A GraphQL schema provides a root type for each kind of operation.');
       setNameHeader('Documentation Explorer');
     } else if (stack.length > 1) {
-      stack[stack.length - 1].description
-        ? setDescription(String(stack[stack.length - 1].description))
-        : setDescription('No Description');
       setNameHeader(String(stack[stack.length - 1].name));
       setValueBtnBack(String(stack[stack.length - 1].name));
       stack.length === 2
@@ -56,46 +53,39 @@ export default function Docs({ schema }: DocsType) {
     }
   }, [stack]);
 
+  function setStackDescription(item: __Type | __Field | __InputValue | undefined) {
+    if (item) {
+      setStack((prevStack) => prevStack.concat(item));
+      item.description
+        ? setDescription(String(item.description))
+        : setDescription('No Description');
+    }
+  }
+
   function handleClickRoot(value: ValueRoot) {
     if (value === schema?.queryType.name) {
       const arrTypes = schema?.types.filter((item) => item.name == value);
       const typesRoot = arrTypes.find((item) => item.fields !== null);
-
-      if (typesRoot) {
-        setStack((prevStack) => prevStack.concat(typesRoot));
-      }
+      setStackDescription(typesRoot);
     }
   }
 
-  function handleClickField(value: string | null) {
+  function handleSearchTypes(value: string | null) {
     if (value !== null) {
       const typesRoot = schema?.types.find((item) => item.name === value);
-      if (typesRoot) {
-        setStack((prevStack) => prevStack.concat(typesRoot));
-      }
+      setStackDescription(typesRoot);
     }
   }
 
-  function handleClickArgument(value: string | null) {
-    console.log('click arg');
-    console.log(value);
-    if (value !== null) {
-      const typesRoot = schema?.types.find((item) => item.name === value);
-      if (typesRoot) {
-        setStack((prevStack) => prevStack.concat(typesRoot));
-      }
-    }
-  }
-
-  function handleClickKey(item: __Field) {
-    if (item) {
-      setStack((prevStack) => prevStack.concat(item));
-    }
+  function handleClickKey(item: __Field | __InputValue) {
+    setStackDescription(item);
   }
 
   function hadleClickBack() {
-    console.log('back');
     setStack((prevStack) => prevStack.slice(0, -1));
+    stack[stack.length - 2].description
+      ? setDescription(String(stack[stack.length - 2].description))
+      : setDescription('No Description');
   }
 
   return (
@@ -103,128 +93,47 @@ export default function Docs({ schema }: DocsType) {
       <div onClick={handleLableClick} className={classes.lable}>
         {docsLable}
       </div>
-      <div className={classes.headerDocs}>
-        <div className={classes.backBtn}>
-          <div
-            onClick={hadleClickBack}
-            className={showBtnBack ? classes.backShow : classes.backHidden}
-          >
-            <Image className={classes.backArrow} src={arrow} alt="back stack" />
-            <span className={classes.span_backBtn}>{valueBtnBack}</span>
-          </div>
-        </div>
-        <Image
-          onClick={handleLableClick}
-          className={classes.cross}
-          src={cross}
-          alt="image for close docs"
-        />
-      </div>
+      <HeaderDocs
+        showBtnBack={showBtnBack}
+        valueBtnBack={valueBtnBack}
+        hadleClickBack={hadleClickBack}
+        handleLableClick={handleLableClick}
+      />
       <h3 className={classes.h3_Docs}>{nameHeader}</h3>
       {schema ? (
         <>
           <p>{description}</p>
           <div>
-            {stack.length === 1 && (
-              <>
-                <p className={classes.docs_mainDocs_header}>root types</p>
-                <div>
-                  <span className={classes.keyQuery}>{`query: `}</span>
-                  <span
-                    onClick={() => handleClickRoot(stack[stack.length - 1].name)}
-                    className={classes.click}
-                  >
-                    {stack[stack.length - 1].name}
-                  </span>
-                </div>
-              </>
-            )}
+            {stack.length === 1 && <Root handleClickRoot={handleClickRoot} stack={stack} />}
 
             {stack.length > 1 && (
-              <>
-                {(stack[stack.length - 1] as __Type).fields && (
-                  <p className={classes.docs_mainDocs_header}>fields</p>
-                )}
-                {(stack[stack.length - 1] as __Type).fields?.map((item, index) => {
-                  return (
-                    <div className={classes.div_afterQuery} key={index}>
-                      <div className={classes.p_Docs}>
-                        <span onClick={() => handleClickKey(item)} className={classes.keyClick}>
-                          {item.name}
-                        </span>
-                        <DocsArguments item={item} handleClickArgument={handleClickArgument} />
-                      </div>
-                      <span className={classes.key}>: </span>
-                      <span
-                        onClick={() => handleClickField(findNameType('key', item.type))}
-                        className={classes.click}
-                      >
-                        {findNameType('value', item.type)}
-                      </span>
-                    </div>
-                  );
-                })}
-              </>
+              <Fields
+                stack={stack}
+                handleSearchTypes={handleSearchTypes}
+                handleClickKey={handleClickKey}
+              />
             )}
 
             {stack.length > 1 &&
               String((stack[stack.length - 1] as __Type).kind) === 'INPUT_OBJECT' && (
-                <>
-                  {(stack[stack.length - 1] as __Type).inputFields && (
-                    <p className={classes.docs_mainDocs_header}>fields</p>
-                  )}
-                  {(stack[stack.length - 1] as __Type).inputFields?.map((item, index) => {
-                    return (
-                      <div className={classes.div_afterQuery} key={index}>
-                        <div className={classes.p_Docs}>
-                          <span className={classes.keyClick}>{item.name}</span>
-                        </div>
-                        <span className={classes.key}>: </span>
-                        <span
-                          onClick={() => handleClickField(findNameType('key', item.type))}
-                          className={classes.click}
-                        >
-                          {findNameType('value', item.type)}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </>
+                <InputFields
+                  stack={stack}
+                  handleSearchTypes={handleSearchTypes}
+                  handleClickKey={handleClickKey}
+                />
               )}
 
             {stack.length > 1 &&
               !('kind' in stack[stack.length - 1]) &&
-              (stack[stack.length - 1] as __Field) && (
-                <>
-                  <p className={classes.docs_mainDocs_header}>type</p>
-                  <span
-                    onClick={() =>
-                      handleClickField(
-                        findNameType('key', (stack[stack.length - 1] as __Field).type)
-                      )
-                    }
-                    className={classes.click}
-                  >
-                    {findNameType('value', (stack[stack.length - 1] as __Field).type)}
-                  </span>
-                  <p className={classes.docs_mainDocs_header}>arguments</p>
-                  <span>
-                    {(stack[stack.length - 1] as __Field).args &&
-                      (stack[stack.length - 1] as __Field).args.map((arg, indexArg) => {
-                        return (
-                          <div key={indexArg}>
-                            <span className={classes.key}>{`${arg.name}: `}</span>
-                            <span
-                              onClick={() => handleClickArgument(findArguments('key', arg.type))}
-                              className={classes.click}
-                            >
-                              {findArguments('value', arg.type)}
-                            </span>
-                          </div>
-                        );
-                      })}
-                  </span>
-                </>
+              (stack[stack.length - 1] as __Field) &&
+              (stack[stack.length - 1] as __Field).args && (
+                <Field stack={stack} handleSearchTypes={handleSearchTypes} />
+              )}
+
+            {stack.length > 1 &&
+              !('kind' in stack[stack.length - 1]) &&
+              !('args' in (stack[stack.length - 1] as __InputValue)) && (
+                <InputField stack={stack} handleSearchTypes={handleSearchTypes} />
               )}
           </div>
         </>
