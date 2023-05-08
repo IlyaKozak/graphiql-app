@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import classes from './EditorSection.module.css';
 import searchIcon from '../../../public/search-icon.svg';
+import arrowIcon from '../../../public/vertical-arrow.svg';
 import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
@@ -12,6 +13,19 @@ interface IEditorSectionProps {
 
 function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const [variablesLableActive, setVariablesLableActive] = useState(true);
+  const [showTextareas, setShowTextareas] = useState(true);
+  const [variablesAreaVisibleClass, setVariablesAreaVisibleClass] = useState(
+    classes.variablesAreaVisible
+  );
+  const [variablesAreaInvisibleClass, setVariablesAreaInvisibleClass] = useState(
+    classes.variablesAreaInvisible
+  );
+  const [headersAreaVisibleClass, setHeadersAreaVisibleClass] = useState(
+    classes.headersAreaVisible
+  );
+  const [headersAreaInvisibleClass, setHeadersAreaInvisibleClass] = useState(
+    classes.headersAreaInvisible
+  );
   const [lableHeadersClass, setLableHeadersClass] = useState(classes.lableHeadersEn);
   const [lableHeadersActiveClass, setLableHeadersActiveClass] = useState(
     classes.lableHeadersActiveEn
@@ -75,6 +89,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   }, [endpoint]);
 
   const handleVariablesLableClick = () => {
+    if (!showTextareas) {
+      setVariablesAreaVisibleClass(classes.variablesAreaVisible);
+      setVariablesAreaInvisibleClass(classes.variablesAreaInisible);
+      setHeadersAreaVisibleClass(classes.headersAreaVisible);
+      setHeadersAreaInvisibleClass(classes.headersAreaInisible);
+      setShowTextareas(true);
+    }
     if (variablesLableActive) {
       return;
     } else {
@@ -83,6 +104,13 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   };
 
   const handleHeadersLableClick = () => {
+    if (!showTextareas) {
+      setVariablesAreaVisibleClass(classes.variablesAreaVisible);
+      setVariablesAreaInvisibleClass(classes.variablesAreaInisible);
+      setHeadersAreaVisibleClass(classes.headersAreaVisible);
+      setHeadersAreaInvisibleClass(classes.headersAreaInisible);
+      setShowTextareas(true);
+    }
     if (!variablesLableActive) {
       return;
     } else {
@@ -90,17 +118,47 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
     }
   };
 
+  const handleArrowClick = () => {
+    setShowTextareas(!showTextareas);
+    if (showTextareas) {
+      setVariablesAreaVisibleClass(classes.areaHidden);
+      setVariablesAreaInvisibleClass(classes.areaHidden);
+      setHeadersAreaVisibleClass(classes.areaHidden);
+      setHeadersAreaInvisibleClass(classes.areaHidden);
+    } else {
+      setVariablesAreaVisibleClass(classes.variablesAreaVisible);
+      setVariablesAreaInvisibleClass(classes.variablesAreaInisible);
+      setHeadersAreaVisibleClass(classes.headersAreaVisible);
+      setHeadersAreaInvisibleClass(classes.headersAreaInisible);
+    }
+  };
+
   return (
     <>
       <div className={classes.wrapper}>
-        <Image onClick={handleQuerySubmit} src={searchIcon} alt="search schema" />
+        <Image
+          className={classes.search}
+          onClick={handleQuerySubmit}
+          src={searchIcon}
+          alt="search schema"
+        />
         <div className={classes.textareas}>
           <textarea
-            className={classes.queryArea}
+            className={showTextareas ? classes.queryArea : classes.queryAreaExtended}
             ref={queryAreaRef}
             placeholder={queryPlaceholder}
           ></textarea>
-          <div className={classes.variablesHedersWrapper}>
+          <Image
+            className={showTextareas ? classes.arrowUp : classes.arrowDown}
+            onClick={handleArrowClick}
+            src={arrowIcon}
+            alt="toggle texteareas"
+          />
+          <div
+            className={
+              showTextareas ? classes.variablesHedersWrapper : classes.variablesHedersWrapperHidden
+            }
+          >
             <div className={classes.variablesWrapper}>
               <div
                 onClick={handleVariablesLableClick}
@@ -112,9 +170,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
               </div>
               <textarea
                 className={
-                  variablesLableActive
-                    ? classes.variablesAreaVisible
-                    : classes.variablesAreaInvisible
+                  variablesLableActive ? variablesAreaVisibleClass : variablesAreaInvisibleClass
                 }
                 ref={variablesAreaRef}
                 placeholder={variablesPlaceholder}
@@ -129,7 +185,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
               </div>
               <textarea
                 className={
-                  variablesLableActive ? classes.headersAreaInvisible : classes.headersAreaVisible
+                  variablesLableActive ? headersAreaInvisibleClass : headersAreaVisibleClass
                 }
                 ref={headersAreaRef}
                 placeholder={headersPlaceholder}
