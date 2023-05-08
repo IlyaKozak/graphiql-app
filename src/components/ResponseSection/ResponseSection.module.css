@@ -20,15 +20,21 @@
     margin: 0;
     max-width: 100%;
     height: calc(100vh - 30vh - 288px);
-    padding: 15px 5px 5px 5px;
+    padding: 25px 5px 5px 5px;
   }
 }
 
-@media screen and (max-width: 405px) {
+@media screen and (width: 419px) {
+  .wrapper {
+    height: calc(100vh - 30vh - 288px);
+  }
+}
+
+@media screen and (max-width: 418px) {
   .wrapper {
     margin: 0;
     max-width: 100%;
     height: calc(100vh - 30vh - 319px);
-    padding: 15px 5px 5px 5px;
+    padding: 25px 5px 5px 5px;
   }
 }
