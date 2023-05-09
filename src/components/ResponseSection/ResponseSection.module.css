@@ -19,7 +19,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 289px);
+    height: calc(100vh - 30vh - 349px);
     padding: 25px 5px 5px 5px;
   }
 }
@@ -28,7 +28,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 321px);
+    height: calc(100vh - 30vh - 381px);
     padding: 25px 5px 5px 5px;
   }
 }
