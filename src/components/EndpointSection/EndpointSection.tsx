@@ -7,9 +7,10 @@ interface IEndpointSectionProps {
   onEndpointSubmit: (endpoint: string) => void;
   endpoint: string;
   isLoadingSchema: boolean;
+  isValidEndpoint: boolean;
 }
 
-function EndpointSection({ onEndpointSubmit, endpoint, isLoadingSchema }: IEndpointSectionProps) {
+function EndpointSection({ onEndpointSubmit, endpoint, isLoadingSchema, isValidEndpoint }: IEndpointSectionProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [locale] = useLocaleContext();
   const {
@@ -42,7 +43,7 @@ function EndpointSection({ onEndpointSubmit, endpoint, isLoadingSchema }: IEndpo
             )}
           </form>
           <span className={classes.spanEndpoint}>
-            {endpointText} <strong>{endpoint}</strong>
+            {endpointText} <strong>{isValidEndpoint ? endpoint : 'You Sucks'}</strong>
           </span>
         </div>
       </div>
