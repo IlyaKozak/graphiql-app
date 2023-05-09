@@ -3,7 +3,6 @@ import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
 import { __Field, __Type, __InputValue } from '@/types/schema';
 import { ValueRoot } from '../../types/docs';
-import { useLocaleContext } from '../../context/locale.context';
 import { Root } from './Root';
 import { Fields } from './Fields';
 import { InputFields } from './InputFields';
@@ -11,22 +10,12 @@ import { Field } from './Field';
 import { InputField } from './InputField';
 import { HeaderDocs } from './HeaderDocs';
 
-export default function Docs({ schema }: DocsType) {
+export default function Docs({ schema, handleLableClick }: DocsType) {
   const [nameHeader, setNameHeader] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
   const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
-  const [active, setActive] = useState(false);
-
-  const [locale] = useLocaleContext();
-  const {
-    main: { docsLable },
-  } = locale;
-
-  const handleLableClick = () => {
-    setActive(!active);
-  };
 
   useEffect(() => {
     if (schema) {
@@ -89,10 +78,7 @@ export default function Docs({ schema }: DocsType) {
   }
 
   return (
-    <div className={active ? classes.docsVisible : classes.docsInvisible}>
-      <div onClick={handleLableClick} className={classes.lable}>
-        {docsLable}
-      </div>
+    <>
       <HeaderDocs
         showBtnBack={showBtnBack}
         valueBtnBack={valueBtnBack}
@@ -140,6 +126,6 @@ export default function Docs({ schema }: DocsType) {
       ) : (
         <h3 className={classes.h3_noSchema}>NO SCHEMA AVAILABLE</h3>
       )}
-    </div>
+    </>
   );
 }

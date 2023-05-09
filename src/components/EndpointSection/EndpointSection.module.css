@@ -31,6 +31,7 @@
   padding: 3px 11px 5px;
   max-width: 150px;
   transition: all .3s ease-in-out;
+  height: 26.4px;
 }
 
 .container button:hover {
@@ -44,12 +45,36 @@
   display:inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
+  height: 26.4px;
 }
 
-.container span {
+.spanEndpoint {
+  line-height: 16.8px;
   display: flex;
   gap: 5px;
   font-size: 14px;
+}
+
+@media screen and (max-width: 430px) {
+  .container {
+    gap: 10px;
+  }
+
+  .container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container button {
+    height: 21.2px;
+    padding: 1px 5px;
+    max-width: 120px;
+  }
+
+  .container form input {
+    height: 21.2px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -59,11 +84,5 @@
     display:inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  .container span {
-    justify-self: left;
-    font-size: 14px;
-    align-content: baseline;
   }
 }
