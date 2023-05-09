@@ -43,6 +43,7 @@ const ru: LocaleDictionary = {
   404: {
     title: 'GraphiQL Clone - Страница не найдена - 404',
     h2: 'Страница не найдена',
+    goHome: 'На главную страницу',
   },
   firebaseErrors: firebaseErrorsRu,
 };

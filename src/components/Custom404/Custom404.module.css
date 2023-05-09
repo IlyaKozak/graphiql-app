@@ -1,11 +1,11 @@
 .main {
   height: 100vh;
   text-align: center;
+  line-height: 2.5em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 2.5em;
 }
 
 .errorCode {
@@ -27,7 +27,8 @@
 }
 
 @media (max-width: 500px) {
-  .main {
+  .headers {
+    display: flex;
     flex-direction: column;
   }
 

@@ -43,6 +43,7 @@ const en: LocaleDictionary = {
   404: {
     title: 'GraphiQL Clone - Not Found - 404',
     h2: 'This page could not be found',
+    goHome: 'Go Home',
   },
   firebaseErrors: firebaseErrorsEn,
 };
