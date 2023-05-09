@@ -33,7 +33,7 @@ export default function Main() {
   } = locale;
 
   const handleLableClick = () => {
-    if(isLazy === false){
+    if (isLazy === false) {
       setIsLazy(true);
     }
     if (schemaData) {
@@ -42,7 +42,7 @@ export default function Main() {
   };
 
   const handleEndpointSubmit = (endpoint: string) => {
-    if(endpoint.match(regexpToValidateEndpoint)) {
+    if (endpoint.match(regexpToValidateEndpoint)) {
       setEndpoint(endpoint);
       setResponse(null);
       setIsValidEndpoint(true);
@@ -108,7 +108,9 @@ export default function Main() {
             <ResponseSection response={response} />
             <div className={active && schemaData ? classes.docsVisible : classes.docsInvisible}>
               <Suspense fallback={<Loader />}>
-                {schemaData && isLazy && <LazyDocs handleLableClick={handleLableClick} schema={schemaData} />}
+                {schemaData && isLazy && (
+                  <LazyDocs handleLableClick={handleLableClick} schema={schemaData} />
+                )}
               </Suspense>
             </div>
           </div>
