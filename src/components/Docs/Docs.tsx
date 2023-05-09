@@ -3,7 +3,6 @@ import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
 import { __Field, __Type, __InputValue } from '@/types/schema';
 import { ValueRoot } from '../../types/docs';
-import { useLocaleContext } from '../../context/locale.context';
 import { Root } from './Root';
 import { Fields } from './Fields';
 import { InputFields } from './InputFields';
@@ -17,16 +16,6 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
   const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
-  // const [active, setActive] = useState(false);
-
-  // const [locale] = useLocaleContext();
-  // const {
-  //   main: { docsLable },
-  // } = locale;
-
-  // const handleLableClick = () => {
-  //   setActive(!active);
-  // };
 
   useEffect(() => {
     if (schema) {
@@ -90,9 +79,6 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
 
   return (
     <>
-      {/* <div onClick={handleLableClick} className={classes.lable}>
-        {docsLable}
-      </div> */}
       <HeaderDocs
         showBtnBack={showBtnBack}
         valueBtnBack={valueBtnBack}
