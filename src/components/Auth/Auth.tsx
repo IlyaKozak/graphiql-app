@@ -6,6 +6,7 @@ import { useAuthContext } from '../../context/auth.context';
 import { useLocaleContext } from '../../context/locale.context';
 import Loader from '../Loader/Loader';
 import { validateEmail, validatePassword } from '../../utils/validation';
+import { regexToExtractFirebaseError } from '../../constants/firebaseRegex';
 import classes from './Auth.module.css';
 
 const defaultFormFields = {
@@ -51,6 +52,7 @@ function Auth() {
       notValidPassword,
       notValidConfirmPassword,
     },
+    firebaseErrors,
   } = locale;
 
   useEffect(() => {
@@ -85,7 +87,8 @@ function Auth() {
       resetFormFields();
     } catch (error) {
       if (error instanceof Error) {
-        setFirebaseError(error.message);
+        const firebaseError = (error.message.match(regexToExtractFirebaseError) || [])[0];
+        setFirebaseError(firebaseError || null);
       }
     }
     setLoading(false);
@@ -162,13 +165,20 @@ function Auth() {
             />
           </label>
         )}
-        {loading && (
-          <div className={classes.alignCenter}>
-            <Loader />
-          </div>
+        {firebaseError && (
+          <p className={classes.errorText}>{firebaseErrors[firebaseError] || firebaseError}</p>
         )}
-        {firebaseError && <p className={classes.errorText}>{firebaseError}</p>}
-        <button type="submit">{isSignUp ? <>{signUp}</> : <>{signIn}</>}</button>
+        <button type="submit" className={classes.button} disabled={loading}>
+          {loading ? (
+            <span className={classes.alignCenter}>
+              <Loader />
+            </span>
+          ) : isSignUp ? (
+            <>{signUp}</>
+          ) : (
+            <>{signIn}</>
+          )}
+        </button>
       </form>
     </>
   );

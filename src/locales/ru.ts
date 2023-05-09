@@ -1,4 +1,5 @@
 import { LocaleDictionary } from '../types/localeDictionary';
+import { firebaseErrorsRu } from './firebaseErrorsRu';
 
 const ru: LocaleDictionary = {
   lang: 'ru',
@@ -39,6 +40,12 @@ const ru: LocaleDictionary = {
       'Недопустимый пароль. Пароль должен быть не менее 8 символов и содержать не менее одной буквы, одной цифры, одного специального символа',
     notValidConfirmPassword: 'Недопустимый пароль подтверждения. Должен быть равен паролю',
   },
+  404: {
+    title: 'GraphiQL Clone - Страница не найдена - 404',
+    h2: 'Страница не найдена',
+    goHome: 'На главную страницу',
+  },
+  firebaseErrors: firebaseErrorsRu,
 };
 
 export default ru;
