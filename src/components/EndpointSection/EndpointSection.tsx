@@ -1,13 +1,15 @@
 import { useRef } from 'react';
 import { useLocaleContext } from '../../context/locale.context';
 import classes from './EndpointSection.module.css';
+import LoaderMini from '../LoaderMini/LoaderMini';
 
 interface IEndpointSectionProps {
   onEndpointSubmit: (endpoint: string) => void;
   endpoint: string;
+  isLoadingSchema: boolean;
 }
 
-function EndpointSection({ onEndpointSubmit, endpoint }: IEndpointSectionProps) {
+function EndpointSection({ onEndpointSubmit, endpoint, isLoadingSchema }: IEndpointSectionProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [locale] = useLocaleContext();
   const {
@@ -29,9 +31,15 @@ function EndpointSection({ onEndpointSubmit, endpoint }: IEndpointSectionProps) 
         <div className={classes.container}>
           <form onSubmit={handleEndpointSubmit}>
             <input ref={inputRef} type="url" placeholder={endpoint} />
-            <button onClick={handleEndpointSubmit} title={endpointButton}>
-              {endpointButton}
-            </button>
+            {isLoadingSchema ? (
+              <div className={classes.wrapperBtnLoader}>
+                <LoaderMini />
+              </div>
+            ) : (
+              <button onClick={handleEndpointSubmit} title={endpointButton}>
+                {endpointButton}
+              </button>
+            )}
           </form>
           <span className={classes.spanEndpoint}>
             {endpointText} <strong>{endpoint}</strong>
