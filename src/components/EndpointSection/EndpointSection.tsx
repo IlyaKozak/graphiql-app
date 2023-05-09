@@ -10,7 +10,12 @@ interface IEndpointSectionProps {
   isValidEndpoint: boolean;
 }
 
-function EndpointSection({ onEndpointSubmit, endpoint, isLoadingSchema, isValidEndpoint }: IEndpointSectionProps) {
+function EndpointSection({
+  onEndpointSubmit,
+  endpoint,
+  isLoadingSchema,
+  isValidEndpoint,
+}: IEndpointSectionProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [locale] = useLocaleContext();
   const {
