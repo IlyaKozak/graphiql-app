@@ -6,6 +6,7 @@ import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
 import { MyTextarea } from '../MyTextarea/MyTextarea';
+import { TAB_SPACES } from '../../constants/textFormatting';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
@@ -67,7 +68,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         headersAreaRef.current?.value
       )
         .then((data) => {
-          setResponse(JSON.stringify(data, null, 2));
+          setResponse(JSON.stringify(data, null, TAB_SPACES));
         })
         .catch((error: Error) => {
           setResponse(error.message);
@@ -145,6 +146,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         />
         <div className={classes.textareas}>
           <MyTextarea
+            hasHints={true}
             condition={showTextareas}
             placeholderValue={queryPlaceholder}
             textareaFirstClass={classes.queryArea}
