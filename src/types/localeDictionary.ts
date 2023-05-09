@@ -9,4 +9,7 @@ export type LocaleDictionary = {
   auth: {
     [key: string]: string;
   };
+  404: {
+    [key: string]: string;
+  };
 };

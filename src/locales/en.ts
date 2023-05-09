@@ -39,6 +39,10 @@ const en: LocaleDictionary = {
       'Not valid Password. It should be minimum 8 symbols, at least one letter, one digit, one special character',
     notValidConfirmPassword: 'Not valid Confirm Password. It should be equal to Password',
   },
+  404: {
+    title: 'GraphiQL Clone - Not Found - 404',
+    h2: 'This page could not be found',
+  },
 };
 
 export default en;
