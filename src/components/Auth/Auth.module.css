@@ -12,11 +12,17 @@
 }
 
 .alignCenter {
-  margin: -2em auto;
+  display: flex;
+  justify-content: center;
+  margin: -2.3em auto;
 }
 
 .errorText {
   color: crimson;
   font-size: 14px;
   margin: 0;
+}
+
+.button:disabled {
+  cursor: wait;
 }
