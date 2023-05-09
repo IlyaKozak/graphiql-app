@@ -24,6 +24,17 @@ const en: LocaleDictionary = {
     docsLable: 'DOCS',
     queryPlaceholder: 'Query',
   },
+  docs: {
+    title: 'Documentation Explorer',
+    descrStart: 'A GraphQL schema provides a root type for each kind of operation.',
+    descrAbsense: 'No Description',
+    schemaLibrary: 'Schema',
+    rootType: 'root type',
+    fields: 'fields',
+    type: 'type',
+    argumentsLibrary: 'arguments',
+    noSchema: 'NO SCHEMA AVAILABLE',
+  },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
     h1: 'Authorization Page',
