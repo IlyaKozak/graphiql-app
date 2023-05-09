@@ -1,4 +1,5 @@
 import { LocaleDictionary } from '../types/localeDictionary';
+import { firebaseErrorsRu } from './firebaseErrorsRu';
 
 const ru: LocaleDictionary = {
   lang: 'ru',
@@ -43,6 +44,7 @@ const ru: LocaleDictionary = {
     title: 'GraphiQL Clone - Страница не найдена - 404',
     h2: 'Страница не найдена',
   },
+  firebaseErrors: firebaseErrorsRu,
 };
 
 export default ru;

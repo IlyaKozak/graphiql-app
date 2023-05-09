@@ -12,4 +12,7 @@ export type LocaleDictionary = {
   404: {
     [key: string]: string;
   };
+  firebaseErrors: {
+    [key: string]: string;
+  };
 };

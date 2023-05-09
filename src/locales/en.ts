@@ -1,4 +1,5 @@
 import { LocaleDictionary } from '../types/localeDictionary';
+import { firebaseErrorsEn } from './firebaseErrorsEn';
 
 const en: LocaleDictionary = {
   lang: 'en',
@@ -43,6 +44,7 @@ const en: LocaleDictionary = {
     title: 'GraphiQL Clone - Not Found - 404',
     h2: 'This page could not be found',
   },
+  firebaseErrors: firebaseErrorsEn,
 };
 
 export default en;
