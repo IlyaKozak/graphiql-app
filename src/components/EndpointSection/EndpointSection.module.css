@@ -31,6 +31,7 @@
   padding: 3px 11px 5px;
   max-width: 150px;
   transition: all .3s ease-in-out;
+  height: 26.4px;
 }
 
 .container button:hover {
@@ -50,6 +51,10 @@
   display: flex;
   gap: 5px;
   font-size: 14px;
+}
+
+.spanEndpoint {
+  line-height: 16.8px;
 }
 
 @media screen and (max-width: 400px) {

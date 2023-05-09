@@ -28,12 +28,12 @@ function EndpointSection({ onEndpointSubmit, endpoint }: IEndpointSectionProps) 
       <div className={classes.wrapper}>
         <div className={classes.container}>
           <form onSubmit={handleEndpointSubmit}>
+            <input ref={inputRef} type="url" placeholder={endpoint} />
             <button onClick={handleEndpointSubmit} title={endpointButton}>
               {endpointButton}
             </button>
-            <input ref={inputRef} type="url" placeholder={endpoint} />
           </form>
-          <span>
+          <span className={classes.spanEndpoint}>
             {endpointText} <strong>{endpoint}</strong>
           </span>
         </div>

@@ -1,8 +1,11 @@
 import { __Schema as Schema } from './schema';
 import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from './schema';
+import { Dispatch } from 'react';
+import { SetStateAction } from 'react';
 
 export type DocsType = {
   schema: Schema | null;
+  handleLableClick: () => void;
 };
 
 export type DocsArgumentsType = {

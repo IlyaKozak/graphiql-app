@@ -11,22 +11,22 @@ import { Field } from './Field';
 import { InputField } from './InputField';
 import { HeaderDocs } from './HeaderDocs';
 
-export default function Docs({ schema }: DocsType) {
+export default function Docs({ schema, handleLableClick }: DocsType) {
   const [nameHeader, setNameHeader] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
   const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
 
-  const [locale] = useLocaleContext();
-  const {
-    main: { docsLable },
-  } = locale;
+  // const [locale] = useLocaleContext();
+  // const {
+  //   main: { docsLable },
+  // } = locale;
 
-  const handleLableClick = () => {
-    setActive(!active);
-  };
+  // const handleLableClick = () => {
+  //   setActive(!active);
+  // };
 
   useEffect(() => {
     if (schema) {
@@ -89,10 +89,10 @@ export default function Docs({ schema }: DocsType) {
   }
 
   return (
-    <div className={active ? classes.docsVisible : classes.docsInvisible}>
-      <div onClick={handleLableClick} className={classes.lable}>
+    <>
+      {/* <div onClick={handleLableClick} className={classes.lable}>
         {docsLable}
-      </div>
+      </div> */}
       <HeaderDocs
         showBtnBack={showBtnBack}
         valueBtnBack={valueBtnBack}
@@ -140,6 +140,6 @@ export default function Docs({ schema }: DocsType) {
       ) : (
         <h3 className={classes.h3_noSchema}>NO SCHEMA AVAILABLE</h3>
       )}
-    </div>
+    </>
   );
 }
