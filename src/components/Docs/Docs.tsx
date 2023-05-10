@@ -9,6 +9,7 @@ import { InputFields } from './InputFields';
 import { Field } from './Field';
 import { InputField } from './InputField';
 import { HeaderDocs } from './HeaderDocs';
+import { useLocaleContext } from '@/context/locale.context';
 
 export default function Docs({ schema, handleLableClick }: DocsType) {
   const [nameHeader, setNameHeader] = useState<string>('');
@@ -16,38 +17,44 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
   const [showBtnBack, setShowBtnBack] = useState(false);
   const [valueBtnBack, setValueBtnBack] = useState<string>('');
   const [stack, setStack] = useState<Array<__Type | __Field | __InputValue>>([]);
+  const [locale] = useLocaleContext();
+
+  const {
+    lang,
+    docs: { title, descrStart, descrAbsenсe, schemaLibrary, noSchema },
+  } = locale;
 
   useEffect(() => {
     if (schema) {
       setStack([schema.queryType]);
-      setDescription('A GraphQL schema provides a root type for each kind of operation.');
-      setNameHeader('Documentation Explorer');
     } else {
       setStack([]);
-      setNameHeader('Documentation Explorer');
     }
   }, [schema]);
 
   useEffect(() => {
     stack.length > 1 ? setShowBtnBack(true) : setShowBtnBack(false);
     if (stack.length === 1) {
-      setDescription('A GraphQL schema provides a root type for each kind of operation.');
-      setNameHeader('Documentation Explorer');
+      setDescription(descrStart);
+      setNameHeader(title);
     } else if (stack.length > 1) {
       setNameHeader(String(stack[stack.length - 1].name));
       setValueBtnBack(String(stack[stack.length - 1].name));
       stack.length === 2
-        ? setValueBtnBack('Schema')
+        ? setValueBtnBack(schemaLibrary)
         : setValueBtnBack(String(stack[stack.length - 2].name));
+      stack[stack.length - 1].description
+        ? setDescription(String(stack[stack.length - 1].description))
+        : setDescription(descrAbsenсe);
+    } else if (stack.length === 0) {
+      setNameHeader(title);
     }
-  }, [stack]);
+  }, [stack, lang, descrAbsenсe, descrStart, schemaLibrary, title]);
 
   function setStackDescription(item: __Type | __Field | __InputValue | undefined) {
     if (item) {
       setStack((prevStack) => prevStack.concat(item));
-      item.description
-        ? setDescription(String(item.description))
-        : setDescription('No Description');
+      item.description ? setDescription(String(item.description)) : setDescription(descrAbsenсe);
     }
   }
 
@@ -74,7 +81,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
     setStack((prevStack) => prevStack.slice(0, -1));
     stack[stack.length - 2].description
       ? setDescription(String(stack[stack.length - 2].description))
-      : setDescription('No Description');
+      : setDescription(descrAbsenсe);
   }
 
   return (
@@ -124,7 +131,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
           </div>
         </>
       ) : (
-        <h3 className={classes.h3_noSchema}>NO SCHEMA AVAILABLE</h3>
+        <h3 className={classes.h3_noSchema}>{noSchema}</h3>
       )}
     </>
   );

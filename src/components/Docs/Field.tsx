@@ -2,11 +2,17 @@ import classes from './docs.module.css';
 import { __Field } from '@/types/schema';
 import { findNameType } from '@/services/findNameType';
 import { FieldDocsType } from '@/types/docs';
+import { useLocaleContext } from '@/context/locale.context';
 
 export function Field({ stack, handleSearchTypes }: FieldDocsType) {
+  const [locale] = useLocaleContext();
+  const {
+    docs: { type, argumentsLibrary },
+  } = locale;
+
   return (
     <>
-      <p className={classes.docs_mainDocs_header}>type</p>
+      <p className={classes.docs_mainDocs_header}>{type}</p>
       <span
         onClick={() =>
           handleSearchTypes(findNameType('key', (stack[stack.length - 1] as __Field).type))
@@ -18,7 +24,7 @@ export function Field({ stack, handleSearchTypes }: FieldDocsType) {
       <div>
         {(stack[stack.length - 1] as __Field).args.length > 0 && (
           <>
-            <p className={classes.docs_mainDocs_header}>arguments</p>
+            <p className={classes.docs_mainDocs_header}>{argumentsLibrary}</p>
             {(stack[stack.length - 1] as __Field).args.map((arg, indexArg) => {
               return (
                 <div key={indexArg}>
