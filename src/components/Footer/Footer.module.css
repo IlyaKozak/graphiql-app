@@ -19,6 +19,7 @@
   margin: 0;
   color: #000000;
   z-index: 1;
+  padding-right: 85px;
 }
 
 .github {
@@ -43,6 +44,12 @@
 
 .logoRS:hover {
   transform: scale(1.2);
+}
+
+@media screen and (max-width: 500px) {
+  .footer p{
+    padding-right: 65px;
+  }
 }
 
 @media screen and (max-width: 400px) {

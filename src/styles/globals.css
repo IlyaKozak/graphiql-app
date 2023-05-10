@@ -30,8 +30,14 @@ a {
 }
 
 .body-wrapper {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 119px);
   display: flex;
+}
+
+.bodyWelcomeWrapper {
+  height: calc(100vh - 119px);
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .container-main {

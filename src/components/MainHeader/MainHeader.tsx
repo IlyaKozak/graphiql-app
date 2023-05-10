@@ -9,9 +9,9 @@ import { scrollHandler, resizeHandler } from './Handlers';
 import { INITIAL_RESOLUTION, BORDER_RESOLUTION } from '../../constants/resolutions';
 import {
   LOGO_WIDTH,
-  LOGOICON_WIDTH,
+  LOGO_ICON_WIDTH,
   LOGO_HEIGHT,
-  LOGOICON_HEIGHT,
+  LOGO_ICON_HEIGHT,
 } from '../../constants/dimensions';
 
 import SwitchLocale from '../SwitchLocale/SwitchLocale';
@@ -44,8 +44,8 @@ function MainHeader() {
         <Link href="/">
           <Image
             src={width < BORDER_RESOLUTION ? logoIcon : logo}
-            width={width < BORDER_RESOLUTION ? LOGOICON_WIDTH : LOGO_WIDTH}
-            height={width < BORDER_RESOLUTION ? LOGOICON_HEIGHT : LOGO_HEIGHT}
+            width={width < BORDER_RESOLUTION ? LOGO_ICON_WIDTH : LOGO_WIDTH}
+            height={width < BORDER_RESOLUTION ? LOGO_ICON_HEIGHT : LOGO_HEIGHT}
             alt="logo"
             priority={true}
           />
