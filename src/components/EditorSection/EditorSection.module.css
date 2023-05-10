@@ -5,6 +5,15 @@
   background: rgb(239 239 239);
 }
 
+.wrapperLoaderRequest {
+  z-index: 3;
+  position: absolute;
+  right: -13px;
+    top: 15px;
+  width: 48px;
+  height: 48px;
+}
+
 .search {
   z-index: 3;
   position: absolute;
@@ -254,6 +263,17 @@
 @media screen and (max-width: 800px) {
   .wrapper {
     min-height: calc(30vh + 135px);
+  }
+
+  .wrapperLoaderRequest {
+    z-index: 3;
+    position: absolute;
+    right: unset;
+    top: unset;
+    left: 5px;
+    bottom: -20px;
+    width: 48px;
+    height: 48px;
   }
 
   .search {
