@@ -55,6 +55,14 @@
   font-size: 14px;
 }
 
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
 @media screen and (max-width: 430px) {
   .container {
     gap: 10px;
