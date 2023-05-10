@@ -13,7 +13,6 @@ export default function WelcomeLogo() {
   return (
     <>
       <div className={classes.wrapperLogo}>
-        {/* <div className={classes.logoGraphQL}> */}
         <Image
           className={classes.logoGraphQL}
           src={logoGraphQL}
@@ -22,8 +21,6 @@ export default function WelcomeLogo() {
           alt="logo welcome"
           priority={true}
         />
-        {/* </div> */}
-        {/* <div className={classes.logoIcon}> */}
         <Image
           className={classes.logoIcon}
           src={logoIcon}
@@ -32,7 +29,6 @@ export default function WelcomeLogo() {
           alt="logo graphQL"
           priority={true}
         />
-        {/* </div> */}
       </div>
     </>
   );

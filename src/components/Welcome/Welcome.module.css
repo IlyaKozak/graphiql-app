@@ -7,6 +7,10 @@
   padding: 0 15px;
 }
 
+.title {
+  text-align: center;
+}
+
 .wrapperLogo {
   position: relative;
   display: flex;
@@ -18,7 +22,8 @@
 
 .logoGraphQL {
   width: 100vw;
-  animation: spin 18s infinite linear;
+  height: 50vh;
+  animation: spin 30s infinite linear;
 }
 
 .logoIcon {

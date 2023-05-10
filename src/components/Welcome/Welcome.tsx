@@ -15,7 +15,7 @@ function Welcome() {
   return (
     <>
       <div className={classes.wrapper}>
-        <h1>{h1}</h1>
+        <h1 className={classes.title}>{h1}</h1>
         <WelcomeLogo />
         {!isLoading &&
           (authUser ? (
