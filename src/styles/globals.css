@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body, h1 {
+body, h1, h3 {
   margin: 0;
 }
 
@@ -26,10 +26,12 @@ code {
 button,
 a {
   font-weight: 500;
+  font-size: 14px;
 }
 
 .body-wrapper {
-  height: calc(100vh - 120px)
+  height: calc(100vh - 120px);
+  display: flex;
 }
 
 .container-main {

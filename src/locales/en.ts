@@ -38,7 +38,6 @@ const en: LocaleDictionary = {
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
-    h1: 'Authorization Page',
     passwordText: 'Password',
     confirmPasswordText: 'Confirm Password',
     signUpText: 'Sign Up with your email and password',
