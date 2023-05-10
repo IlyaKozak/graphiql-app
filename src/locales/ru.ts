@@ -25,6 +25,17 @@ const ru: LocaleDictionary = {
     docsLable: 'ДОКА',
     queryPlaceholder: 'Запрос',
   },
+  docs: {
+    title: 'Проводник по документации',
+    descrStart: 'Схема GraphQL предоставляет корневой тип для каждого вида операций.',
+    descrAbsenсe: 'Нет описания',
+    schemaLibrary: 'Схема',
+    rootType: 'корневой тип',
+    fields: 'поля',
+    type: 'тип',
+    argumentsLibrary: 'аргументы',
+    noSchema: 'НЕТ СХЕМЫ',
+  },
   auth: {
     title: 'GraphiQL Клон - Авторизация',
     h1: 'Страница Авторизации',

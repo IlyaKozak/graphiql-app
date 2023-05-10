@@ -6,6 +6,9 @@ export type LocaleDictionary = {
   main: {
     [key: string]: string;
   };
+  docs: {
+    [key: string]: string;
+  };
   auth: {
     [key: string]: string;
   };
