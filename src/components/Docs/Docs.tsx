@@ -95,7 +95,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
       <h3 className={classes.h3_Docs}>{nameHeader}</h3>
       {schema ? (
         <>
-          <p>{description}</p>
+          <p className={classes.descrDocs}>{description}</p>
           <div>
             {stack.length === 1 && <Root handleClickRoot={handleClickRoot} stack={stack} />}
 

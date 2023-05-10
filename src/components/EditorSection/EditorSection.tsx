@@ -6,6 +6,7 @@ import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
 import { MyTextarea } from '../MyTextarea/MyTextarea';
+import { LoaderRequest } from '../LoaderRequest/LoaderRequest';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
@@ -31,6 +32,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const [lableHeadersActiveClass, setLableHeadersActiveClass] = useState(
     classes.lableHeadersActiveEn
   );
+  const [isLoading, setIsLoading] = useState(false);
   const [locale] = useLocaleContext();
   const {
     lang,
@@ -60,6 +62,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   const handleQuerySubmit = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     event.preventDefault();
     if (queryAreaRef.current?.value) {
+      setIsLoading(true);
       graphiQLService(
         endpoint,
         queryAreaRef.current?.value,
@@ -68,9 +71,11 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
       )
         .then((data) => {
           setResponse(JSON.stringify(data, null, 2));
+          setIsLoading(false);
         })
         .catch((error: Error) => {
           setResponse(error.message);
+          setIsLoading(false);
         });
     } else {
       return;
@@ -137,12 +142,18 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
   return (
     <>
       <div className={classes.wrapper}>
-        <Image
-          className={classes.search}
-          onClick={handleQuerySubmit}
-          src={searchIcon}
-          alt="search schema"
-        />
+        {isLoading ? (
+          <div className={classes.wrapperLoaderRequest}>
+            <LoaderRequest />
+          </div>
+        ) : (
+          <Image
+            className={classes.search}
+            onClick={handleQuerySubmit}
+            src={searchIcon}
+            alt="search schema"
+          />
+        )}
         <div className={classes.textareas}>
           <MyTextarea
             condition={showTextareas}
