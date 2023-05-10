@@ -25,7 +25,7 @@
 .arrowUp {
   position: relative;
   left: calc(100% - 30px);
-  top: 25px;
+  top: 16px;
   z-index: 3;
   rotate: 180deg;
   transform: scale(0.7);
@@ -35,7 +35,7 @@
 .arrowDown {
   position: relative;
   left: calc(100% - 30px);
-  top: 15px;
+  top: 8px;
   z-index: 3;
   transform: scale(0.7);
   transition: all .3s ease-in-out;
@@ -340,5 +340,22 @@
   .variablesAreaInvisible,
   .headersAreaInvisible {
     height: calc(100% - 25px);
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .lableVariables,
+  .lableVariablesActive {
+    left: 5px;
+  }
+
+  .lableHeaders,
+  .lableHeadersActive {
+    left: 125px;
+  }
+
+  .lableHeadersActiveEn,
+  .lableHeadersEn {
+    left: 105px;
   }
 }

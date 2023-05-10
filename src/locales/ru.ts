@@ -11,12 +11,13 @@ const ru: LocaleDictionary = {
     signIn: 'Войти',
     signUp: 'Зарегистрироваться',
     signOut: 'Выйти',
-    graphiQL: 'В GraphiQL Площадку',
+    graphiQL: 'Войти в GraphiQL',
   },
   main: {
     title: 'GraphiQL Клон - Основная Страница',
     endpointButton: 'Сменить адрес',
     endpointText: 'Адрес:',
+    invalidEndpoint: 'Ошибочный адрес',
     variablesPlaceholder: 'Переменные',
     variablesLable: 'ПЕРЕМЕННЫЕ',
     headersPlaceholder: 'Заголовки',
@@ -27,7 +28,7 @@ const ru: LocaleDictionary = {
   docs: {
     title: 'Проводник по документации',
     descrStart: 'Схема GraphQL предоставляет корневой тип для каждого вида операций.',
-    descrAbsenсe: 'Нет описания',
+    descrAbsence: 'Нет описания',
     schemaLibrary: 'Схема',
     rootType: 'корневой тип',
     fields: 'поля',

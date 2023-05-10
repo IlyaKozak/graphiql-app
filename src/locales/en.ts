@@ -17,6 +17,7 @@ const en: LocaleDictionary = {
     title: 'GraphiQL Clone - Main Page',
     endpointButton: 'Change endpoint',
     endpointText: 'Endpoint:',
+    invalidEndpoint: 'Invalid endpoint',
     variablesPlaceholder: 'Variables',
     variablesLable: 'VARIABLES',
     headersPlaceholder: 'Headers',
@@ -27,7 +28,7 @@ const en: LocaleDictionary = {
   docs: {
     title: 'Documentation Explorer',
     descrStart: 'A GraphQL schema provides a root type for each kind of operation.',
-    descrAbsenсe: 'No Description',
+    descrAbsence: 'No Description',
     schemaLibrary: 'Schema',
     rootType: 'root type',
     fields: 'fields',
