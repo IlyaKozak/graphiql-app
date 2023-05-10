@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 function MainHeader() {
   const [wrapperClass, setWrapperClass] = useState(classes.wrapper);
   const { asPath } = useRouter();
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(600);
 
   useEffect(() => {
     window.addEventListener('scroll', () => scrollHandler({ dispatch: setWrapperClass }));
@@ -24,11 +24,12 @@ function MainHeader() {
   });
 
   useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener('resize', () => resizeHandler({ dispatch: setWidth }));
     return () => {
       window.removeEventListener('resize', () => resizeHandler({ dispatch: setWidth }));
     };
-  });
+  }, []);
 
   return (
     <>
