@@ -20,23 +20,23 @@ input,
 textarea,
 pre,
 code {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 button,
 a {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .body-wrapper {
-  height: calc(100vh - 118px)
+  height: calc(100vh - 120px)
 }
 
 .container-main {
   position: relative;
   display: flex;
   gap: 10px;
-  height: calc(100vh - 177px);
+  height: calc(100vh - 179px);
   background: rgb(239 239 239);
   padding: 0 30px 0 10px;
   overflow: hidden;
@@ -50,7 +50,7 @@ button:hover {
   .container-main {
     flex-direction: column;
     padding: 0 30px 10px 10px;
-    min-height: calc(100vh - 177px);
+    min-height: calc(100vh - 179px);
     height: fit-content;
   }
 }

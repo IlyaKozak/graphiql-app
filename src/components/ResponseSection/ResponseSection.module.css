@@ -19,7 +19,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 348px);
+    height: calc(100vh - 30vh - 350px);
     padding: 25px 5px 5px 5px;
   }
 }
@@ -28,7 +28,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 381px);
+    height: calc(100vh - 30vh - 383px);
     padding: 25px 5px 5px 5px;
   }
 }
@@ -37,7 +37,7 @@
   .wrapper {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 30vh - 381px);
+    height: calc(100vh - 30vh - 383px);
     padding: 25px 5px 5px 5px;
   }
 }

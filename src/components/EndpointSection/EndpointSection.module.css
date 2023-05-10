@@ -28,7 +28,7 @@
   border: 1px solid gray;
   color: #555;
   cursor: pointer;
-  padding: 3px 11px 5px;
+  padding: 3px 6px 5px;
   max-width: 150px;
   transition: all .3s ease-in-out;
   height: 26.4px;
@@ -77,7 +77,7 @@
   .container button {
     height: 21.2px;
     padding: 1px 5px;
-    max-width: 120px;
+    max-width: 126px;
   }
 
   .container form input {
