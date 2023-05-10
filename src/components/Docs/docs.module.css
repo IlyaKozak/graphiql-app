@@ -73,6 +73,10 @@ overflow-y: auto;
   cursor: not-allowed;
 }
 
+.descrDocs {
+  font-weight: 700;
+}
+
 .h3_noSchema{
   text-align: center;
   margin-top: 50px;
@@ -120,6 +124,7 @@ overflow-y: auto;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  font-weight: 700;
 }
 
 .h3_Docs {
@@ -129,6 +134,7 @@ overflow-y: auto;
   word-wrap: break-word;
   hyphens: auto;
   white-space: normal;
+  font-weight: 700;
 }
 
 .backBtn {
@@ -141,6 +147,7 @@ overflow-y: auto;
   hyphens: auto;
   white-space: normal;
   width: calc(100% - 18px - 5px);
+  font-weight: 700;
 }
 
 .backShow{
@@ -183,6 +190,7 @@ overflow-y: auto;
   font-variant: small-caps;
   font-weight: bold;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 418px) {
