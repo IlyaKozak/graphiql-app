@@ -21,7 +21,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
 
   const {
     lang,
-    docs: { title, descrStart, descrAbsense, schemaLibrary, noSchema },
+    docs: { title, descrStart, descrAbsenсe, schemaLibrary, noSchema },
   } = locale;
 
   useEffect(() => {
@@ -45,16 +45,16 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
         : setValueBtnBack(String(stack[stack.length - 2].name));
       stack[stack.length - 1].description
         ? setDescription(String(stack[stack.length - 1].description))
-        : setDescription(descrAbsense);
+        : setDescription(descrAbsenсe);
     } else if (stack.length === 0) {
       setNameHeader(title);
     }
-  }, [stack, lang, descrAbsense, descrStart, schemaLibrary, title]);
+  }, [stack, lang, descrAbsenсe, descrStart, schemaLibrary, title]);
 
   function setStackDescription(item: __Type | __Field | __InputValue | undefined) {
     if (item) {
       setStack((prevStack) => prevStack.concat(item));
-      item.description ? setDescription(String(item.description)) : setDescription(descrAbsense);
+      item.description ? setDescription(String(item.description)) : setDescription(descrAbsenсe);
     }
   }
 
@@ -81,7 +81,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
     setStack((prevStack) => prevStack.slice(0, -1));
     stack[stack.length - 2].description
       ? setDescription(String(stack[stack.length - 2].description))
-      : setDescription(descrAbsense);
+      : setDescription(descrAbsenсe);
   }
 
   return (

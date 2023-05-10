@@ -27,7 +27,7 @@ const ru: LocaleDictionary = {
   docs: {
     title: 'Проводник по документации',
     descrStart: 'Схема GraphQL предоставляет корневой тип для каждого вида операций.',
-    descrAbsense: 'Нет описания',
+    descrAbsenсe: 'Нет описания',
     schemaLibrary: 'Схема',
     rootType: 'корневой тип',
     fields: 'поля',

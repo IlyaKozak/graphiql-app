@@ -27,7 +27,7 @@ const en: LocaleDictionary = {
   docs: {
     title: 'Documentation Explorer',
     descrStart: 'A GraphQL schema provides a root type for each kind of operation.',
-    descrAbsense: 'No Description',
+    descrAbsenсe: 'No Description',
     schemaLibrary: 'Schema',
     rootType: 'root type',
     fields: 'fields',
