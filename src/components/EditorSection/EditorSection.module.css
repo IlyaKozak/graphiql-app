@@ -265,6 +265,17 @@
     min-height: calc(30vh + 135px);
   }
 
+  .wrapperLoaderRequest {
+    z-index: 3;
+    position: absolute;
+    right: unset;
+    top: unset;
+    left: 5px;
+    bottom: -20px;
+    width: 48px;
+    height: 48px;
+  }
+
   .search {
     right: unset;
     top: unset;
