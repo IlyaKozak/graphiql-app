@@ -46,7 +46,7 @@ button:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 431px) and (max-width: 800px) {
   .container-main {
     flex-direction: column;
     padding: 0 30px 10px 10px;
@@ -55,8 +55,11 @@ button:hover {
   }
 }
 
-@media screen and (max-width: 405px) {
+@media screen and (max-width: 430px) {
   .container-main {
-    min-height: calc(100vh - 211px);
+    flex-direction: column;
+    padding: 0 30px 10px 10px;
+    min-height: calc(100vh - 220px);
+    height: fit-content;
   }
 }

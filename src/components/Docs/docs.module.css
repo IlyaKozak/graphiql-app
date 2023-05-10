@@ -4,7 +4,7 @@
   right: -320px;
   z-index: 5;
   top: 0;
-  height: calc(100vh - 127px);
+  height: calc(100vh - 187px);
   background-color: rgb(255, 255, 255);
   border-left: 10px solid rgb(239 239 239);
   border-radius: 4px;
@@ -18,7 +18,7 @@ position: absolute;
 right: 0;
 top: 0;
 z-index: 5;
-height: calc(100vh - 127px);
+height: calc(100vh - 187px);
 background-color: rgb(255, 255, 255);
 border-left: 10px solid rgb(239 239 239);
 box-shadow: -15px 0 15px rgba(224, 224, 224, 0.318);
@@ -185,22 +185,12 @@ overflow-y: auto;
   letter-spacing: 1px;
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 429px) {
   .docsInvisible {
-    height: calc(100vh - 158px);
+    height: calc(100vh - 220px);
   }
   
   .docsVisible {
-    height: calc(100vh - 158px);
-  }
-}
-
-@media screen and (max-width: 405px) {
-  .docsInvisible {
-    height: calc(100vh - 161px);
-  }
-  
-  .docsVisible {
-    height: calc(100vh - 161px);
+    height: calc(100vh - 220px);
   }
 }
