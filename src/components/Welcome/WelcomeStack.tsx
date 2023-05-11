@@ -1,5 +1,6 @@
 import classes from './Welcome.module.css';
 import WelcomeStackItem from './WelcomeStackItem';
+import { useLocaleContext } from '@/context/locale.context';
 import {
   REACT_LINK,
   NEXT_LINK,
@@ -16,9 +17,14 @@ import htmlIcon from '../../../public/html5.png';
 import cssIcon from '../../../public/css3.png';
 
 export default function WelcomeStack() {
+  const [locale] = useLocaleContext();
+  const {
+    home: { stack },
+  } = locale;
+
   return (
     <>
-      <h3 className={classes.subtitle}>Technology Stack</h3>
+      <h3 className={classes.subtitle}>{stack}</h3>
       <div className={classes.wrapperStack}>
         <WelcomeStackItem itemLink={REACT_LINK} itemIcon={reactIcon} />
         <WelcomeStackItem itemLink={NEXT_LINK} itemIcon={nextJSIcon} />

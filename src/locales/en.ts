@@ -12,6 +12,7 @@ const en: LocaleDictionary = {
     signUp: 'Sign Up',
     signOut: 'Sign Out',
     graphiQL: 'Go To GraphiQL',
+    stack: 'Technology Stack',
   },
   main: {
     title: 'GraphiQL Clone - Main Page',

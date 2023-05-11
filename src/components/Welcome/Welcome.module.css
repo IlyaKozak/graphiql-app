@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.subtitle {
+  text-align: center;
+}
+
 .wrapperLogo {
   position: relative;
   display: flex;

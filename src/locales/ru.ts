@@ -12,6 +12,7 @@ const ru: LocaleDictionary = {
     signUp: 'Зарегистрироваться',
     signOut: 'Выйти',
     graphiQL: 'Войти в GraphiQL',
+    stack: 'Стек использованных технологий',
   },
   main: {
     title: 'GraphiQL Клон - Основная Страница',
