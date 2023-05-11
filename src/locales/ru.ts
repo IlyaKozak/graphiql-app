@@ -5,7 +5,7 @@ const ru: LocaleDictionary = {
   lang: 'ru',
   home: {
     title: 'GraphiQL Клон - NextFireTeam',
-    h1: 'Добро пожаловать в GraphiQL Клон!',
+    h1: 'Добро пожаловать в GraphiQL Площадку!',
     authLink: 'Пожалуйста, авторизируйтесь',
     mainLink: 'Перейти в GraphiQL Площадку',
     signIn: 'Войти',

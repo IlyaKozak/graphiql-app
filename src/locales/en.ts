@@ -5,7 +5,7 @@ const en: LocaleDictionary = {
   lang: 'en',
   home: {
     title: 'GraphiQL Clone - NextFireTeam',
-    h1: 'Welcome to GraphiQL Clone!',
+    h1: 'Welcome to GraphiQL Playground!',
     authLink: 'Please Authorize',
     mainLink: 'Go To GraphiQL Playground',
     signIn: 'Sign In',
