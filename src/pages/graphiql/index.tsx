@@ -55,7 +55,7 @@ export default function Main() {
           <MainHeader />
           <EndpointSection onEndpointSubmit={handleEndpointSubmit} endpoint={endpoint} />
           <div className="container-main">
-            <EditorSection setResponse={setResponse} endpoint={endpoint} />
+            <EditorSection setResponse={setResponse} endpoint={endpoint} schema={schemaData} />
             <ResponseSection response={response} />
             <Docs schema={schemaData} />
           </div>

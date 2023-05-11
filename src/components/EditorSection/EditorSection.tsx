@@ -7,13 +7,15 @@ import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
 import { MyTextarea } from '../MyTextarea/MyTextarea';
 import { TAB_SPACES } from '../../constants/textFormatting';
+import { __Schema } from '../../types/schema';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
   endpoint: string;
+  schema: __Schema | null;
 }
 
-function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
+function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
   const [variablesLableActive, setVariablesLableActive] = useState(true);
   const [showTextareas, setShowTextareas] = useState(true);
   const [variablesAreaVisibleClass, setVariablesAreaVisibleClass] = useState(
@@ -146,7 +148,7 @@ function EditorSection({ setResponse, endpoint }: IEditorSectionProps) {
         />
         <div className={classes.textareas}>
           <MyTextarea
-            hasHints={true}
+            schema={schema}
             condition={showTextareas}
             placeholderValue={queryPlaceholder}
             textareaFirstClass={classes.queryArea}

@@ -2,16 +2,28 @@ import { RefObject, forwardRef, useEffect, useState } from 'react';
 
 import formatText from '../../utils/formatText';
 import { Key } from '../../constants/textFormatting';
+import { __Schema } from '../../types/schema';
+import getHints from '../../utils/getHints';
+import { HintsModal } from './HintsModal';
+import insertSelection from '../../utils/insertSelection';
+import getHintsModalPosition from '../../utils/getHintsModalPosition';
 
 interface IMyTextareaProps {
   condition: boolean;
   placeholderValue: string;
   textareaFirstClass: string;
   textreaSecondClass: string;
-  hasHints?: boolean;
+  schema?: __Schema | null;
 }
 
 type Ref = IMyTextareaProps;
+
+export type HintsModalPosition = {
+  row: number;
+  column: number;
+  containerWidth: number;
+  containerHeight: number;
+};
 
 export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
   (
@@ -20,25 +32,33 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       placeholderValue,
       textareaFirstClass,
       textreaSecondClass,
-      hasHints,
+      schema,
     }: IMyTextareaProps,
     ref
   ) => {
     const [textAreaValue, setTextAreaValue] = useState('');
+    const [hints, setHints] = useState<string[] | null>(null);
+    const [hintsModalPosition, setHintsModalPosition] = useState<HintsModalPosition | null>(null);
     const [textAreaSelectionStart, setTextAreaSelectionStart] = useState<null | number>(null);
+    const textAreaRef = ref as RefObject<HTMLTextAreaElement>;
 
     useEffect(() => {
-      if (textAreaSelectionStart === null || !ref) return;
+      if (textAreaSelectionStart === null || !textAreaRef) return;
 
-      (ref as RefObject<HTMLTextAreaElement>).current!.selectionStart = textAreaSelectionStart;
-      (ref as RefObject<HTMLTextAreaElement>).current!.selectionEnd = textAreaSelectionStart;
-    }, [ref, textAreaValue, textAreaSelectionStart]);
+      textAreaRef.current!.selectionStart = textAreaSelectionStart;
+      textAreaRef.current!.selectionEnd = textAreaSelectionStart;
+    }, [textAreaRef, textAreaValue, textAreaSelectionStart]);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (hasHints && event.ctrlKey && event.code === Key.Space) {
-        return;
-      }
-      if (hasHints && event.code === Key.Escape) {
+      if (schema && event.ctrlKey && event.code === Key.Space) {
+        const hints = getHints(event, schema);
+        if (!hints || !hints.length) return;
+        setHintsModalPosition({
+          ...getHintsModalPosition(textAreaValue, textAreaRef.current!.selectionStart),
+          containerWidth: textAreaRef.current!.offsetWidth,
+          containerHeight: textAreaRef.current!.offsetHeight,
+        });
+        setHints(hints);
         return;
       }
 
@@ -57,6 +77,22 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       setTextAreaValue(event.target.value);
     };
 
+    const handleEscape = () => {
+      setHints(null);
+      textAreaRef.current!.focus();
+    };
+
+    const handleSelect = (selectionValue: string) => {
+      const { value, selectionStart } = insertSelection(
+        textAreaRef.current!.value,
+        textAreaRef.current!.selectionStart,
+        selectionValue
+      );
+
+      setTextAreaSelectionStart(selectionStart);
+      setTextAreaValue(value);
+    };
+
     return (
       <>
         <textarea
@@ -67,6 +103,14 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
         ></textarea>
+        {schema && hints && (
+          <HintsModal
+            hints={hints}
+            handleSelect={handleSelect}
+            handleEscape={handleEscape}
+            position={hintsModalPosition}
+          />
+        )}
       </>
     );
   }
