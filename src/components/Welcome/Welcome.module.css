@@ -68,3 +68,19 @@
     transform: scale( .75 );
   }
 }
+
+.wrapperStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.itemIcon {
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.itemIcon:hover {
+  transform: scale(0.9);
+}

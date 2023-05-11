@@ -4,6 +4,7 @@ import classes from './Welcome.module.css';
 import { useLocaleContext } from '../../context/locale.context';
 import { useAuthContext } from '../../context/auth.context';
 import WelcomeLogo from './WelcomeLogo';
+import WelcomeStack from './WelcomeStack';
 
 function Welcome() {
   const { authUser, isLoading } = useAuthContext();
@@ -25,6 +26,7 @@ function Welcome() {
           ) : (
             <Link href="/auth">{authLink}</Link>
           ))}
+        <WelcomeStack />
       </div>
     </>
   );

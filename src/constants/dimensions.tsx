@@ -6,3 +6,5 @@ export const LOGO_HEIGHT = 41;
 export const LOGO_ICON_HEIGHT = 41;
 export const LOGO_ICON_WELCOME_HEIGHT = 120;
 export const LOGO_GRAPHQL_HEIGHT = 400;
+export const LOGO_STACK_ITEM_WIDTH = 70;
+export const LOGO_STACK_ITEM_HEIGHT = 70;
