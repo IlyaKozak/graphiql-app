@@ -148,6 +148,7 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
         <div className={classes.textareas}>
           <MyTextarea
             schema={schema}
+            withHints={true}
             condition={showTextareas}
             placeholderValue={queryPlaceholder}
             textareaFirstClass={classes.queryArea}
