@@ -49,6 +49,10 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       textAreaRef.current!.selectionEnd = textAreaSelectionStart;
     }, [textAreaRef, textAreaValue, textAreaSelectionStart]);
 
+    useEffect(() => {
+      setTextAreaValue('');
+    }, [schema]);
+
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (schema && event.ctrlKey && event.code === Key.Space) {
         const hints = getHints(event, schema);
