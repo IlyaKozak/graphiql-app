@@ -10,7 +10,7 @@ const formatText = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
   const isNotSelected = start === end;
   const hasSpacesToDelete = text.slice(start - TAB_SPACES, start) === ' '.repeat(TAB_SPACES);
 
-  let formattedText = '';
+  let formattedText = null;
   let selectionStart = null;
 
   if (
@@ -59,7 +59,6 @@ function prettifyText(text: string, start: number, end: number, key: string): [s
       selectionStart += openBracketsCount * TAB_SPACES + 1;
       break;
   }
-
   return [text.slice(0, start - removeTextChars) + addText + text.slice(end), selectionStart];
 }
 

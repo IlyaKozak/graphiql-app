@@ -24,7 +24,7 @@ const ru: LocaleDictionary = {
     headersPlaceholder: 'Заголовки',
     headersLable: 'ЗАГОЛОВКИ',
     docsLable: 'ДОКА',
-    queryPlaceholder: 'Запрос',
+    queryPlaceholder: 'Запрос [Для подсказок нажмите Ctrl + Пробел]',
   },
   docs: {
     title: 'Проводник по документации',

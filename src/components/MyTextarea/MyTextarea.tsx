@@ -14,6 +14,7 @@ interface IMyTextareaProps {
   textareaFirstClass: string;
   textreaSecondClass: string;
   schema?: __Schema | null;
+  withHints?: boolean;
 }
 
 type Ref = IMyTextareaProps;
@@ -33,6 +34,7 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       textareaFirstClass,
       textreaSecondClass,
       schema,
+      withHints,
     }: IMyTextareaProps,
     ref
   ) => {
@@ -49,8 +51,12 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       textAreaRef.current!.selectionEnd = textAreaSelectionStart;
     }, [textAreaRef, textAreaValue, textAreaSelectionStart]);
 
+    useEffect(() => {
+      setTextAreaValue('');
+    }, [schema]);
+
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (schema && event.ctrlKey && event.code === Key.Space) {
+      if (withHints && schema && event.ctrlKey && event.code === Key.Space) {
         const hints = getHints(event, schema);
         if (!hints || !hints.length) return;
         setHintsModalPosition({
@@ -63,7 +69,7 @@ export const MyTextarea = forwardRef<HTMLTextAreaElement, Ref>(
       }
 
       const { value, selectionStart } = formatText(event);
-      if (!value) return;
+      if (value === null) return;
 
       setTextAreaSelectionStart(selectionStart);
       setTextAreaValue(value);
