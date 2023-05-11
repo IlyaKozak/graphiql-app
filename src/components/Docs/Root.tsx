@@ -1,10 +1,16 @@
 import classes from './docs.module.css';
 import { RootType } from '@/types/docs';
+import { useLocaleContext } from '@/context/locale.context';
 
 export function Root({ handleClickRoot, stack }: RootType) {
+  const [locale] = useLocaleContext();
+  const {
+    docs: { rootType },
+  } = locale;
+
   return (
     <>
-      <p className={classes.docs_mainDocs_header}>root types</p>
+      <p className={classes.docs_mainDocs_header}>{rootType}</p>
       <div>
         <span className={classes.keyQuery}>{`query: `}</span>
         <span

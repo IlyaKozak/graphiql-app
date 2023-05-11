@@ -7,6 +7,7 @@ import { useAuthContext } from '../../context/auth.context';
 import AuthComponent from '../../components/Auth/Auth';
 import Loader from '../../components/Loader/Loader';
 import MainHeader from '../../components/MainHeader/MainHeader';
+import Footer from '@/components/Footer/Footer';
 
 export default function Auth() {
   const { authUser, isLoading } = useAuthContext();
@@ -29,13 +30,16 @@ export default function Auth() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeader />
-      {isLoading && <Loader />}
-      {!isLoading && !authUser && (
-        <>
-          <h1>{h1}</h1>
-          <AuthComponent />
-        </>
-      )}
+      <div className="body-wrapper">
+        {isLoading && <Loader />}
+        {!isLoading && !authUser && (
+          <>
+            <h1>{h1}</h1>
+            <AuthComponent />
+          </>
+        )}
+      </div>
+      <Footer />
     </>
   );
 }
