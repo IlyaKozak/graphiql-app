@@ -8,3 +8,5 @@ export const TS_LINK = 'https://www.typescriptlang.org/';
 export const HTML_LINK = 'https://html.spec.whatwg.org/multipage/';
 export const CSS_LINK = 'https://www.w3.org/TR/CSS/#css';
 export const FIREBASE_LINK = 'https://firebase.google.com/';
+export const AUTHORIZED_LINK = '/graphiql';
+export const NOT_AUTHORIZED_LINK = '/auth';
