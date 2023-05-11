@@ -106,7 +106,7 @@ export default function Main() {
               >
                 {docsLable}
               </div>
-              <EditorSection setResponse={setResponse} endpoint={endpoint} />
+              <EditorSection setResponse={setResponse} endpoint={endpoint} schema={schemaData} />
               <ResponseSection response={response} />
               <div className={active && schemaData ? classes.docsVisible : classes.docsInvisible}>
                 <Suspense fallback={<Loader />}>
