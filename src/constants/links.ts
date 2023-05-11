@@ -10,3 +10,4 @@ export const CSS_LINK = 'https://www.w3.org/TR/CSS/#css';
 export const FIREBASE_LINK = 'https://firebase.google.com/';
 export const AUTHORIZED_LINK = '/graphiql';
 export const NOT_AUTHORIZED_LINK = '/auth';
+export const WELCOME_LINK = '/';

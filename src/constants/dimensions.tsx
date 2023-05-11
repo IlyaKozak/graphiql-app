@@ -10,3 +10,5 @@ export const LOGO_STACK_ITEM_WIDTH = 70;
 export const LOGO_STACK_ITEM_HEIGHT = 70;
 export const PADDING_BUTTON_TOP_BOT = 13;
 export const PADDING_BUTTON_LEFT_RIGHT = 50;
+export const PADDING_BUTTON_TOP_BOT_404 = 0;
+export const PADDING_BUTTON_LEFT_RIGHT_404 = 20;
