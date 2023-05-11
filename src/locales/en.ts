@@ -12,6 +12,7 @@ const en: LocaleDictionary = {
     signUp: 'Sign Up',
     signOut: 'Sign Out',
     graphiQL: 'Go To GraphiQL',
+    stack: 'Technology Stack',
   },
   main: {
     title: 'GraphiQL Clone - Main Page',
@@ -38,7 +39,6 @@ const en: LocaleDictionary = {
   },
   auth: {
     title: 'GraphiQL Clone - Auth Page',
-    h1: 'Authorization Page',
     passwordText: 'Password',
     confirmPasswordText: 'Confirm Password',
     signUpText: 'Sign Up with your email and password',

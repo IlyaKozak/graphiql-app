@@ -12,6 +12,7 @@ const ru: LocaleDictionary = {
     signUp: 'Зарегистрироваться',
     signOut: 'Выйти',
     graphiQL: 'Войти в GraphiQL',
+    stack: 'Стек использованных технологий',
   },
   main: {
     title: 'GraphiQL Клон - Основная Страница',
@@ -38,7 +39,6 @@ const ru: LocaleDictionary = {
   },
   auth: {
     title: 'GraphiQL Клон - Авторизация',
-    h1: 'Страница Авторизации',
     passwordText: 'Пароль',
     confirmPasswordText: 'Подтвердите пароль',
     signUpText: 'Зарегистируйтесь с помощью email и пароля',

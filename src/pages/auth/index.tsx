@@ -14,7 +14,7 @@ export default function Auth() {
   const router = useRouter();
   const [locale] = useLocaleContext();
   const {
-    auth: { title, h1 },
+    auth: { title },
   } = locale;
 
   useEffect(() => {
@@ -34,7 +34,6 @@ export default function Auth() {
         {isLoading && <Loader />}
         {!isLoading && !authUser && (
           <>
-            <h1>{h1}</h1>
             <AuthComponent />
           </>
         )}

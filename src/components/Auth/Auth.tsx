@@ -109,77 +109,84 @@ function Auth() {
 
   return (
     <>
-      <h2>{isSignUp ? signUpText : signInText}:</h2>
-      {isSignUp ? (
-        <>
-          {isRegistered}
-          <Link href="/auth?page=signin">{goToSignIn}</Link>
-        </>
-      ) : (
-        <>
-          {isNotRegistered}
-          <Link href="/auth?page=signup">{goToSignUp}</Link>
-        </>
-      )}
+      <div className={classes.wrapper}>
+        <h3 className={classes.authFormTitle}>{isSignUp ? signUpText : signInText}:</h3>
 
-      <form onSubmit={formSubmitHandler} className={classes.authForm} noValidate>
-        <label htmlFor="email">
-          Email:
-          {!validationFields.isValidEmail && <p className={classes.errorText}>{notValidEmail}</p>}
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={email}
-            onChange={changeHandler}
-            autoComplete="on"
-          />
-        </label>
-        <label htmlFor="password">
-          {passwordText}:
-          {!validationFields.isValidPassword && (
-            <p className={classes.errorText}>{notValidPassword}</p>
-          )}
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={changeHandler}
-            autoComplete="on"
-          />
-        </label>
-        {isSignUp && (
-          <label htmlFor="confirmPassword">
-            {confirmPasswordText}:
-            {!validationFields.isValidConfirmPassword && (
-              <p className={classes.errorText}>{notValidConfirmPassword}</p>
-            )}
+        <form onSubmit={formSubmitHandler} className={classes.authForm} noValidate>
+          <label htmlFor="email">
+            Email:
+            {!validationFields.isValidEmail && <p className={classes.errorText}>{notValidEmail}</p>}
             <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              value={confirmPassword}
+              id="email"
+              name="email"
+              type="email"
+              value={email}
               onChange={changeHandler}
               autoComplete="on"
             />
           </label>
-        )}
-        {firebaseError && (
-          <p className={classes.errorText}>{firebaseErrors[firebaseError] || firebaseError}</p>
-        )}
-        <button type="submit" className={classes.button} disabled={loading}>
-          {loading ? (
-            <span className={classes.alignCenter}>
-              <Loader />
-            </span>
-          ) : isSignUp ? (
-            <>{signUp}</>
-          ) : (
-            <>{signIn}</>
+          <label htmlFor="password">
+            {passwordText}:
+            {!validationFields.isValidPassword && (
+              <p className={classes.errorText}>{notValidPassword}</p>
+            )}
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={changeHandler}
+              autoComplete="on"
+            />
+          </label>
+          {isSignUp && (
+            <label htmlFor="confirmPassword">
+              {confirmPasswordText}:
+              {!validationFields.isValidConfirmPassword && (
+                <p className={classes.errorText}>{notValidConfirmPassword}</p>
+              )}
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                value={confirmPassword}
+                onChange={changeHandler}
+                autoComplete="on"
+              />
+            </label>
           )}
-        </button>
-      </form>
+          {firebaseError && (
+            <p className={classes.errorText}>{firebaseErrors[firebaseError] || firebaseError}</p>
+          )}
+          <button type="submit" className={classes.button} disabled={loading}>
+            {loading ? (
+              <span className={classes.alignCenter}>
+                <Loader />
+              </span>
+            ) : isSignUp ? (
+              <>{signUp}</>
+            ) : (
+              <>{signIn}</>
+            )}
+          </button>
+        </form>
+
+        {isSignUp ? (
+          <>
+            <div className={classes.links}>
+              {isRegistered}
+              <Link href="/auth?page=signin">{goToSignIn}</Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={classes.links}>
+              {isNotRegistered}
+              <Link href="/auth?page=signup">{goToSignUp}</Link>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

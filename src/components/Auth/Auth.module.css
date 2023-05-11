@@ -1,3 +1,13 @@
+.wrapper {
+  margin: 0 auto;
+  align-self: center;
+}
+
+.authFormTitle {
+  padding: 0 15px;
+  text-align: center;
+}
+
 .authForm {
   margin: 1em auto;
   display: flex;
@@ -5,10 +15,16 @@
   justify-content: center;
   gap: 1em;
   max-width: 20em;
+  padding: 0 15px;
 }
 
 .authForm input {
   width: 100%;
+  height: 50px;
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 4px;
+  padding: 13px 15px;
+  font-size: 15px;
 }
 
 .alignCenter {
@@ -23,6 +39,15 @@
   margin: 0;
 }
 
+.button {
+  height: 50px;
+}
+
 .button:disabled {
   cursor: wait;
+}
+
+.links {
+  text-align-last: center;
+  font-size: 14px;
 }

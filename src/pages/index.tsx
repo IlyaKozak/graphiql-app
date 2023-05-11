@@ -20,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeader />
-      <div className="body-wrapper">
+      <div className="bodyWelcomeWrapper">
         <Welcome />
       </div>
       <Footer />
