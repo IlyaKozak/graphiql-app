@@ -14,9 +14,17 @@ interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
   endpoint: string;
   schema: __Schema | null;
+  setShowToast: Dispatch<SetStateAction<boolean>>;
+  setErrorMessageToast: Dispatch<SetStateAction<string>>;
 }
 
-function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
+function EditorSection({
+  setResponse,
+  endpoint,
+  schema,
+  setShowToast,
+  setErrorMessageToast,
+}: IEditorSectionProps) {
   const [variablesLableActive, setVariablesLableActive] = useState(true);
   const [showTextareas, setShowTextareas] = useState(true);
   const [variablesAreaVisibleClass, setVariablesAreaVisibleClass] = useState(
@@ -77,7 +85,18 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
           setIsLoading(false);
         })
         .catch((error: Error) => {
-          setResponse(error.message);
+          if (error instanceof SyntaxError) {
+            setShowToast(true);
+            setErrorMessageToast(error.message);
+            setResponse('');
+          } else if (error instanceof TypeError) {
+            setShowToast(true);
+            setErrorMessageToast(error.message);
+            setResponse('');
+          } else {
+            setShowToast(false);
+            setResponse(error.message);
+          }
           setIsLoading(false);
         });
     } else {
