@@ -19,7 +19,7 @@ function EndpointSection({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [locale] = useLocaleContext();
   const {
-    main: { endpointButton, endpointText },
+    main: { endpointButton, endpointText, invalidEndpoint },
   } = locale;
 
   const handleEndpointSubmit = (
@@ -48,7 +48,10 @@ function EndpointSection({
             )}
           </form>
           <span className={classes.spanEndpoint}>
-            {endpointText} <strong>{isValidEndpoint ? endpoint : 'You Sucks'}</strong>
+            {endpointText}{' '}
+            <strong className={isValidEndpoint ? classes.valid : classes.invalid}>
+              {isValidEndpoint ? endpoint : invalidEndpoint}
+            </strong>
           </span>
         </div>
       </div>

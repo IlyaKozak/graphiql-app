@@ -13,6 +13,7 @@ import { useLocaleContext } from '@/context/locale.context';
 import classes from '../../components/Docs/docs.module.css';
 import { DEFAULT_GRAPHQL_ENDPOINT } from '../../constants/defaultGraphQLEndpoint';
 import { regexpToValidateEndpoint } from '@/constants/endpointRegexp';
+import Footer from '@/components/Footer/Footer';
 import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
 
 const LazyDocs = lazy(() => import('../../components/Docs/Docs'));
@@ -105,34 +106,38 @@ export default function Main() {
             errorMessageToast={errorMessageToast}
           />
           <MainHeader />
-          <EndpointSection
-            onEndpointSubmit={handleEndpointSubmit}
-            endpoint={endpoint}
-            isLoadingSchema={isLoadingSchema}
-            isValidEndpoint={isValidEndpoint}
-          />
-          <div className="container-main">
-            <div
-              onClick={handleLableClick}
-              className={schemaData ? classes.lable : classes.lableDisabled}
-            >
-              {docsLable}
-            </div>
-            <EditorSection
-              setResponse={setResponse}
+          <div className="welcome-wrapper">
+            <EndpointSection
+              onEndpointSubmit={handleEndpointSubmit}
               endpoint={endpoint}
-              setShowToast={setShowToast}
-              setErrorMessageToast={setErrorMessageToast}
+              isLoadingSchema={isLoadingSchema}
+              isValidEndpoint={isValidEndpoint}
             />
-            <ResponseSection response={response} />
-            <div className={active && schemaData ? classes.docsVisible : classes.docsInvisible}>
-              <Suspense fallback={<Loader />}>
-                {schemaData && isLazy && (
-                  <LazyDocs handleLableClick={handleLableClick} schema={schemaData} />
-                )}
-              </Suspense>
+            <div className="container-main">
+              <div
+                onClick={handleLableClick}
+                className={schemaData ? classes.lable : classes.lableDisabled}
+              >
+                {docsLable}
+              </div>
+              <EditorSection
+                setResponse={setResponse}
+                endpoint={endpoint}
+                schema={schemaData}
+                setShowToast={setShowToast}
+                setErrorMessageToast={setErrorMessageToast}
+              />
+              <ResponseSection response={response} />
+              <div className={active && schemaData ? classes.docsVisible : classes.docsInvisible}>
+                <Suspense fallback={<Loader />}>
+                  {schemaData && isLazy && (
+                    <LazyDocs handleLableClick={handleLableClick} schema={schemaData} />
+                  )}
+                </Suspense>
+              </div>
             </div>
           </div>
+          <Footer />
         </>
       ) : (
         ''

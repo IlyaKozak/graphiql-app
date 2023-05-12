@@ -21,7 +21,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
 
   const {
     lang,
-    docs: { title, descrStart, descrAbsenсe, schemaLibrary, noSchema },
+    docs: { title, descrStart, descrAbsence, schemaLibrary, noSchema },
   } = locale;
 
   useEffect(() => {
@@ -45,16 +45,16 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
         : setValueBtnBack(String(stack[stack.length - 2].name));
       stack[stack.length - 1].description
         ? setDescription(String(stack[stack.length - 1].description))
-        : setDescription(descrAbsenсe);
+        : setDescription(descrAbsence);
     } else if (stack.length === 0) {
       setNameHeader(title);
     }
-  }, [stack, lang, descrAbsenсe, descrStart, schemaLibrary, title]);
+  }, [stack, lang, descrAbsence, descrStart, schemaLibrary, title]);
 
   function setStackDescription(item: __Type | __Field | __InputValue | undefined) {
     if (item) {
       setStack((prevStack) => prevStack.concat(item));
-      item.description ? setDescription(String(item.description)) : setDescription(descrAbsenсe);
+      item.description ? setDescription(String(item.description)) : setDescription(descrAbsence);
     }
   }
 
@@ -81,7 +81,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
     setStack((prevStack) => prevStack.slice(0, -1));
     stack[stack.length - 2].description
       ? setDescription(String(stack[stack.length - 2].description))
-      : setDescription(descrAbsenсe);
+      : setDescription(descrAbsence);
   }
 
   return (
@@ -95,7 +95,7 @@ export default function Docs({ schema, handleLableClick }: DocsType) {
       <h3 className={classes.h3_Docs}>{nameHeader}</h3>
       {schema ? (
         <>
-          <p className={classes.descrDocs}>{description}</p>
+          <p>{description}</p>
           <div>
             {stack.length === 1 && <Root handleClickRoot={handleClickRoot} stack={stack} />}
 

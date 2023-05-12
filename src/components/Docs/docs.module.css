@@ -4,7 +4,7 @@
   right: -320px;
   z-index: 5;
   top: 0;
-  height: calc(100vh - 127px);
+  height: calc(100vh - 189px);
   background-color: rgb(255, 255, 255);
   border-left: 10px solid rgb(239 239 239);
   border-radius: 4px;
@@ -18,7 +18,7 @@ position: absolute;
 right: 0;
 top: 0;
 z-index: 5;
-height: calc(100vh - 127px);
+height: calc(100vh - 189px);
 background-color: rgb(255, 255, 255);
 border-left: 10px solid rgb(239 239 239);
 box-shadow: -15px 0 15px rgba(224, 224, 224, 0.318);
@@ -73,10 +73,6 @@ overflow-y: auto;
   cursor: not-allowed;
 }
 
-.descrDocs {
-  font-weight: 700;
-}
-
 .h3_noSchema{
   text-align: center;
   margin-top: 50px;
@@ -124,7 +120,6 @@ overflow-y: auto;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-weight: 700;
 }
 
 .h3_Docs {
@@ -134,7 +129,6 @@ overflow-y: auto;
   word-wrap: break-word;
   hyphens: auto;
   white-space: normal;
-  font-weight: 700;
 }
 
 .backBtn {
@@ -190,25 +184,14 @@ overflow-y: auto;
   font-variant: small-caps;
   font-weight: bold;
   letter-spacing: 1px;
-  font-weight: 700;
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 429px) {
   .docsInvisible {
-    height: calc(100vh - 158px);
+    height: calc(100vh - 222px);
   }
   
   .docsVisible {
-    height: calc(100vh - 158px);
-  }
-}
-
-@media screen and (max-width: 405px) {
-  .docsInvisible {
-    height: calc(100vh - 161px);
-  }
-  
-  .docsVisible {
-    height: calc(100vh - 161px);
+    height: calc(100vh - 222px);
   }
 }

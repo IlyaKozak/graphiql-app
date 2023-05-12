@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useAuthContext } from '../../context/auth.context';
 import { useLocaleContext } from '../../context/locale.context';
 import classes from './WelcomeHeader.module.css';
+import Loader from '../LoaderMini/LoaderMini';
 
 function WelcomeHeader() {
   const { authUser, isLoading } = useAuthContext();
@@ -13,6 +14,7 @@ function WelcomeHeader() {
 
   return (
     <div className={classes.welcomeHeader}>
+      {isLoading && <Loader />}
       {!isLoading &&
         (authUser ? (
           <>

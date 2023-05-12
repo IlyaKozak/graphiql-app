@@ -1,0 +1,6 @@
+.wrapper {
+  position: absolute;
+  z-index: 4;
+  min-width: 8em;
+  border-radius: 5px;
+}

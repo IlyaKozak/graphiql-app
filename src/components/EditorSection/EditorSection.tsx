@@ -6,11 +6,14 @@ import Image from 'next/image';
 import graphiQLService from '@/services/GraphiQLService';
 import { useLocaleContext } from '../../context/locale.context';
 import { MyTextarea } from '../MyTextarea/MyTextarea';
+import { TAB_SPACES } from '../../constants/textFormatting';
+import { __Schema } from '../../types/schema';
 import { LoaderRequest } from '../LoaderRequest/LoaderRequest';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
   endpoint: string;
+  schema: __Schema | null;
   setShowToast: Dispatch<SetStateAction<boolean>>;
   setErrorMessageToast: Dispatch<SetStateAction<string>>;
 }
@@ -18,6 +21,7 @@ interface IEditorSectionProps {
 function EditorSection({
   setResponse,
   endpoint,
+  schema,
   setShowToast,
   setErrorMessageToast,
 }: IEditorSectionProps) {
@@ -77,7 +81,7 @@ function EditorSection({
         headersAreaRef.current?.value
       )
         .then((data) => {
-          setResponse(JSON.stringify(data, null, 2));
+          setResponse(JSON.stringify(data, null, TAB_SPACES));
           setIsLoading(false);
         })
         .catch((error: Error) => {
@@ -99,18 +103,6 @@ function EditorSection({
       return;
     }
   };
-
-  useEffect(() => {
-    if (queryAreaRef.current) {
-      queryAreaRef.current.value = '';
-    }
-    if (variablesAreaRef.current) {
-      variablesAreaRef.current.value = '';
-    }
-    if (headersAreaRef.current) {
-      headersAreaRef.current.value = '';
-    }
-  }, [endpoint]);
 
   const handleVariablesLableClick = () => {
     if (!showTextareas) {
@@ -174,6 +166,8 @@ function EditorSection({
         )}
         <div className={classes.textareas}>
           <MyTextarea
+            schema={schema}
+            withHints={true}
             condition={showTextareas}
             placeholderValue={queryPlaceholder}
             textareaFirstClass={classes.queryArea}
@@ -201,6 +195,7 @@ function EditorSection({
                 {variablesLable}
               </div>
               <MyTextarea
+                schema={schema}
                 condition={variablesLableActive}
                 placeholderValue={variablesPlaceholder}
                 textareaFirstClass={variablesAreaVisibleClass}
@@ -216,6 +211,7 @@ function EditorSection({
                 {headersLable}
               </div>
               <MyTextarea
+                schema={schema}
                 condition={variablesLableActive}
                 placeholderValue={headersPlaceholder}
                 textareaFirstClass={headersAreaInvisibleClass}

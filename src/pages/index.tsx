@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import React from 'react';
 
 import { useLocaleContext } from '../context/locale.context';
 import Welcome from '../components/Welcome/Welcome';
 import MainHeader from '../components/MainHeader/MainHeader';
+import Footer from '@/components/Footer/Footer';
 
 export default function Home() {
   const [locale] = useLocaleContext();
@@ -19,7 +21,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeader />
-      <Welcome />
+      <div className="bodyWelcomeWrapper">
+        <Welcome />
+      </div>
+      <Footer />
     </>
   );
 }
