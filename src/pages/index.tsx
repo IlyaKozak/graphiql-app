@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 
 import { useLocaleContext } from '../context/locale.context';
 import Welcome from '../components/Welcome/Welcome';

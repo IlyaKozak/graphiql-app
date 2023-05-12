@@ -4,8 +4,10 @@ import { firebaseErrorsEn } from './firebaseErrorsEn';
 const en: LocaleDictionary = {
   lang: 'en',
   home: {
-    title: 'GraphiQL Clone - NextFireTeam',
+    title: 'GraphiQL Playground - NextFireTeam',
     h1: 'Welcome to GraphiQL Playground!',
+    aboutPlayground:
+      "Our platform supports various endpoints and allows you to input queries, variables, and headers. You can execute queries and enjoy the results. GraphiQL Playground provides a convenient and intuitive interface for exploring the capabilities of the GraphQL API. So let's get started together and unlock the power of GraphQL with GraphiQL Playground!",
     authLink: 'Please Authorize',
     mainLink: 'Go To GraphiQL Playground',
     signIn: 'Sign In',
@@ -13,9 +15,11 @@ const en: LocaleDictionary = {
     signOut: 'Sign Out',
     graphiQL: 'Go To GraphiQL',
     stack: 'Technology Stack',
+    stackDescription:
+      'The application is developed using a modern technology stack that includes ReactJS, Next.js, TypeScript, Firebase, HTML5, and CSS3.',
   },
   main: {
-    title: 'GraphiQL Clone - Main Page',
+    title: 'GraphiQL Playground - Main Page',
     endpointButton: 'Change endpoint',
     endpointText: 'Endpoint:',
     invalidEndpoint: 'Invalid endpoint',
@@ -38,7 +42,7 @@ const en: LocaleDictionary = {
     noSchema: 'NO SCHEMA AVAILABLE',
   },
   auth: {
-    title: 'GraphiQL Clone - Auth Page',
+    title: 'GraphiQL Playground - Auth Page',
     passwordText: 'Password',
     confirmPasswordText: 'Confirm Password',
     signUpText: 'Sign Up with your email and password',
@@ -53,7 +57,7 @@ const en: LocaleDictionary = {
     notValidConfirmPassword: 'Not valid Confirm Password. It should be equal to Password',
   },
   404: {
-    title: 'GraphiQL Clone - Not Found - 404',
+    title: 'GraphiQL Playground - Not Found - 404',
     h2: 'This page could not be found',
     goHome: 'Go Home',
   },

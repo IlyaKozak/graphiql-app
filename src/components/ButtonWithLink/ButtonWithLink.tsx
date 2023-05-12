@@ -22,7 +22,7 @@ export default function ButtonWithLink({
   };
   return (
     <Link className={classes.itemLink} href={itemLink}>
-      <div className={classes.wrapperButton} style={buttonStyle}>
+      <div className={`${classes.wrapperButton} ${classes.itemClass}`} style={buttonStyle}>
         {itemText}
       </div>
     </Link>

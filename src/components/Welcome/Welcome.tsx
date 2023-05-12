@@ -12,35 +12,46 @@ function Welcome() {
   const { authUser, isLoading } = useAuthContext();
   const [locale] = useLocaleContext();
   const {
-    home: { h1, authLink, mainLink },
+    home: { h1, authLink, mainLink, aboutPlayground },
   } = locale;
 
   return (
     <>
       <div className={classes.wrapper}>
         <h1 className={classes.title}>{h1}</h1>
-        <WelcomeLogo />
-        {!isLoading &&
-          (authUser ? (
-            <>
-              <ButtonWithLink
-                itemLink={AUTHORIZED_LINK}
-                itemText={mainLink}
-                paddingTopBottom={PADDING_BUTTON_TOP_BOT}
-                paddingLeftRight={PADDING_BUTTON_LEFT_RIGHT}
-              />
-            </>
-          ) : (
-            <>
-              <ButtonWithLink
-                itemLink={NOT_AUTHORIZED_LINK}
-                itemText={authLink}
-                paddingTopBottom={PADDING_BUTTON_TOP_BOT}
-                paddingLeftRight={PADDING_BUTTON_LEFT_RIGHT}
-              />
-            </>
-          ))}
-        <WelcomeStack />
+        <section className={classes.sectionWrapper}>
+          <p className={classes.about}>{aboutPlayground}</p>
+        </section>
+        <section className={classes.sectionWrapper}>
+          <WelcomeLogo />
+        </section>
+        <section className={classes.sectionWrapperUnderline}>
+          <div className={classes.buttonWrapper}>
+            {!isLoading &&
+              (authUser ? (
+                <>
+                  <ButtonWithLink
+                    itemLink={AUTHORIZED_LINK}
+                    itemText={mainLink}
+                    paddingTopBottom={PADDING_BUTTON_TOP_BOT}
+                    paddingLeftRight={PADDING_BUTTON_LEFT_RIGHT}
+                  />
+                </>
+              ) : (
+                <>
+                  <ButtonWithLink
+                    itemLink={NOT_AUTHORIZED_LINK}
+                    itemText={authLink}
+                    paddingTopBottom={PADDING_BUTTON_TOP_BOT}
+                    paddingLeftRight={PADDING_BUTTON_LEFT_RIGHT}
+                  />
+                </>
+              ))}
+          </div>
+        </section>
+        <section className={classes.sectionWrapper}>
+          <WelcomeStack />
+        </section>
       </div>
     </>
   );

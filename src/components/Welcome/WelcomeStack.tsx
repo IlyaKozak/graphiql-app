@@ -19,12 +19,12 @@ import cssIcon from '../../../public/css3.png';
 export default function WelcomeStack() {
   const [locale] = useLocaleContext();
   const {
-    home: { stack },
+    home: { stack, stackDescription },
   } = locale;
 
   return (
     <>
-      <h3 className={classes.subtitle}>{stack}</h3>
+      <h2 className={classes.subtitle}>{stack}</h2>
       <div className={classes.wrapperStack}>
         <WelcomeStackItem itemLink={REACT_LINK} itemIcon={reactIcon} />
         <WelcomeStackItem itemLink={NEXT_LINK} itemIcon={nextJSIcon} />
@@ -33,6 +33,7 @@ export default function WelcomeStack() {
         <WelcomeStackItem itemLink={HTML_LINK} itemIcon={htmlIcon} />
         <WelcomeStackItem itemLink={CSS_LINK} itemIcon={cssIcon} />
       </div>
+      <p className={classes.about}>{stackDescription}</p>
     </>
   );
 }

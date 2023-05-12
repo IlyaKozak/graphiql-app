@@ -1,5 +1,6 @@
 .wrapperButton {
   text-align: center;
+  width: fit-content;
   border: 1px solid rgb(0, 0, 0);
   background-color: #F0F0F0;
   border-radius: 4px;
