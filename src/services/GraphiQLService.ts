@@ -14,6 +14,8 @@ export default async function graphiQLService(
     headersObject = JSON.parse(headers);
   }
 
+  let responseJSON;
+  let responseText;
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: headersObject
@@ -22,13 +24,19 @@ export default async function graphiQLService(
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-    body: JSON.stringify({ query: query, variables: variablesObject ? variablesObject : {} }),
+    body: JSON.stringify({ query, variables: variablesObject ? variablesObject : {} }),
   });
-  const responseJSON = await response.json();
 
-  if (response.status === 400 || response.status === 404) {
-    throw new Error(`${JSON.stringify(responseJSON, null, 2)}`);
+  if (response.status >= 400 && response.status <= 499) {
+    responseJSON = await response.json();
+    throw new Error(
+      `Error Status Code ${response.status}:\n${JSON.stringify(responseJSON, null, 2)}`
+    );
+  } else if (response.status >= 500 && response.status <= 599) {
+    responseText = await response.text();
+    throw new Error(`Error Status Code ${response.status}: ${responseText}`);
   } else {
+    responseJSON = await response.json();
     return responseJSON;
   }
 }

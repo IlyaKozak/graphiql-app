@@ -14,6 +14,7 @@ import classes from '../../components/Docs/docs.module.css';
 import { DEFAULT_GRAPHQL_ENDPOINT } from '../../constants/defaultGraphQLEndpoint';
 import { regexpToValidateEndpoint } from '@/constants/endpointRegexp';
 import Footer from '@/components/Footer/Footer';
+import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
 
 const LazyDocs = lazy(() => import('../../components/Docs/Docs'));
 
@@ -27,6 +28,8 @@ export default function Main() {
   const [isLoadingSchema, setIsLoadingSchema] = useState(false);
   const [isLazy, setIsLazy] = useState(false);
   const [isValidEndpoint, setIsValidEndpoint] = useState(true);
+  const [showToast, setShowToast] = useState(false);
+  const [errorMessageToast, setErrorMessageToast] = useState('');
 
   const [locale] = useLocaleContext();
   const {
@@ -61,15 +64,21 @@ export default function Main() {
   useEffect(() => {
     if (endpoint) {
       setIsLoadingSchema(true);
-      GraphiQLInitialService(endpoint).then((data) => {
-        if (typeof data !== 'string') {
-          setSchemaData(data);
-        } else {
-          setSchemaData(null);
-          setResponse(data);
-        }
-        setIsLoadingSchema(false);
-      });
+      GraphiQLInitialService(endpoint)
+        .then((data) => {
+          if (typeof data !== 'string') {
+            setSchemaData(data);
+          } else {
+            setSchemaData(null);
+            setResponse(data);
+          }
+          setIsLoadingSchema(false);
+        })
+        .catch((error: Error) => {
+          setErrorMessageToast(error.message);
+          setShowToast(true);
+          setIsLoadingSchema(false);
+        });
     }
   }, [endpoint]);
 
@@ -91,6 +100,11 @@ export default function Main() {
       {isLoading && <Loader />}
       {authUser ? (
         <>
+          <ErrorToast
+            showToast={showToast}
+            setShowToast={setShowToast}
+            errorMessageToast={errorMessageToast}
+          />
           <MainHeader />
           <div className="welcome-wrapper">
             <EndpointSection
@@ -106,7 +120,13 @@ export default function Main() {
               >
                 {docsLable}
               </div>
-              <EditorSection setResponse={setResponse} endpoint={endpoint} schema={schemaData} />
+              <EditorSection
+                setResponse={setResponse}
+                endpoint={endpoint}
+                schema={schemaData}
+                setShowToast={setShowToast}
+                setErrorMessageToast={setErrorMessageToast}
+              />
               <ResponseSection response={response} />
               <div className={active && schemaData ? classes.docsVisible : classes.docsInvisible}>
                 <Suspense fallback={<Loader />}>
