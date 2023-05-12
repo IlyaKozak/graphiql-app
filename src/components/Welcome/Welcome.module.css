@@ -1,6 +1,6 @@
 .wrapper {
-  width: calc(100vw - 30px);
-  height: unset;
+  width: calc(100vw - 20px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -120,4 +120,43 @@
 
 .itemIcon:hover {
   transform: scale(0.9);
+}
+
+@media screen and (min-width: 3000px) {
+  .logoGraphQL {
+    width: 1200px;
+    height: 30vh;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .logoGraphQL {
+    width: 1200px;
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .title {
+    text-align: center;
+    margin: 10px 0 10px 0;
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .logoGraphQL {
+    width: calc(100vw - 50px);
+    height: 30vh;
+    animation: spin 30s infinite linear;
+    margin-bottom: 30px;
+  }
 }
