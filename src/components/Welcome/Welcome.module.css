@@ -1,5 +1,6 @@
 .wrapper {
-  height: 100%;
+  width: calc(100vw - 20px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -7,11 +8,41 @@
   padding: 0 15px;
 }
 
+.sectionWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionWrapperUnderline {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  padding-bottom: 40px;
+}
+
 .title {
   text-align: center;
+  margin: 30px 0 30px 0;
 }
 
 .subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about {
+  margin-top: 0;
+  margin-bottom: 30px;
+  line-height: 160%;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -25,14 +56,15 @@
 }
 
 .logoGraphQL {
-  width: 100vw;
+  width: calc(100vw - 50px);
   height: 50vh;
   animation: spin 30s infinite linear;
+  margin-bottom: 40px;
 }
 
 .logoIcon {
   position: absolute;
-  bottom: calc(50% - 60px);
+  bottom: calc(50% - 40px);
   animation: heartbeat 1.4s infinite;
 }
 
@@ -76,8 +108,9 @@
 .wrapperStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 30px;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .itemIcon {
@@ -87,4 +120,43 @@
 
 .itemIcon:hover {
   transform: scale(0.9);
+}
+
+@media screen and (min-width: 3000px) {
+  .logoGraphQL {
+    width: 1200px;
+    height: 30vh;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .logoGraphQL {
+    width: 1200px;
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .title {
+    text-align: center;
+    margin: 10px 0 10px 0;
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .logoGraphQL {
+    width: calc(100vw - 50px);
+    height: 30vh;
+    animation: spin 30s infinite linear;
+    margin-bottom: 30px;
+  }
 }

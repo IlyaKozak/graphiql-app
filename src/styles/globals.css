@@ -32,12 +32,18 @@ a {
 .body-wrapper {
   height: calc(100vh - 119px);
   display: flex;
+  background-image: url('../../public/background-auth.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .bodyWelcomeWrapper {
-  height: calc(100vh - 119px);
-  width: 100vw;
   overflow-x: hidden;
+  background-image: url('../../public/background-welcome.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container-main {
