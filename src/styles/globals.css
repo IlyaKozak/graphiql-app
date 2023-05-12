@@ -60,6 +60,46 @@ button:hover {
   cursor: pointer;
 }
 
+.highlight.brace {
+	color: rgb(61, 88, 102);
+}
+
+.highlight.stringLiteral {
+	color: green;
+}
+	
+.highlight.stringKey
+.highlight.null
+.highlight.booleanLiteral
+.highlight.numberLiteral {
+	font-weight: bold;
+}
+	
+.highlight.stringKey {
+	color: #333;
+	font-weight: bold;
+}
+	
+.highlight.booleanLiteral {
+	color: #08f;
+}
+	
+.highlight.numberLiteral {
+	color: crimson;
+}
+	
+.highlight.null {
+	color: #333;
+}
+	
+.highlight.whitespace {
+	border-bottom: 1px dashed #eee;
+}
+	
+.highlight.invalid {
+	background: red;
+}
+
 @media screen and (min-width: 431px) and (max-width: 800px) {
   .container-main {
     flex-direction: column;

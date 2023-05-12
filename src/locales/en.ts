@@ -28,7 +28,7 @@ const en: LocaleDictionary = {
     headersPlaceholder: 'Headers',
     headersLable: 'HEADERS',
     docsLable: 'DOCS',
-    queryPlaceholder: 'Query',
+    queryPlaceholder: 'Query [For Hints Press Ctrl + Space]',
   },
   docs: {
     title: 'Documentation Explorer',

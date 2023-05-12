@@ -1,4 +1,5 @@
 import { __Schema, __Type } from '../types/schema';
+import getHintsForArgs from './getHintsForArgs';
 
 const isInsideArgs = /\([^)]*$/;
 const getAllFields = /\w+(?=\s*(\(.*\))?\s*{)/g;
@@ -16,7 +17,6 @@ const getHints = (event: React.KeyboardEvent<HTMLTextAreaElement>, schema: __Sch
   const start = target.selectionStart;
   const firstPart = removePairedParentheses(text.slice(0, start));
   const wordPart = (firstPart.match(/\w+$/) || [])[0];
-  if (isInsideArgs.test(firstPart)) return null;
 
   let openBracketsCount =
     (firstPart.match(/{/g) || []).length - (firstPart.match(/}/g) || []).length;
@@ -27,7 +27,8 @@ const getHints = (event: React.KeyboardEvent<HTMLTextAreaElement>, schema: __Sch
   let currentType = schema.queryType.name;
   if (!currentType) return null;
 
-  let hints = getFields(schema, currentType)?.map((field) => field.name);
+  let fieldsOfType = getFields(schema, currentType);
+  let hints = fieldsOfType?.map((field) => field.name);
 
   while (openBracketsCount > 0 && graphQLStack.length) {
     openBracketsCount--;
@@ -48,7 +49,12 @@ const getHints = (event: React.KeyboardEvent<HTMLTextAreaElement>, schema: __Sch
     currentType = getCurrentType(fieldType);
     if (!currentType) return null;
 
-    hints = getFields(schema, currentType)?.map((field) => field.name);
+    fieldsOfType = getFields(schema, currentType);
+    hints = fieldsOfType?.map((field) => field.name);
+  }
+
+  if (isInsideArgs.test(firstPart)) {
+    return getHintsForArgs(firstPart, fieldsOfType);
   }
 
   if (wordPart) {

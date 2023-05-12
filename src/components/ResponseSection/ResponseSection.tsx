@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import classes from './ResponseSection.module.css';
+import jsonHighlight from '../../utils/jsonHighlight';
 
 interface IResponseSectionProps {
   response: string | null;
@@ -15,7 +16,7 @@ function ResponseSection({ response }: IResponseSectionProps) {
   return (
     <>
       <pre className={classes.wrapper}>
-        <code>{code}</code>
+        {code && <code dangerouslySetInnerHTML={{ __html: jsonHighlight(code) }}></code>}
       </pre>
     </>
   );

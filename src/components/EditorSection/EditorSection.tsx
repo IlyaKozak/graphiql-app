@@ -85,18 +85,6 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
     }
   };
 
-  useEffect(() => {
-    if (queryAreaRef.current) {
-      queryAreaRef.current.value = '';
-    }
-    if (variablesAreaRef.current) {
-      variablesAreaRef.current.value = '';
-    }
-    if (headersAreaRef.current) {
-      headersAreaRef.current.value = '';
-    }
-  }, [endpoint]);
-
   const handleVariablesLableClick = () => {
     if (!showTextareas) {
       setVariablesAreaVisibleClass(classes.variablesAreaVisible);
@@ -160,6 +148,7 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
         <div className={classes.textareas}>
           <MyTextarea
             schema={schema}
+            withHints={true}
             condition={showTextareas}
             placeholderValue={queryPlaceholder}
             textareaFirstClass={classes.queryArea}
@@ -187,6 +176,7 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
                 {variablesLable}
               </div>
               <MyTextarea
+                schema={schema}
                 condition={variablesLableActive}
                 placeholderValue={variablesPlaceholder}
                 textareaFirstClass={variablesAreaVisibleClass}
@@ -202,6 +192,7 @@ function EditorSection({ setResponse, endpoint, schema }: IEditorSectionProps) {
                 {headersLable}
               </div>
               <MyTextarea
+                schema={schema}
                 condition={variablesLableActive}
                 placeholderValue={headersPlaceholder}
                 textareaFirstClass={headersAreaInvisibleClass}
