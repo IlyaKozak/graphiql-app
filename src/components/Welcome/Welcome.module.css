@@ -159,4 +159,8 @@
     animation: spin 30s infinite linear;
     margin-bottom: 30px;
   }
+
+  .logoIcon {
+    width: 60px;
+  }
 }
