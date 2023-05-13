@@ -10,7 +10,6 @@ export function DocsArguments({ field, handleClickArgument }: DocsArgumentsType)
         (field as __Field).args.map((arg, indexArg) => {
           return (
             <div className={classes.p_Docs} key={indexArg}>
-              {/* <span>{indexArg === 0 ? `(` : '&nbsp;'}</span> */}
               <span
                 className={classes.key}
                 dangerouslySetInnerHTML={{ __html: indexArg === 0 ? '(' : '&nbsp;' }}

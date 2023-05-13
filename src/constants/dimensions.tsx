@@ -12,3 +12,5 @@ export const PADDING_BUTTON_TOP_BOT = 13;
 export const PADDING_BUTTON_LEFT_RIGHT = 50;
 export const PADDING_BUTTON_TOP_BOT_404 = 0;
 export const PADDING_BUTTON_LEFT_RIGHT_404 = 20;
+export const ABOUT_PHOTO_WIDTH = 200;
+export const ABOUT_PHOTO_HEIGHT = 200;
