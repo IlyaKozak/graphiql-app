@@ -17,6 +17,19 @@ const en: LocaleDictionary = {
     stack: 'Technology Stack',
     stackDescription:
       'The application is developed using a modern technology stack that includes ReactJS, Next.js, TypeScript, Firebase, HTML5, and CSS3.',
+    aboutTitle: 'Application Developers',
+    aboutName1: 'Ilya Kozak',
+    aboutName2: 'Viachaslau Perats',
+    aboutName3: 'Maksim Valazhynski',
+    aboutPosition1: 'Team Lead, Full Stack Developer',
+    aboutPosition2: 'Front-end React Developer',
+    aboutPosition3: 'Front-end React Developer, UI/UX Designer',
+    aboutText1:
+      'An experienced professional who combines comprehensive knowledge of both frontend and backend technologies with strong leadership skills to guide and empower development team',
+    aboutText2:
+      'Experienced professional specializing in creating user interfaces using the React library and ready to tackle any given tasks',
+    aboutText3:
+      'A versatile professional proficient in frontend development with React, as well as skilled in designing intuitive and visually appealing user interfaces and optimizing user experiences',
   },
   main: {
     title: 'GraphiQL Playground - Main Page',

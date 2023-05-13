@@ -7,6 +7,7 @@ import WelcomeStack from './WelcomeStack';
 import ButtonWithLink from '../ButtonWithLink/ButtonWithLink';
 import { AUTHORIZED_LINK, NOT_AUTHORIZED_LINK } from '@/constants/links';
 import { PADDING_BUTTON_TOP_BOT, PADDING_BUTTON_LEFT_RIGHT } from '@/constants/dimensions';
+import WelcomeAbout from './WelcomeAbout';
 
 function Welcome() {
   const { authUser, isLoading } = useAuthContext();
@@ -49,8 +50,11 @@ function Welcome() {
               ))}
           </div>
         </section>
-        <section className={classes.sectionWrapper}>
+        <section className={classes.sectionWrapperUnderline}>
           <WelcomeStack />
+        </section>
+        <section className={classes.sectionWrapper}>
+          <WelcomeAbout />
         </section>
       </div>
     </>
