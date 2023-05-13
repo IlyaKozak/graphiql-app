@@ -62,10 +62,20 @@
   margin-bottom: 40px;
 }
 
+.logoGraphQL:hover {
+  cursor: help;
+  animation-play-state: paused;
+}
+
 .logoIcon {
   position: absolute;
   bottom: calc(50% - 40px);
   animation: heartbeat 1.4s infinite;
+}
+
+.logoIcon:hover {
+  cursor: help;
+  animation-play-state: paused;
 }
 
 @keyframes spin {
