@@ -1,6 +1,6 @@
 import classes from './WelcomeAboutItem.module.css';
 import Image, { StaticImageData } from 'next/image';
-// import { LOGO_STACK_ITEM_WIDTH, LOGO_STACK_ITEM_HEIGHT } from '@/constants/dimensions';
+import { ABOUT_PHOTO_WIDTH, ABOUT_PHOTO_HEIGHT } from '@/constants/dimensions';
 
 interface IWelcomeAboutItemProps {
   itemPhoto: StaticImageData;
@@ -20,8 +20,8 @@ export default function WelcomeAboutItem({
       <div className={classes.wrapperAbout}>
         <Image
           className={classes.aboutPhoto}
-          width={200}
-          height={200}
+          width={ABOUT_PHOTO_WIDTH}
+          height={ABOUT_PHOTO_HEIGHT}
           src={itemPhoto}
           alt="developer photo"
           priority={true}

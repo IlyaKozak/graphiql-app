@@ -61,43 +61,43 @@ button:hover {
 }
 
 .highlight.brace {
-	color: rgb(61, 88, 102);
+  color: rgb(61, 88, 102);
 }
 
 .highlight.stringLiteral {
-	color: green;
+  color: green;
 }
-	
+  
 .highlight.stringKey
 .highlight.null
 .highlight.booleanLiteral
 .highlight.numberLiteral {
-	font-weight: bold;
+  font-weight: bold;
 }
-	
+  
 .highlight.stringKey {
-	color: #333;
-	font-weight: bold;
+  color: #333;
+  font-weight: bold;
 }
-	
+  
 .highlight.booleanLiteral {
-	color: #08f;
+  color: #08f;
 }
-	
+  
 .highlight.numberLiteral {
-	color: crimson;
+  color: crimson;
 }
-	
+  
 .highlight.null {
-	color: #333;
+  color: #333;
 }
-	
+  
 .highlight.whitespace {
-	border-bottom: 1px dashed #eee;
+  border-bottom: 1px dashed #eee;
 }
-	
+  
 .highlight.invalid {
-	background: red;
+  background: red;
 }
 
 @media screen and (min-width: 431px) and (max-width: 800px) {

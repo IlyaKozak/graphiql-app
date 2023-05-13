@@ -1,5 +1,3 @@
-// import Link from 'next/link';
-
 import { useLocaleContext } from '../../context/locale.context';
 import classes from './Custom404.module.css';
 import { WELCOME_LINK } from '@/constants/links';
