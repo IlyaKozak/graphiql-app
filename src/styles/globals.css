@@ -61,11 +61,11 @@ button:hover {
 }
 
 .highlight.brace {
-  color: rgb(61, 88, 102);
+  color: #3d5866;
 }
 
 .highlight.stringLiteral {
-  color: green;
+  color: #008000;
 }
   
 .highlight.stringKey
@@ -81,11 +81,11 @@ button:hover {
 }
   
 .highlight.booleanLiteral {
-  color: #08f;
+  color: #3d5866;
 }
   
 .highlight.numberLiteral {
-  color: crimson;
+  color: #dc143c;
 }
   
 .highlight.null {
@@ -97,7 +97,8 @@ button:hover {
 }
   
 .highlight.invalid {
-  background: red;
+  color: #dc143c;
+  font-style: italic;
 }
 
 @media screen and (min-width: 431px) and (max-width: 800px) {
