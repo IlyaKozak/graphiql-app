@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix"
   },
@@ -20,6 +19,7 @@
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sharp": "^0.32.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {

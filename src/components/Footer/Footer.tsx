@@ -14,7 +14,7 @@ export default function Footer() {
           <GitHubLink gitlink={GITHUB_LINK_2} />
           <GitHubLink gitlink={GITHUB_LINK_3} />
         </div>
-        <p>2023</p>
+        <p>{new Date().getFullYear()}</p>
         <Link href={RS_SCHOOL_LINK} className={classes.socialLink}>
           <Image className={classes.logoRS} src={logoRSS} alt="rs school logo" />
         </Link>

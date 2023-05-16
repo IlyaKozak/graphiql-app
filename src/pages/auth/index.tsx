@@ -10,12 +10,16 @@ import MainHeader from '../../components/MainHeader/MainHeader';
 import Footer from '@/components/Footer/Footer';
 
 export default function Auth() {
-  const { authUser, isLoading } = useAuthContext();
+  const { authUser, authErrorMessage, isLoading } = useAuthContext();
   const router = useRouter();
   const [locale] = useLocaleContext();
   const {
     auth: { title },
   } = locale;
+
+  useEffect(() => {
+    if (authErrorMessage) router.push('/');
+  }, [authErrorMessage, router]);
 
   useEffect(() => {
     if (authUser) router.push('/graphiql');

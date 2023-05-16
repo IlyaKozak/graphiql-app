@@ -11,7 +11,7 @@ function SingOut() {
   return (
     <>
       {!isLoading && authUser && (
-        <button type="button" onClick={() => signOutUser()}>
+        <button type="button" onClick={() => signOutUser && signOutUser()}>
           {signOut}
         </button>
       )}

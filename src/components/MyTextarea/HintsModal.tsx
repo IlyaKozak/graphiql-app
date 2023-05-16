@@ -37,7 +37,9 @@ export const HintsModal = ({ hints, handleEscape, handleSelect, position }: Hint
   }, []);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLSelectElement>) => {
-    if (event.code === Key.Enter || event.code === Key.Tab) {
+    const { code } = event;
+
+    if (code === Key.Enter || code === Key.Tab || code === Key.Space) {
       event.preventDefault();
       handleSelect(selectRef.current!.value);
       handleEscape();
@@ -47,11 +49,20 @@ export const HintsModal = ({ hints, handleEscape, handleSelect, position }: Hint
     }
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLSelectElement>) => {
+    const { target } = event;
+    if ((target as HTMLOptionElement).value) {
+      handleSelect(selectRef.current!.value);
+      handleEscape();
+    }
+  };
+
   return (
     <select
       className={classes.wrapper}
       onBlur={handleEscape}
       onKeyDown={handleKeyDown}
+      onClick={handleClick}
       name="hints"
       ref={selectRef}
       defaultValue={hints[0]}

@@ -80,6 +80,7 @@ function Auth() {
     setValidationFields(defaultValidationFields);
     setLoading(true);
     try {
+      if (!createUser || !signInUser) return;
       const response = await (isSignUp ? createUser(email, password) : signInUser(email, password));
 
       if (!response) return;
