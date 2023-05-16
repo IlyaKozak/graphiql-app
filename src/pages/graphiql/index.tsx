@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Suspense, useEffect, useState, lazy } from 'react';
+
 import { useAuthContext } from '@/context/auth.context';
 import EndpointSection from '@/components/EndpointSection/EndpointSection';
 import MainHeader from '@/components/MainHeader/MainHeader';
@@ -10,8 +11,8 @@ import ResponseSection from '@/components/ResponseSection/ResponseSection';
 import EditorSection from '@/components/EditorSection/EditorSection';
 import Loader from '@/components/Loader/Loader';
 import { useLocaleContext } from '@/context/locale.context';
-import classes from '../../components/Docs/docs.module.css';
-import { DEFAULT_GRAPHQL_ENDPOINT } from '../../constants/defaultGraphQLEndpoint';
+import classes from '@/components/Docs/docs.module.css';
+import { DEFAULT_GRAPHQL_ENDPOINT } from '@/constants/defaultGraphQLEndpoint';
 import { regexpToValidateEndpoint } from '@/constants/endpointRegexp';
 import Footer from '@/components/Footer/Footer';
 import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
@@ -19,7 +20,7 @@ import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
 const LazyDocs = lazy(() => import('../../components/Docs/Docs'));
 
 export default function Main() {
-  const { authUser, isLoading } = useAuthContext();
+  const { authUser, authErrorMessage, isLoading } = useAuthContext();
   const router = useRouter();
   const [endpoint, setEndpoint] = useState(DEFAULT_GRAPHQL_ENDPOINT);
   const [schemaData, setSchemaData] = useState<Schema | null>(null);
@@ -56,6 +57,10 @@ export default function Main() {
       setEndpoint('');
     }
   };
+
+  useEffect(() => {
+    if (authErrorMessage) router.push('/');
+  }, [authErrorMessage, router]);
 
   useEffect(() => {
     if (!isLoading && !authUser) router.push('/');

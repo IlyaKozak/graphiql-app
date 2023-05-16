@@ -101,6 +101,10 @@ button:hover {
   font-style: italic;
 }
 
+nextjs-portal {
+  display: none;
+}
+
 @media screen and (min-width: 431px) and (max-width: 800px) {
   .container-main {
     flex-direction: column;

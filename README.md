@@ -1,14 +1,12 @@
 ## App Requirements
 *https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md*
 
----
 
 ## Deployment
 *https://nextfireteam.netlify.app/*
 
----
 
-## Run/Build App
+## Run / Build App
 
 Rename ```.env.sample``` to ```.env.local``` and add firebase environment variables to enable email/password authentification:
 
@@ -39,8 +37,6 @@ Build a static site / single-page application (SPA) ready for deployment to ```.
 npm run build
 ```
 
----
-
 ## Cross-Check [90/90 points]
 
 ### Welcome route [10 points] 
@@ -64,7 +60,7 @@ npm run build
 - [x] Headers section (can be closed/opened) **5 pts**
 - [x] Response section **10 pts**
 
-### General requirements [10 pts]
+### General requirements [10 points]
 - [x] Localization (en/ru) **5 pts**
 - [x] Sticky (animated) header **5 pts**
 
