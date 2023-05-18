@@ -10,11 +10,6 @@
   z-index: 10;
 }
 
-.wrapper img {
-  width: auto;
-  height: auto;
-}
-
 .wrapperScrollable {
   display: flex;
   justify-content: space-between;

@@ -30,6 +30,8 @@
   rotate: 180deg;
   transform: scale(0.7);
   transition: all .3s ease-in-out;
+  width: 25px;
+  height: 16px;
 }
 
 .arrowDown {
@@ -39,6 +41,8 @@
   z-index: 3;
   transform: scale(0.7);
   transition: all .3s ease-in-out;
+  width: 25px;
+  height: 16px;
 }
 
 .wrapper img:hover {
