@@ -1,8 +1,7 @@
-import classes from './docs.module.css';
-import Image from 'next/image';
-import cross from '../../../public/cross-small.svg';
-import arrow from '../../../public/left-arrow.svg';
 import { HeaderDocsType } from '@/types/docs';
+import cross from '@/../public/cross-small.svg';
+import arrow from '@/../public/left-arrow.svg';
+import classes from './docs.module.css';
 
 export function HeaderDocs({
   showBtnBack,
@@ -17,14 +16,14 @@ export function HeaderDocs({
           onClick={hadleClickBack}
           className={showBtnBack ? classes.backShow : classes.backHidden}
         >
-          <Image className={classes.backArrow} src={arrow} alt="back stack" />
+          <img className={classes.backArrow} src={arrow.src} alt="back stack" />
           <span className={classes.span_backBtn}>{valueBtnBack}</span>
         </div>
       </div>
-      <Image
+      <img
         onClick={handleLableClick}
         className={classes.cross}
-        src={cross}
+        src={cross.src}
         alt="image for close docs"
       />
     </div>

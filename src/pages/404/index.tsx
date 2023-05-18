@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { useLocaleContext } from '../../context/locale.context';
-import Custom404 from '../../components/Custom404/Custom404';
+import { useLocaleContext } from '@/context/locale.context';
+import Custom404 from '@/components/Custom404/Custom404';
 
 export default function Custom404Page() {
   const [locale] = useLocaleContext();

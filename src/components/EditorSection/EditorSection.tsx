@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import classes from './EditorSection.module.css';
-import searchIcon from '../../../public/search-icon.svg';
-import arrowIcon from '../../../public/vertical-arrow.svg';
-import Image from 'next/image';
+
+import searchIcon from '@/../public/search-icon.svg';
+import arrowIcon from '@/../public/vertical-arrow.svg';
 import graphiQLService from '@/services/GraphiQLService';
-import { useLocaleContext } from '../../context/locale.context';
-import { MyTextarea } from '../MyTextarea/MyTextarea';
-import { TAB_SPACES } from '../../constants/textFormatting';
-import { __Schema } from '../../types/schema';
-import { LoaderRequest } from '../LoaderRequest/LoaderRequest';
+import { useLocaleContext } from '@/context/locale.context';
+import { MyTextarea } from '@/components/MyTextarea/MyTextarea';
+import { LoaderRequest } from '@/components/LoaderRequest/LoaderRequest';
+import { TAB_SPACES } from '@/constants/textFormatting';
+import { __Schema } from '@/types/schema';
+import classes from './EditorSection.module.css';
 
 interface IEditorSectionProps {
   setResponse: Dispatch<SetStateAction<string | null>>;
@@ -157,10 +157,10 @@ function EditorSection({
             <LoaderRequest />
           </div>
         ) : (
-          <Image
+          <img
             className={classes.search}
             onClick={handleQuerySubmit}
-            src={searchIcon}
+            src={searchIcon.src}
             alt="search schema"
           />
         )}
@@ -174,10 +174,10 @@ function EditorSection({
             textreaSecondClass={classes.queryAreaExtended}
             ref={queryAreaRef}
           />
-          <Image
+          <img
             className={showTextareas ? classes.arrowUp : classes.arrowDown}
             onClick={handleArrowClick}
-            src={arrowIcon}
+            src={arrowIcon.src}
             alt="toggle texteareas"
           />
           <div

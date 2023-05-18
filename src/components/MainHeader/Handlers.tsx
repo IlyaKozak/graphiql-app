@@ -1,6 +1,6 @@
-import classes from './MainHeader.module.css';
-
 import { Dispatch, SetStateAction } from 'react';
+
+import classes from './MainHeader.module.css';
 
 export const scrollHandler = ({ dispatch }: { dispatch: Dispatch<SetStateAction<string>> }) => {
   if (window.scrollY > 0) {

@@ -1,5 +1,5 @@
-import { useAuthContext } from '../../context/auth.context';
-import { useLocaleContext } from '../../context/locale.context';
+import { useAuthContext } from '@/context/auth.context';
+import { useLocaleContext } from '@/context/locale.context';
 
 function SingOut() {
   const { authUser, isLoading, signOutUser } = useAuthContext();

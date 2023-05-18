@@ -1,7 +1,7 @@
 import { DocsArgumentsType } from '@/types/docs';
-import classes from './docs.module.css';
 import { findNameType } from '@/services/findNameType';
 import { __Field } from '@/types/schema';
+import classes from './docs.module.css';
 
 export function DocsArguments({ field, handleClickArgument }: DocsArgumentsType) {
   return (

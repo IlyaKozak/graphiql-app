@@ -1,7 +1,8 @@
 import { useRef } from 'react';
-import { useLocaleContext } from '../../context/locale.context';
+
+import { useLocaleContext } from '@/context/locale.context';
+import LoaderMini from '@/components/LoaderMini/LoaderMini';
 import classes from './EndpointSection.module.css';
-import LoaderMini from '../LoaderMini/LoaderMini';
 
 interface IEndpointSectionProps {
   onEndpointSubmit: (endpoint: string) => void;

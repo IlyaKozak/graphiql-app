@@ -1,6 +1,4 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
-
-import firebaseApp from '../utils/firebase';
 import {
   Auth,
   User,
@@ -10,7 +8,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { regexToExtractFirebaseError } from '../constants/firebaseRegex';
+
+import firebaseApp from '@/utils/firebase';
+import { regexToExtractFirebaseError } from '@/constants/firebaseRegex';
 
 interface IAuthUser {
   uid: string;

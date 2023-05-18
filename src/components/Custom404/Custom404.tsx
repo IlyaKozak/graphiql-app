@@ -1,8 +1,8 @@
-import { useLocaleContext } from '../../context/locale.context';
-import classes from './Custom404.module.css';
+import { useLocaleContext } from '@/context/locale.context';
+import ButtonWithLink from '@/components/ButtonWithLink/ButtonWithLink';
 import { WELCOME_LINK } from '@/constants/links';
-import ButtonWithLink from '../ButtonWithLink/ButtonWithLink';
 import { PADDING_BUTTON_LEFT_RIGHT_404, PADDING_BUTTON_TOP_BOT_404 } from '@/constants/dimensions';
+import classes from './Custom404.module.css';
 
 export default function Custom404() {
   const [locale] = useLocaleContext();

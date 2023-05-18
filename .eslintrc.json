@@ -40,7 +40,8 @@
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-var-reqiures": "off",
       "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "@next/next/no-img-element": "off"
     },
       "settings": {
           "react": {

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { useAuthContext } from '../../context/auth.context';
-import { useLocaleContext } from '../../context/locale.context';
+import { useAuthContext } from '@/context/auth.context';
+import { useLocaleContext } from '@/context/locale.context';
 import classes from './WelcomeHeader.module.css';
 
 function WelcomeHeader() {

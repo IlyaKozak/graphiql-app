@@ -1,7 +1,7 @@
-import classes from './ErrorToast.module.css';
-import Image from 'next/image';
-import closeToast from '../../../public/close-toast.svg';
 import { Dispatch, SetStateAction, useEffect } from 'react';
+
+import closeToast from '@/../public/close-toast.svg';
+import classes from './ErrorToast.module.css';
 
 type ErrorToastType = {
   showToast: boolean;
@@ -20,10 +20,10 @@ export function ErrorToast({ showToast, setShowToast, errorMessageToast }: Error
 
   return (
     <div className={showToast ? classes.wrapperErrorToastShow : classes.wrapperErrorToastHidden}>
-      <Image
+      <img
         onClick={() => setShowToast(false)}
         className={classes.imageToast}
-        src={closeToast}
+        src={closeToast.src}
         alt="image cross show error"
       />
       <span>{errorMessageToast}</span>

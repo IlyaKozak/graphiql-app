@@ -1,10 +1,9 @@
-import classes from './WelcomeAbout.module.css';
-import WelcomeAboutItem from './WelcomeAboutItem';
+import photo1 from '@/../public/photo-ilya.png';
+import photo2 from '@/../public/photo-slawa.png';
+import photo3 from '@/../public/photo-max.png';
 import { useLocaleContext } from '@/context/locale.context';
-
-import photo1 from '../../../public/photo-ilya.png';
-import photo2 from '../../../public/photo-slawa.png';
-import photo3 from '../../../public/photo-max.png';
+import WelcomeAboutItem from './WelcomeAboutItem';
+import classes from './WelcomeAbout.module.css';
 
 export default function WelcomeAbout() {
   const [locale] = useLocaleContext();

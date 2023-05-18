@@ -1,8 +1,8 @@
-import classes from './docs.module.css';
 import { __Type } from '@/types/schema';
 import { findNameType } from '@/services/findNameType';
 import { InputFieldsDocsType } from '@/types/docs';
 import { useLocaleContext } from '@/context/locale.context';
+import classes from './docs.module.css';
 
 export function InputFields({ stack, handleSearchTypes, handleClickKey }: InputFieldsDocsType) {
   const [locale] = useLocaleContext();

@@ -1,9 +1,9 @@
-import GitHubLink from './GitHubLink/GitHubLink';
-import { GITHUB_LINK_1, GITHUB_LINK_2, GITHUB_LINK_3, RS_SCHOOL_LINK } from '../../constants/links';
-import Image from 'next/image';
-import logoRSS from '../../../public/logo-rs-school.svg';
-import classes from './Footer.module.css';
 import Link from 'next/link';
+
+import logoRSS from '@/../public/logo-rs-school.svg';
+import { GITHUB_LINK_1, GITHUB_LINK_2, GITHUB_LINK_3, RS_SCHOOL_LINK } from '@/constants/links';
+import GitHubLink from './GitHubLink/GitHubLink';
+import classes from './Footer.module.css';
 
 export default function Footer() {
   return (
@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
         <p>{new Date().getFullYear()}</p>
         <Link href={RS_SCHOOL_LINK} className={classes.socialLink}>
-          <Image className={classes.logoRS} src={logoRSS} alt="rs school logo" />
+          <img className={classes.logoRS} src={logoRSS.src} alt="rs school logo" />
         </Link>
       </footer>
     </div>

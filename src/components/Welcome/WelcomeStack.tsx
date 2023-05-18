@@ -1,5 +1,9 @@
-import classes from './Welcome.module.css';
-import WelcomeStackItem from './WelcomeStackItem';
+import reactIcon from '@/../public/react.png';
+import nextJSIcon from '@/../public/nextjs.svg';
+import typescriptIcon from '@/../public/ts.png';
+import firebaseIcon from '@/../public/firebase.png';
+import htmlIcon from '@/../public/html5.png';
+import cssIcon from '@/../public/css3.png';
 import { useLocaleContext } from '@/context/locale.context';
 import {
   REACT_LINK,
@@ -8,13 +12,9 @@ import {
   FIREBASE_LINK,
   HTML_LINK,
   CSS_LINK,
-} from '../../constants/links';
-import reactIcon from '../../../public/react.png';
-import nextJSIcon from '../../../public/nextjs.svg';
-import typescriptIcon from '../../../public/ts.png';
-import firebaseIcon from '../../../public/firebase.png';
-import htmlIcon from '../../../public/html5.png';
-import cssIcon from '../../../public/css3.png';
+} from '@/constants/links';
+import WelcomeStackItem from './WelcomeStackItem';
+import classes from './Welcome.module.css';
 
 export default function WelcomeStack() {
   const [locale] = useLocaleContext();
