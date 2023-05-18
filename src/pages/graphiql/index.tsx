@@ -17,7 +17,7 @@ import { regexpToValidateEndpoint } from '@/constants/endpointRegexp';
 import Footer from '@/components/Footer/Footer';
 import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
 
-const LazyDocs = lazy(() => import('../../components/Docs/Docs'));
+const LazyDocs = lazy(() => import('@/components/Docs/Docs'));
 
 export default function Main() {
   const { authUser, authErrorMessage, isLoading } = useAuthContext();

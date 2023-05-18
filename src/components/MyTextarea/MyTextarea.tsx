@@ -1,12 +1,12 @@
 import { RefObject, forwardRef, useEffect, useState } from 'react';
 
-import formatText from '../../utils/formatText';
-import { Key } from '../../constants/textFormatting';
-import { __Schema } from '../../types/schema';
-import getHints from '../../utils/getHints';
+import formatText from '@/utils/formatText';
+import { Key } from '@/constants/textFormatting';
+import { __Schema } from '@/types/schema';
+import getHints from '@/utils/getHints';
 import { HintsModal } from './HintsModal';
-import insertSelection from '../../utils/insertSelection';
-import getHintsModalPosition from '../../utils/getHintsModalPosition';
+import insertSelection from '@/utils/insertSelection';
+import getHintsModalPosition from '@/utils/getHintsModalPosition';
 
 interface IMyTextareaProps {
   condition: boolean;

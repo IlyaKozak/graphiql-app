@@ -1,8 +1,8 @@
-import classes from './docs.module.css';
 import { __Field } from '@/types/schema';
 import { findNameType } from '@/services/findNameType';
 import { FieldDocsType } from '@/types/docs';
 import { useLocaleContext } from '@/context/locale.context';
+import classes from './docs.module.css';
 
 export function Field({ stack, handleSearchTypes }: FieldDocsType) {
   const [locale] = useLocaleContext();

@@ -1,4 +1,4 @@
-import { LocaleDictionary } from '../types/localeDictionary';
+import { LocaleDictionary } from '@/types/localeDictionary';
 import { firebaseErrorsRu } from './firebaseErrorsRu';
 
 const ru: LocaleDictionary = {

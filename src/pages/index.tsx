@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
-import { useLocaleContext } from '../context/locale.context';
-import Welcome from '../components/Welcome/Welcome';
-import MainHeader from '../components/MainHeader/MainHeader';
+import { useLocaleContext } from '@/context/locale.context';
+import Welcome from '@/components/Welcome/Welcome';
+import MainHeader from '@/components/MainHeader/MainHeader';
 import Footer from '@/components/Footer/Footer';
-import { useAuthContext } from '../context/auth.context';
-import { ErrorToast } from '../components/ErrorToast/ErrorToast';
+import { useAuthContext } from '@/context/auth.context';
+import { ErrorToast } from '@/components/ErrorToast/ErrorToast';
 
 export default function Home() {
   const { authErrorMessage } = useAuthContext();

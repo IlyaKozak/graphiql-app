@@ -2,11 +2,11 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { useAuthContext } from '../../context/auth.context';
-import { useLocaleContext } from '../../context/locale.context';
-import Loader from '../Loader/Loader';
-import { validateEmail, validatePassword } from '../../utils/validation';
-import { regexToExtractFirebaseError } from '../../constants/firebaseRegex';
+import { useAuthContext } from '@/context/auth.context';
+import { useLocaleContext } from '@/context/locale.context';
+import Loader from '@/components/Loader/Loader';
+import { validateEmail, validatePassword } from '@/utils/validation';
+import { regexToExtractFirebaseError } from '@/constants/firebaseRegex';
 import classes from './Auth.module.css';
 
 const defaultFormFields = {

@@ -1,4 +1,4 @@
-import { dataType, __Schema as Schema } from '../types/schema';
+import { dataType, __Schema as Schema } from '@/types/schema';
 import { QUERY } from '@/constants/queryToGetGraphQLSchema';
 
 export default async function GraphiQLInitialService(endpoint: string): Promise<Schema> {

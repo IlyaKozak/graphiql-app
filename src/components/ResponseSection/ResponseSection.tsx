@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+
+import jsonHighlight from '@/utils/jsonHighlight';
 import classes from './ResponseSection.module.css';
-import jsonHighlight from '../../utils/jsonHighlight';
 
 interface IResponseSectionProps {
   response: string | null;

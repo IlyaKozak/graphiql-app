@@ -1,15 +1,16 @@
-import { DocsType } from '../../types/docs';
-import classes from './docs.module.css';
 import { useState, useEffect } from 'react';
+
+import { DocsType } from '@/types/docs';
 import { __Field, __Type, __InputValue } from '@/types/schema';
-import { ValueRoot } from '../../types/docs';
+import { ValueRoot } from '@/types/docs';
+import { useLocaleContext } from '@/context/locale.context';
 import { Root } from './Root';
 import { Fields } from './Fields';
 import { InputFields } from './InputFields';
 import { Field } from './Field';
 import { InputField } from './InputField';
 import { HeaderDocs } from './HeaderDocs';
-import { useLocaleContext } from '@/context/locale.context';
+import classes from './docs.module.css';
 
 export default function Docs({ schema, handleLableClick }: DocsType) {
   const [nameHeader, setNameHeader] = useState<string>('');

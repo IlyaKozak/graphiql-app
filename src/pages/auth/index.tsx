@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-import { useLocaleContext } from '../../context/locale.context';
-import { useAuthContext } from '../../context/auth.context';
-import AuthComponent from '../../components/Auth/Auth';
-import Loader from '../../components/Loader/Loader';
-import MainHeader from '../../components/MainHeader/MainHeader';
+import { useLocaleContext } from '@/context/locale.context';
+import { useAuthContext } from '@/context/auth.context';
+import AuthComponent from '@/components/Auth/Auth';
+import Loader from '@/components/Loader/Loader';
+import MainHeader from '@/components/MainHeader/MainHeader';
 import Footer from '@/components/Footer/Footer';
 
 export default function Auth() {

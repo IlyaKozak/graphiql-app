@@ -1,6 +1,6 @@
-import classes from './docs.module.css';
 import { RootType } from '@/types/docs';
 import { useLocaleContext } from '@/context/locale.context';
+import classes from './docs.module.css';
 
 export function Root({ handleClickRoot, stack }: RootType) {
   const [locale] = useLocaleContext();

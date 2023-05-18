@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
-import en from '../locales/en';
-import ru from '../locales/ru';
-import { LocaleDictionary } from '../types/localeDictionary';
+import en from '@/locales/en';
+import ru from '@/locales/ru';
+import { LocaleDictionary } from '@/types/localeDictionary';
 
 type ILocaleContext = [LocaleDictionary, () => void];
 

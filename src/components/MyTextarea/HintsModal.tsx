@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
-import classes from './HintsModal.module.css';
-import { Key } from '../../constants/textFormatting';
+import { Key } from '@/constants/textFormatting';
 import { HintsModalPosition } from './MyTextarea';
+import classes from './HintsModal.module.css';
 
 const MAX_NUMBER_OF_OPTIONS = 5;
 const MIN_NUMBER_OF_OPTIONS = 2;

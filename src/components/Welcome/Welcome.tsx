@@ -1,13 +1,12 @@
-import classes from './Welcome.module.css';
-
-import { useLocaleContext } from '../../context/locale.context';
-import { useAuthContext } from '../../context/auth.context';
-import WelcomeLogo from './WelcomeLogo';
-import WelcomeStack from './WelcomeStack';
-import ButtonWithLink from '../ButtonWithLink/ButtonWithLink';
+import { useLocaleContext } from '@/context/locale.context';
+import { useAuthContext } from '@/context/auth.context';
 import { AUTHORIZED_LINK, NOT_AUTHORIZED_LINK } from '@/constants/links';
 import { PADDING_BUTTON_TOP_BOT, PADDING_BUTTON_LEFT_RIGHT } from '@/constants/dimensions';
+import ButtonWithLink from '@/components/ButtonWithLink/ButtonWithLink';
+import WelcomeLogo from './WelcomeLogo';
+import WelcomeStack from './WelcomeStack';
 import WelcomeAbout from './WelcomeAbout';
+import classes from './Welcome.module.css';
 
 function Welcome() {
   const { authUser, isLoading } = useAuthContext();
