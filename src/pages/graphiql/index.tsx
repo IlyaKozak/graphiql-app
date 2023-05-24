@@ -82,6 +82,7 @@ export default function Main() {
         .catch((error: Error) => {
           setErrorMessageToast(error.message);
           setShowToast(true);
+          setSchemaData(null);
           setIsLoadingSchema(false);
         });
     }
