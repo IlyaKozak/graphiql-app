@@ -1,0 +1,43 @@
+.wrapper {
+  min-width: 25vw;
+  width: 50vw;
+  max-width: 75vw;
+  width: 100%;
+  height: calc(100% - 10px);
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  padding: 5px 5px 5px 15px;
+  overflow: auto;
+  margin: 0;
+}
+
+.wrapper code {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 431px) and (max-width: 800px) {
+  .wrapper {
+    margin: 0;
+    max-width: 100%;
+    height: calc(100vh - 30vh - 350px);
+    padding: 25px 5px 5px 5px;
+  }
+}
+
+@media screen and (min-width: 411px) and (max-width: 430px) {
+  .wrapper {
+    margin: 0;
+    max-width: 100%;
+    height: calc(100vh - 30vh - 383px);
+    padding: 25px 5px 5px 5px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .wrapper {
+    margin: 0;
+    max-width: 100%;
+    height: calc(100vh - 30vh - 383px);
+    padding: 25px 5px 5px 5px;
+  }
+}

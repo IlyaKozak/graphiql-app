@@ -1,0 +1,7 @@
+.wrapper {
+  position: absolute;
+  z-index: 5;
+  min-width: 7em;
+  border-radius: 5px;
+  font-size: 14px;
+}
