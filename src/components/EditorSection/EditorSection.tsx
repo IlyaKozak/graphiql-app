@@ -85,11 +85,7 @@ function EditorSection({
           setIsLoading(false);
         })
         .catch((error: Error) => {
-          if (error instanceof SyntaxError) {
-            setShowToast(true);
-            setErrorMessageToast(error.message);
-            setResponse('');
-          } else if (error instanceof TypeError) {
+          if (error instanceof SyntaxError || error instanceof TypeError) {
             setShowToast(true);
             setErrorMessageToast(error.message);
             setResponse('');
