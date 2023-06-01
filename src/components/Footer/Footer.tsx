@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import logoRSS from '@/../public/logo-rs-school.svg';
 import { GITHUB_LINK_1, GITHUB_LINK_2, GITHUB_LINK_3, RS_SCHOOL_LINK } from '@/constants/links';
 import GitHubLink from './GitHubLink/GitHubLink';
+import logoRSS from '@/../public/logo-rs-school.svg';
 import classes from './Footer.module.css';
 
 export default function Footer() {

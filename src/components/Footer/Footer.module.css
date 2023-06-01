@@ -15,7 +15,7 @@
   z-index: 4;
 }
 
-.footer p{
+.footer p {
   margin: 0;
   color: #000000;
   z-index: 1;
@@ -32,9 +32,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.logoRS {
   width: 60px;
   height: 30px;
   cursor: pointer;
@@ -47,7 +44,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .footer p{
+  .footer p {
     padding-right: 65px;
   }
 }

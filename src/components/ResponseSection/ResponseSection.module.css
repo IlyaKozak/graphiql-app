@@ -1,6 +1,5 @@
 .wrapper {
   min-width: 25vw;
-  width: 50vw;
   max-width: 75vw;
   width: 100%;
   height: calc(100% - 10px);
