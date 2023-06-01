@@ -19,17 +19,27 @@ type HintsModalProps = {
 
 export const HintsModal = ({ hints, handleEscape, handleSelect, position }: HintsModalProps) => {
   const selectRef = useRef<HTMLSelectElement>(null);
+
   const row = position?.row || 0 + 1;
   let top = row * ROW_HEIGHT_PX;
   const containerHeight = position?.containerHeight || 0;
   if (top > containerHeight) {
     top = containerHeight;
   }
+
   const column = position?.column || 0 + 1;
   let left = column * COLUMN_CHAR_WIDTH_PX;
   const containerWidth = position?.containerWidth || 0;
   if (left > containerWidth) {
     left = containerWidth - DEFAULT_OFFSET_WIDTH_PX;
+  }
+
+  let selectElementSize = hints.length;
+  if (hints.length > MAX_NUMBER_OF_OPTIONS) {
+    selectElementSize = MAX_NUMBER_OF_OPTIONS;
+  }
+  if (hints.length < MIN_NUMBER_OF_OPTIONS) {
+    selectElementSize = MIN_NUMBER_OF_OPTIONS;
   }
 
   useEffect(() => {
@@ -66,13 +76,7 @@ export const HintsModal = ({ hints, handleEscape, handleSelect, position }: Hint
       name="hints"
       ref={selectRef}
       defaultValue={hints[0]}
-      size={
-        hints.length > MAX_NUMBER_OF_OPTIONS
-          ? MAX_NUMBER_OF_OPTIONS
-          : hints.length < MIN_NUMBER_OF_OPTIONS
-          ? MIN_NUMBER_OF_OPTIONS
-          : hints.length
-      }
+      size={selectElementSize}
       style={{
         top: `${top}px`,
         left: `${left}px`,
