@@ -31,14 +31,14 @@ function Auth() {
   const router = useRouter();
   const isSignUp = router.query.page === 'signup';
   const { createUser, signInUser } = useAuthContext();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [firebaseError, setFirebaseError] = useState<string | null>(null);
   const [validationFields, setValidationFields] = useState(defaultValidationFields);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password, confirmPassword } = formFields;
   const [locale] = useLocaleContext();
   const {
-    home: { signIn, signUp },
+    home: { signIn: signInButtonText, signUp: signUpButtonText },
     auth: {
       passwordText,
       confirmPasswordText,
@@ -78,7 +78,8 @@ function Auth() {
 
     setFirebaseError(null);
     setValidationFields(defaultValidationFields);
-    setLoading(true);
+    setIsLoading(true);
+
     try {
       if (!createUser || !signInUser) return;
       const response = await (isSignUp ? createUser(email, password) : signInUser(email, password));
@@ -92,7 +93,7 @@ function Auth() {
         setFirebaseError(firebaseError || null);
       }
     }
-    setLoading(false);
+    setIsLoading(false);
   };
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -107,6 +108,8 @@ function Auth() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+
+  const authButtonText = isSignUp ? signUpButtonText : signInButtonText;
 
   return (
     <>
@@ -159,15 +162,13 @@ function Auth() {
           {firebaseError && (
             <p className={classes.errorText}>{firebaseErrors[firebaseError] || firebaseError}</p>
           )}
-          <button type="submit" className={classes.button} disabled={loading}>
-            {loading ? (
+          <button type="submit" className={classes.button} disabled={isLoading}>
+            {isLoading ? (
               <span className={classes.alignCenter}>
                 <Loader />
               </span>
-            ) : isSignUp ? (
-              <>{signUp}</>
             ) : (
-              <>{signIn}</>
+              authButtonText
             )}
           </button>
         </form>
