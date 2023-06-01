@@ -1,5 +1,11 @@
-import { __Schema as Schema } from './schema';
-import { __Type, __TypeKind, __EnumValue, __Field, __InputValue } from './schema';
+import {
+  __Schema as Schema,
+  __Type,
+  __TypeKind,
+  __EnumValue,
+  __Field,
+  __InputValue,
+} from './schema';
 
 export type DocsType = {
   schema: Schema | null;
