@@ -5,7 +5,10 @@ import Link from 'next/link';
 import { useAuthContext } from '@/context/auth.context';
 import { useLocaleContext } from '@/context/locale.context';
 import Loader from '@/components/Loader/Loader';
-import { validateEmail, validatePassword } from '@/utils/validation';
+import {
+  isValidEmail as isValidEmailCheck,
+  isValidPassword as isValidPasswordCheck,
+} from '@/utils/validation';
 import { regexToExtractFirebaseError } from '@/constants/firebaseRegex';
 import classes from './Auth.module.css';
 
@@ -63,8 +66,8 @@ function Auth() {
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const isValidEmail = validateEmail(email);
-    const isValidPassword = validatePassword(password);
+    const isValidEmail = isValidEmailCheck(email);
+    const isValidPassword = isValidPasswordCheck(password);
     const isValidConfirmPassword = !isSignUp || password === confirmPassword;
 
     if (!isValidEmail || !isValidPassword || !isValidConfirmPassword) {
