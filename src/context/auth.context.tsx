@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Auth,
   User,
@@ -53,14 +53,17 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     setIsLoading(false);
   };
 
-  const authContextValue = {
-    authUser,
-    isLoading,
-    authErrorMessage,
-    createUser: firebaseAuth ? createUserWithEmailAndPassword.bind(null, firebaseAuth) : null,
-    signInUser: firebaseAuth ? signInWithEmailAndPassword.bind(null, firebaseAuth) : null,
-    signOutUser: firebaseAuth ? signOut.bind(null, firebaseAuth) : null,
-  };
+  const authContextValue = useMemo(
+    () => ({
+      authUser,
+      isLoading,
+      authErrorMessage,
+      createUser: firebaseAuth ? createUserWithEmailAndPassword.bind(null, firebaseAuth) : null,
+      signInUser: firebaseAuth ? signInWithEmailAndPassword.bind(null, firebaseAuth) : null,
+      signOutUser: firebaseAuth ? signOut.bind(null, firebaseAuth) : null,
+    }),
+    [authUser, isLoading, authErrorMessage, firebaseAuth]
+  );
 
   useEffect(() => {
     try {
