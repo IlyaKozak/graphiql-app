@@ -1,0 +1,59 @@
+.footerWrapper {
+  width: 100%;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(#f7f7f7, #e2e2e2);
+  border-top: 1px solid #d0d0d0;
+  font-size: 14px;
+  height: 60px;
+  z-index: 4;
+}
+
+.footer p{
+  margin: 0;
+  color: #000000;
+  z-index: 1;
+  padding-right: 85px;
+}
+
+.github {
+  display: flex;
+  gap: 5px;
+}
+
+.logoRS {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoRS {
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+  background-color: unset;
+}
+
+.logoRS:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 500px) {
+  .footer p{
+    padding-right: 65px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logoRS:hover {
+    transform: scale(0.9);
+  }
+}

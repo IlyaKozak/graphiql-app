@@ -1,0 +1,365 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgb(239 239 239);
+}
+
+.wrapperLoaderRequest {
+  z-index: 3;
+  position: absolute;
+  right: -13px;
+    top: 15px;
+  width: 48px;
+  height: 48px;
+}
+
+.search {
+  z-index: 3;
+  position: absolute;
+  right: -28px;
+  top: 30px;
+  transition: all .3s ease-in-out;
+}
+
+.arrowUp {
+  position: relative;
+  left: calc(100% - 30px);
+  top: 16px;
+  z-index: 3;
+  rotate: 180deg;
+  transform: scale(0.7);
+  transition: all .3s ease-in-out;
+  width: 25px;
+  height: 16px;
+}
+
+.arrowDown {
+  position: relative;
+  left: calc(100% - 30px);
+  top: 8px;
+  z-index: 3;
+  transform: scale(0.7);
+  transition: all .3s ease-in-out;
+  width: 25px;
+  height: 16px;
+}
+
+.wrapper img:hover {
+  cursor: pointer;
+  transform: scale(0.85);
+}
+
+.wrapper textarea::-webkit-input-placeholder {
+  font-size: 14px;
+}
+
+.textareas {
+  height: calc(100vh - 121px)
+}
+
+.queryArea {
+  font-size: 16px;
+  resize: horizontal;
+  min-width: 32vw;
+  width: 50vw;
+  max-width: calc(75vw - 50px);
+  border-radius: 5px;
+  border: none;
+  height: calc(75% - 42px);
+  margin: 0;
+  padding: 5px 15px 5px 5px;
+}
+
+.queryAreaExtended {
+  font-size: 16px;
+  resize: horizontal;
+  min-width: 32vw;
+  width: 50vw;
+  max-width: calc(75vw - 50px);
+  border-radius: 5px;
+  border: none;
+  height: calc(95% - 19px);
+  margin: 0;
+  padding: 5px 15px 5px 5px;
+}
+
+.variablesHedersWrapper {
+  height: 25%;
+  padding-bottom: 10px;
+}
+
+.variablesWrapper,
+.headersWrapper {
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+.headersWrapper {
+  position: relative;
+  bottom: 100%;
+}
+
+.headersWrapperHidden {
+  position: relative;
+  bottom: 25px;
+  padding-bottom: 0;
+}
+
+.variablesHedersWrapperHidden {
+  position: relative;
+  padding-bottom: 0;
+  bottom: 10px;
+  height: 30px;
+}
+
+.variablesAreaInvisible,
+.headersAreaInvisible {
+  font-size: 16px;
+  z-index: 0;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.variablesAreaVisible,
+.headersAreaVisible {
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.areaHidden {
+  display: none;
+}
+
+.lableVariables,
+.lableHeaders,
+.lableHeadersEn {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(61, 88, 102);
+  color: white;
+  cursor: pointer;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableVariables {
+  font-size: 14px;
+  left: 20px;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeaders {
+  font-size: 14px;
+  left: 140px;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersEn {
+  font-size: 14px;
+  left: 120px;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableVariables:hover,
+.lableHeaders:hover,
+.lableHeadersEn:hover {
+  background: rgb(122, 168, 187);
+}
+
+.lableVariablesActive {
+  font-size: 14px;
+  position: relative;
+  z-index: 4;
+  left: 20px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(122, 168, 187);
+  color: white;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersActive {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+  left: 140px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(112, 162, 186);
+  color: white;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lableHeadersActiveEn {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+  left: 120px;
+  width: fit-content;
+  text-align: center;
+  height: 25px;
+  background: rgb(112, 162, 186);
+  color: white;
+  cursor: default;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotateX(1deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    min-height: calc(30vh + 135px);
+  }
+
+  .wrapperLoaderRequest {
+    z-index: 3;
+    position: absolute;
+    right: unset;
+    top: unset;
+    left: 5px;
+    bottom: -20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .search {
+    right: unset;
+    top: unset;
+    left: 20px;
+    bottom: -35px;
+  }
+
+  .wrapper textarea {
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .textareas {
+    display: flex;
+    height: unset;
+    flex-direction: column;
+  }
+  
+  .queryArea {
+    max-height: unset;
+    resize: vertical;
+    width: 100%;
+    min-height: 30vh;
+    height: unset;
+    margin: 0;
+  }
+
+  .queryAreaExtended {
+    max-height: unset;
+    resize: vertical;
+    width: 100%;
+    min-height: calc(41vh - 2px);
+    height: unset;
+    margin: 0;
+  }
+
+  .variablesHedersWrapper {
+    position: relative;
+    padding-bottom: 0;
+    height: 135px;
+  }
+
+  .variablesHedersWrapperHidden {
+    position: relative;
+    padding-bottom: 0;
+    bottom: 10px;
+    height: 30px;
+  }
+
+  .variablesWrapper,
+  .headersWrapper {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .headersWrapper {
+    position: inherit;
+  }
+
+  .variablesAreaVisible,
+  .headersAreaVisible,
+  .variablesAreaInvisible,
+  .headersAreaInvisible {
+    height: calc(100% - 25px);
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .lableVariables,
+  .lableVariablesActive {
+    left: 5px;
+  }
+
+  .lableHeaders,
+  .lableHeadersActive {
+    left: 125px;
+  }
+
+  .lableHeadersActiveEn,
+  .lableHeadersEn {
+    left: 105px;
+  }
+}

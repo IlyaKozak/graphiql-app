@@ -1,0 +1,2 @@
+export const INITIAL_RESOLUTION = 1920;
+export const BORDER_RESOLUTION = 500;
