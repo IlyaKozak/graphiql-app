@@ -1,0 +1,197 @@
+.docsInvisible {
+  width: 320px;
+  position:absolute;
+  right: -320px;
+  z-index: 5;
+  top: 0;
+  height: calc(100vh - 189px);
+  background-color: rgb(255, 255, 255);
+  border-left: 10px solid rgb(239 239 239);
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+  padding: 15px 15px;
+}
+
+.docsVisible {
+  width: 320px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  height: calc(100vh - 189px);
+  background-color: rgb(255, 255, 255);
+  border-left: 10px solid rgb(239 239 239);
+  box-shadow: -15px 0 15px rgba(224, 224, 224, 0.318);
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+  padding: 15px 15px;
+  overflow-y: auto;
+}
+
+.lable {
+  position: absolute;
+  top: 100px;
+  right: -30px;
+  width: fit-content;
+  text-align: center;
+  font-size: 14px;
+  height: 25px;
+  background: rgb(61, 88, 102);
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotate(-90deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+}
+
+.lable:hover {
+  background: rgb(122, 168, 187);
+}
+
+.lableDisabled {
+  position: absolute;
+  top: 100px;
+  right: -30px;
+  width: fit-content;
+  text-align: center;
+  font-size: 14px;
+  height: 25px;
+  background: rgb(192 197 199);
+  color: white;
+  transition: all .3s ease-in-out;
+  padding: 3px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transform: perspective(4px) rotate(-90deg);
+  white-space: nowrap;
+  box-shadow: 5px -2px 0px 0px rgba(0,0,0,0.1);
+  cursor: not-allowed;
+}
+
+.h3_noSchema{
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(193, 172, 172);
+}
+
+.click {
+  color: rgb(246, 191, 39);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.click:hover {
+  text-decoration: underline;
+}
+
+.key {
+  color: #007df2;
+  font-size: 15px;
+}
+
+.keyQuery {
+  color: #B11A04;
+  font-size: 15px;
+}
+
+.keyClick {
+  color: #6d00a0;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.keyClick:hover {
+  text-decoration: underline;
+}
+
+.p_Docs{
+  display: inline-block;
+  margin: 0;
+}
+
+.headerDocs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.h3_Docs {
+  margin: 0;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+}
+
+.backBtn {
+  width: 85%;
+}
+
+.span_backBtn{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  width: calc(100% - 18px - 5px);
+  font-weight: 700;
+}
+
+.backShow{
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.backHidden{
+  display: none;
+}
+
+.backArrow {
+  width: 18px;
+  height: 18px;
+}
+
+.cross {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.cross:hover {
+  transform: rotate(180deg);
+}
+
+.div_afterQuery {
+  margin-bottom: 5px;
+  line-height: 110%;
+}
+
+.docs_mainDocs_header{
+  border-bottom: 2px solid #e0e0e0;
+  color: #777;
+  font-size: 15px;
+  font-variant: small-caps;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 429px) {
+  .docsInvisible {
+    height: calc(100vh - 222px);
+  }
+  
+  .docsVisible {
+    height: calc(100vh - 222px);
+  }
+}
